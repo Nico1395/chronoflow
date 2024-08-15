@@ -13,4 +13,11 @@ public static class DbContextModelOptionsExtensions
 
         return services.AddSingleton(sp => modelOptions);
     }
+
+    public static void ApplyConfigurationsFromModelOptions<TDbContext>(this ModelBuilder modelBuilder, DbContextModelOptions<TDbContext> modelOptions)
+        where TDbContext : DbContext
+    {
+        foreach (var assembly in modelOptions.GetEntityConfigurationAssemblies())
+            modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+    }
 }

@@ -8,9 +8,6 @@ internal sealed class ChronoFlowDbContext(
 {
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-
-        foreach (var assembly in modelOptions.GetEntityConfigurationAssemblies())
-            modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+        modelBuilder.ApplyConfigurationsFromModelOptions(modelOptions);
     }
 }
