@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChronoFlow.Server.AccessManagement\ChronoFlow.Server.AccessManagement.csproj" />
+    <ProjectReference Include="..\ChronoFlow.Server.Common\ChronoFlow.Server.Common.csproj" />
+  </ItemGroup>
+
 </Project>

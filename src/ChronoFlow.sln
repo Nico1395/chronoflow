@@ -5,19 +5,20 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{9E29E8A3-04F3-4E98-8859-2EC63D09FA61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronoFlow.Server", "ChronoFlow.Server\ChronoFlow.Server.csproj", "{089C8813-3248-4192-BF97-193C1CFB9CD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Server", "ChronoFlow.Server\ChronoFlow.Server.csproj", "{089C8813-3248-4192-BF97-193C1CFB9CD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronoFlow.Server.Common", "ChronoFlow.Server.Common\ChronoFlow.Server.Common.csproj", "{0CFC4059-4035-4036-85D4-9670795AF604}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Server.Common", "ChronoFlow.Server.Common\ChronoFlow.Server.Common.csproj", "{0CFC4059-4035-4036-85D4-9670795AF604}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronoFlow.Server.AccessManagement", "ChronoFlow.Server.AccessManagement\ChronoFlow.Server.AccessManagement.csproj", "{96E370DE-4BC4-4D33-9699-95DF8C176938}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Server.AccessManagement", "ChronoFlow.Server.AccessManagement\ChronoFlow.Server.AccessManagement.csproj", "{96E370DE-4BC4-4D33-9699-95DF8C176938}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{CD99FAF5-4429-43D8-AA95-70170235F253}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{EDCE9D29-CFF6-44B3-9BCA-F2FE524D9449}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{089C8813-3248-4192-BF97-193C1CFB9CD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -33,9 +34,15 @@ Global
 		{96E370DE-4BC4-4D33-9699-95DF8C176938}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96E370DE-4BC4-4D33-9699-95DF8C176938}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{089C8813-3248-4192-BF97-193C1CFB9CD8} = {9E29E8A3-04F3-4E98-8859-2EC63D09FA61}
 		{0CFC4059-4035-4036-85D4-9670795AF604} = {9E29E8A3-04F3-4E98-8859-2EC63D09FA61}
 		{96E370DE-4BC4-4D33-9699-95DF8C176938} = {9E29E8A3-04F3-4E98-8859-2EC63D09FA61}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2B65180-9C0D-457C-B3C9-603E3EC21D3B}
 	EndGlobalSection
 EndGlobal

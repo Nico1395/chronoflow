@@ -8,6 +8,7 @@ public class Program
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddChronoFlow();
 
         var app = builder.Build();
 
