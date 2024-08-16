@@ -1,7 +1,5 @@
 ﻿using ChronoFlow.Server.Common.Messaging;
-using ChronoFlow.Server.Common.Messaging.Domain;
 using ChronoFlow.Shared.Common.Messaging;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +13,7 @@ internal static class GetAppliedMigrations
     {
         endpoints.MapGet("/migrations/get-applied", async ([FromServices] IMediator mediator) =>
         {
-            var result = await mediator.Send(new GetAppliedMigrationsQuery());
+            var result = await mediator.SendAsync(new GetAppliedMigrationsQuery());
             return Results.Ok(result);
         });
 

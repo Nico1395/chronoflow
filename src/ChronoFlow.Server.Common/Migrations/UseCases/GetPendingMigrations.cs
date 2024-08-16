@@ -1,7 +1,5 @@
 ﻿using ChronoFlow.Server.Common.Messaging;
-using ChronoFlow.Server.Common.Messaging.Domain;
 using ChronoFlow.Shared.Common.Messaging;
-using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,7 +13,7 @@ internal static class GetPendingMigrations
     {
         endpoints.MapGet("/migrations/get-pending", async ([FromServices] IMediator mediator) =>
         {
-            var result = await mediator.Send(new GetPendingMigrationsQuery());
+            var result = await mediator.SendAsync(new GetPendingMigrationsQuery());
             return Results.Ok(result);
         });
 

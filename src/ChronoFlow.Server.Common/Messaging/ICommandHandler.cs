@@ -1,5 +1,4 @@
-﻿using ChronoFlow.Server.Common.Messaging.Domain;
-using MediatR;
+﻿using MediatR;
 
 namespace ChronoFlow.Server.Common.Messaging;
 

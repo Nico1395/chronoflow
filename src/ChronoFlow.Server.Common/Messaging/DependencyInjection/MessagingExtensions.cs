@@ -17,6 +17,8 @@ internal static class MessagingExtensions
 
         services.AddValidatorsFromAssemblies(assemblies, includeInternalTypes: true);
 
+        services.AddScoped<IMediator, Mediator>();
+
         return services;
     }
 }
