@@ -6,4 +6,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ChronoFlow.Server.Common\ChronoFlow.Server.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Employees\UseCases\" />
+    <Folder Include="Permissions\UseCases\" />
+    <Folder Include="Roles\UseCases\" />
+  </ItemGroup>
+
 </Project>
