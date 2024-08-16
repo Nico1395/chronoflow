@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using NLog;
 
 namespace ChronoFlow.Server;
@@ -17,6 +18,11 @@ public class Program
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddChronoFlow();
+            builder.Services.AddControllers().AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.TypeNameHandling = TypeNameHandling.Auto;
+                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            });
 
             var app = builder.Build();
 
