@@ -1,24 +1,42 @@
+using NLog;
+
 namespace ChronoFlow.Server;
 
 public class Program
 {
     public static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        var logger = Logging.CreateLogger();
 
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-        builder.Services.AddChronoFlow();
-
-        var app = builder.Build();
-
-        if (app.Environment.IsDevelopment())
+        try
         {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
+            logger.Debug("Starting application...");
 
-        app.UseHttpsRedirection();
-        app.Run();
+            var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
+            builder.Services.AddChronoFlow();
+
+            var app = builder.Build();
+
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseSwagger();
+                app.UseSwaggerUI();
+            }
+
+            app.UseHttpsRedirection();
+            app.Run();
+        }
+        catch (Exception ex)
+        {
+            logger.Error(ex, "Application ran into an unhandled exception.");
+            throw;
+        }
+        finally
+        {
+            LogManager.Shutdown();
+        }
     }
 }
