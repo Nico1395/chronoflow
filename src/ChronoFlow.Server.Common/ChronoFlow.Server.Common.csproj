@@ -30,8 +30,4 @@
         <ProjectReference Include="..\ChronoFlow.Shared.Common\ChronoFlow.Shared.Common.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Migrations\UseCases\" />
-    </ItemGroup>
-
 </Project>

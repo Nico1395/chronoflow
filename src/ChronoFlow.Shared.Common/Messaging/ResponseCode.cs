@@ -2,5 +2,8 @@
 
 public enum ResponseCode
 {
+    Okay,
+    Error,
+    NotAuthorized,
     ValidationErrors,
 }

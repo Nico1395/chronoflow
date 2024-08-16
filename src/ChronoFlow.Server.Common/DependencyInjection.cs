@@ -1,5 +1,6 @@
 ﻿using ChronoFlow.Server.Common.Configuration;
 using ChronoFlow.Server.Common.Messaging.DependencyInjection;
+using ChronoFlow.Server.Common.Migrations;
 using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Server.Common.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,7 @@ public static class DependencyInjection
 
     private static IServiceCollection AddServices(this IServiceCollection services, Assembly[] assemblies)
     {
+        services.AddScoped<IMigrationRunner, MigrationRunner>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;

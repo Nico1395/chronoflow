@@ -27,6 +27,8 @@ public class Program
             }
 
             app.UseHttpsRedirection();
+            app.UseChronoFlowEndpoints();
+
             app.Run();
         }
         catch (Exception ex)
