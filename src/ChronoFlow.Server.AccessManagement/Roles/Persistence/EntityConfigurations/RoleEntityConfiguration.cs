@@ -10,6 +10,7 @@ internal sealed class RoleEntityConfiguration : IEntityTypeConfiguration<Role>
     {
         builder.ToTable("access_management_roles");
         builder.HasKey(x => x.Id).HasName("pk_access_management_roles");
+        builder.HasIndex(x => x.Name).IsUnique();
 
         builder.Property(x => x.Id).HasColumnName("id").IsRequired();
         builder.Property(x => x.Name).HasColumnName("name").HasMaxLength(50).IsRequired();

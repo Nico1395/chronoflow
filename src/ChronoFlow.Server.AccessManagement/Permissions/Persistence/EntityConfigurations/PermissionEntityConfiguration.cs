@@ -10,6 +10,7 @@ internal sealed class PermissionEntityConfiguration : IEntityTypeConfiguration<P
     {
         builder.ToTable("access_management_permissions");
         builder.HasKey(x => x.Id).HasName("pk_access_management_permissions");
+        builder.HasIndex(x => x.Name).IsUnique();
 
         builder.Property(x => x.Id).HasColumnName("id").UseIdentityAlwaysColumn().IsRequired();
         builder.Property(x => x.Name).HasColumnName("name").HasMaxLength(100).IsRequired();
