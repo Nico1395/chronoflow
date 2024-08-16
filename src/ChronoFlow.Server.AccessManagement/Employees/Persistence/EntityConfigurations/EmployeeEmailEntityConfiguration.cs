@@ -10,9 +10,11 @@ internal sealed class EmployeeEmailEntityConfiguration : IEntityTypeConfiguratio
     {
         builder.ToTable("access_management_employee_emails");
         builder.HasKey(d => new { d.EmployeeId, d.Email }).HasName("pk_access_management_employee_emails");
+        builder.HasIndex(d => d.Email).IsUnique();
 
         builder.Property(d => d.EmployeeId).HasColumnName("employee_id").IsRequired();
         builder.Property(d => d.Email).HasColumnName("email").HasMaxLength(50).IsRequired();
         builder.Property(d => d.IsPrimary).HasColumnName("is_primary").IsRequired();
+
     }
 }

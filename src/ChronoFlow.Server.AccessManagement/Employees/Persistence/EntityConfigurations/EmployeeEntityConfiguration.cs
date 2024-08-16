@@ -10,17 +10,24 @@ internal sealed class EmployeeEntityConfiguration : IEntityTypeConfiguration<Emp
     {
         builder.ToTable("access_management_employees");
         builder.HasKey(e => e.Id).HasName("pk_access_management_employees");
+        builder.HasIndex(e => new { e.PersonnelNumber }).IsUnique();
 
         builder.Property(s => s.Id).HasColumnName("id").IsRequired();
-        builder.ComplexProperty(e => e.Credentials, b =>
-        {
-            b.Property(d => d.PersonnelNumber).HasColumnName("credentials_personnel_number").HasMaxLength(50).IsRequired();
-            b.Property(f => f.PasswordHash).HasColumnName("credentials_password_hash").HasMaxLength(250).IsRequired();
-        });
+        builder.Property(d => d.PersonnelNumber).HasColumnName("personnel_number").HasMaxLength(50).IsRequired();
+        builder.Property(f => f.PasswordHash).HasColumnName("password_hash").HasMaxLength(250).IsRequired();
         builder.ComplexProperty(d => d.Name, b =>
         {
             b.Property(c => c.FirstName).HasColumnName("name_first_name").HasMaxLength(100).IsRequired();
             b.Property(c => c.LastName).HasColumnName("name_last_name").HasMaxLength(100).IsRequired();
+        });
+        builder.ComplexProperty(d => d.Address, b =>
+        {
+            b.Property(a => a.Street).HasColumnName("address_street").HasMaxLength(100);
+            b.Property(a => a.HouseNumber).HasColumnName("address_house_number").HasMaxLength(25);
+            b.Property(a => a.City).HasColumnName("address_city").HasMaxLength(100);
+            b.Property(a => a.PostalCode).HasColumnName("address_postal_code").HasMaxLength(50);
+            b.Property(a => a.State).HasColumnName("address_state").HasMaxLength(100);
+            b.Property(a => a.Country).HasColumnName("address_country").HasMaxLength(100);
         });
         builder.Property(x => x.Birthday).HasColumnName("birthday");
         builder.Property(x => x.Created).HasColumnName("created").IsRequired();

@@ -6,7 +6,8 @@ namespace ChronoFlow.Server.AccessManagement.Employees.Entities;
 public class Employee
 {
     public Guid Id { get; init; } = Guid.NewGuid();
-    public EmployeeCredentials Credentials { get; init; } = EmployeeCredentials.Empty();
+    public string PersonnelNumber { get; set; } = string.Empty;
+    public string PasswordHash { get; set; } = string.Empty;
     public EmployeeName Name { get; init; } = EmployeeName.Empty();
     public List<EmployeeEmail> Emails { get; init; } = [];
     public List<EmployeePhoneNumber> PhoneNumbers { get; set; } = [];
