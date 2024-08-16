@@ -3,5 +3,6 @@
 public record EmployeeEmail
 {
     public required Guid EmployeeId { get; set; }
-    public required string EmailAddress { get; set; }
+    public required string Email { get; set; }
+    public required bool IsPrimary { get; set; }
 }

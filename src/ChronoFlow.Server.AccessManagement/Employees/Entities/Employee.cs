@@ -1,4 +1,5 @@
 ﻿using ChronoFlow.Server.AccessManagement.Roles.Entities;
+using ChronoFlow.Server.Common.Objects.ValueObjects;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.Entities;
 
@@ -9,7 +10,7 @@ public class Employee
     public EmployeeName Name { get; init; } = EmployeeName.Empty();
     public List<EmployeeEmail> Emails { get; init; } = [];
     public List<EmployeePhoneNumber> PhoneNumbers { get; set; } = [];
-    public List<EmployeeAddress> Addresses { get; init; } = [];
+    public Address Address { get; init; } = Address.Empty();
     public List<Role> Roles { get; set; } = [];
     public DateTime? Birthday { get; set; }
     public DateTime Created { get; set; } = DateTime.Now;

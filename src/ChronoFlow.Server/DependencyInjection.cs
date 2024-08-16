@@ -1,4 +1,5 @@
 ﻿using ChronoFlow.Server.Common;
+using ChronoFlow.Server.AccessManagement;
 using System.Reflection;
 
 namespace ChronoFlow.Server;
@@ -10,6 +11,7 @@ internal static class DependencyInjection
         var assemblies = GatherAssembliesToScan().ToArray();
 
         services.AddCommon(assemblies);
+        services.AddAccessManagement();
 
         return services;
     }
