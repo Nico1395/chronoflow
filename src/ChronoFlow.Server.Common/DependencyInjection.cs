@@ -1,4 +1,5 @@
 ﻿using ChronoFlow.Server.Common.Configuration;
+using ChronoFlow.Server.Common.Messaging.DependencyInjection;
 using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Server.Common.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +17,7 @@ public static class DependencyInjection
         var configurationProvider = services.BuildServiceProvider().GetRequiredService<IConfigurationProvider>();
 
         services.AddEfCore(configurationProvider, assemblies);
+        services.AddMessaging(assemblies);
         services.AddServices(assemblies);
 
         return services;
