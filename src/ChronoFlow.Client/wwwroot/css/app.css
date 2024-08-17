@@ -1,0 +1,14 @@
+@import url(variables.css);
+@import url(error-ui.css);
+@import url(loading-progress.css);
+
+html {
+    background: var(--color-background);
+}
+
+body {
+    margin: 0;
+    font-family: Arial;
+    font-weight: 500;
+    color: var(--color-primary-100);
+}

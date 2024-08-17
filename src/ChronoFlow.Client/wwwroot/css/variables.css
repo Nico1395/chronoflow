@@ -1,0 +1,14 @@
+html {
+    --color-primary-10: #e7e3c6;
+    --color-primary-20: #d8d2b6;
+    --color-primary-40: #baaf96;
+    --color-primary-60: #998872;
+    --color-primary-80: #7f6a56;
+    --color-primary-100: #614836;
+    --color-accent-100: #FF6D04;
+    --color-background: #F6F4D6;
+    --container-radius-small: 6px;
+    --container-radius-regular: 12px;
+    --container-radius-large: 25px;
+    --container-radius-xlarge: 50px;
+}
