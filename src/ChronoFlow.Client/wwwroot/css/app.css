@@ -2,13 +2,18 @@
 @import url(error-ui.css);
 @import url(loading-progress.css);
 
+@font-face {
+    font-family: "Inter";
+    src: url("fonts/font-inter.ttf") format('truetype');
+}
+
 html {
     background: var(--color-background);
 }
 
 body {
     margin: 0;
-    font-family: Arial;
+    font-family: var(--font-family-regular);
     font-weight: 500;
     color: var(--color-primary-100);
 }

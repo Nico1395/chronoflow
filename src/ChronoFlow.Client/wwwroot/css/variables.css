@@ -11,4 +11,5 @@ html {
     --container-radius-regular: 12px;
     --container-radius-large: 25px;
     --container-radius-xlarge: 50px;
+    --font-family-regular: "Inter";
 }
