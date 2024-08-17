@@ -19,7 +19,7 @@ public class Program
 
         var host = builder.Build();
 
-        await host.SetCultureAsync();
+        await host.InitializeAppCultureAsync();
         await host.RunAsync();
     }
 }

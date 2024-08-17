@@ -1,23 +1,23 @@
-﻿using Microsoft.JSInterop;
-using System.Globalization;
+﻿using ChronoFlow.Client.Common.Browser;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using System.Globalization;
 
 namespace ChronoFlow.Client.Common.Localization.Extensions;
 
 public static class WebAssemblyHostExtensions
 {
-    public static async Task<WebAssemblyHost> SetCultureAsync(this WebAssemblyHost host)
+    public static async Task<WebAssemblyHost> InitializeAppCultureAsync(this WebAssemblyHost host)
     {
-        var jsRuntime = host.Services.GetRequiredService<IJSRuntime>();
+        var localStorage = host.Services.GetRequiredService<ILocalStorage>();
 
         try
         {
-            var browserCulture = await jsRuntime.InvokeAsync<string>("cultureManager.get");
+            var browserCulture = await localStorage.GetItemAsync("app-culture");
             var cultureInfo = CultureInfo.GetCultureInfo(browserCulture ?? "en-US");
 
             if (browserCulture == null)
-                await jsRuntime.InvokeVoidAsync("cultureManager.set", cultureInfo.IetfLanguageTag);
+                await localStorage.SetItemAsync("app-culture", cultureInfo.IetfLanguageTag);
 
             CultureInfo.CurrentCulture = cultureInfo;
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
@@ -25,7 +25,7 @@ public static class WebAssemblyHostExtensions
         }
         catch (Exception ex)
         {
-            await jsRuntime.InvokeVoidAsync("console.log", ex.Message);
+            await host.Services.GetRequiredService<IBrowserLogger>().LogAsync(ex.Message);
         }
 
         return host;

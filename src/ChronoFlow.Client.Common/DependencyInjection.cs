@@ -1,4 +1,5 @@
-﻿using ChronoFlow.Client.Common.Localization.DependencyInjection;
+﻿using ChronoFlow.Client.Common.Browser;
+using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +13,10 @@ public static class DependencyInjection
         {
             options.AddResource<LocalizationResources>();
         });
+
+        services.AddScoped<ILocalStorage, LocalStorage>();
+        services.AddScoped<ISessionStorage, SessionStorage>();
+        services.AddScoped<IBrowserLogger, BrowserLogger>();
 
         return services;
     }
