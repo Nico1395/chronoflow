@@ -17,9 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{EDCE9D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Shared.Common", "ChronoFlow.Shared.Common\ChronoFlow.Shared.Common.csproj", "{4710D362-878B-4E0A-BBA4-1060B46E7D57}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronoFlow.Client", "ChronoFlow.Client\ChronoFlow.Client.csproj", "{6FFB02C4-E41A-45DD-BD7A-92507CAC6D62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Client", "ChronoFlow.Client\ChronoFlow.Client.csproj", "{6FFB02C4-E41A-45DD-BD7A-92507CAC6D62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronoFlow.Client.Common", "ChronoFlow.Client.Common\ChronoFlow.Client.Common.csproj", "{15A3BD24-3E1A-477A-8934-E84022BB3A5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Client.Common", "ChronoFlow.Client.Common\ChronoFlow.Client.Common.csproj", "{15A3BD24-3E1A-477A-8934-E84022BB3A5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

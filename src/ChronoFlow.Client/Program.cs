@@ -1,4 +1,5 @@
 using ChronoFlow.Client.Common.Layouts;
+using ChronoFlow.Client.Common.Localization.Extensions;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 
@@ -16,6 +17,9 @@ public class Program
         builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
         builder.Services.AddChronoFlow();
 
-        await builder.Build().RunAsync();
+        var host = builder.Build();
+
+        await host.SetCultureAsync();
+        await host.RunAsync();
     }
 }
