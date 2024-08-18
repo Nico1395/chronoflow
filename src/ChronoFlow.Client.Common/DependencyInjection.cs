@@ -3,6 +3,7 @@ using ChronoFlow.Client.Common.Authentication.UseCases.Login;
 using ChronoFlow.Client.Common.Browser;
 using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
+using ChronoFlow.Client.Common.Notifications;
 using ChronoFlow.Client.Common.Validation;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -35,6 +36,9 @@ public static class DependencyInjection
         // Validation
         services.AddScoped<IValidationService, ValidationService>();
         services.AddScoped<IValidationLocalizer, ValidationLocalizer>();
+
+        // Notifications
+        services.AddScoped<ILocalNotificationPublisher, LocalNotificationPublisher>();
 
         return services;
     }
