@@ -42,4 +42,9 @@ public partial class Button : ComponentBase
         var width = Width != null ? $"width:{Width};" : null;
         return $"{width}";
     }
+
+    private string GetClasses()
+    {
+        return $"c-button {Class}";
+    }
 }

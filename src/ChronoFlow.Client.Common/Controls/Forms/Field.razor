@@ -1,0 +1,22 @@
+﻿<div class="c-field" title="@Tooltip">
+    @if (Label != null)
+    {
+        <div>@Label</div>
+    }
+
+    <section>
+        <CascadingValue Value="@this">
+            @ChildContent
+        </CascadingValue>
+    </section>
+
+    @if (_displayMessages && ValidationErrors.Count > 0)
+    {
+        <ul>
+            @foreach (var error in ValidationErrors)
+            {
+                <li>@error.Message</li>
+            }
+        </ul>
+    }
+</div>

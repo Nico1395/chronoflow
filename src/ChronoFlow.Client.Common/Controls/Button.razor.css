@@ -30,5 +30,22 @@
     > .bi {
         font-weight: 15px;
     }
+
+    &.alt {
+        background: var(--color-primary-80);
+        color: var(--color-background);
+
+        &:hover {
+            background: var(--color-primary-70);
+        }
+    
+        &:active {
+            background: var(--color-primary-60);
+        }
+    
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+    }
 }
 

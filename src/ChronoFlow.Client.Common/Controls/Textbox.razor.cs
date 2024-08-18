@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace ChronoFlow.Client.Common.Controls;
 
-public partial class Textbox : FormComponentBase
+public partial class Textbox : FormControlComponentBase
 {
     [Parameter]
     public string? Type { get; set; } = "text";
@@ -27,14 +27,12 @@ public partial class Textbox : FormComponentBase
     public string? Tooltip { get; set; }
 
     [Parameter]
-    public string? Width { get; set; }
-
-    [Parameter]
     public string? Id { get; set; }
 
     private string GetClasses()
     {
-        return $"c-textbox {Class}";
+        var invalid = IsValid ? null : "invalid";
+        return $"c-textbox {invalid} {Class}".Trim();
     }
 
     private string GetStyles()

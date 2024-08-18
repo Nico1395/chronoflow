@@ -18,6 +18,10 @@ public static class DependencyInjection
         services.AddScoped<ISessionStorage, SessionStorage>();
         services.AddScoped<IBrowserLogger, BrowserLogger>();
 
+        // Validation
+        services.AddScoped<IValidationService, ValidationService>();
+        services.AddScoped<IValidationLocalizer, ValidationLocalizer>();
+
         return services;
     }
 }
