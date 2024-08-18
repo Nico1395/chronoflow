@@ -1,5 +1,6 @@
+﻿using ChronoFlow.Client.Common.Authentication;
 using ChronoFlow.Client.Common.Authentication.UseCases.Login;
-﻿using ChronoFlow.Client.Common.Browser;
+using ChronoFlow.Client.Common.Browser;
 using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
 using ChronoFlow.Client.Common.Validation;
@@ -18,6 +19,12 @@ public static class DependencyInjection
         });
 
         // Authentication
+        services.AddCascadingAuthenticationState();
+        services.AddAuthorizationCore();
+        services.AddScoped<IAuthenticationStateProvider, AuthenticationStateProvider>();
+        services.AddScoped<AuthenticationStateProvider>();
+        services.AddScoped<Microsoft.AspNetCore.Components.Authorization.AuthenticationStateProvider>(sp => sp.GetRequiredService<AuthenticationStateProvider>());
+
         services.AddScoped<ILoginPageService, LoginPageService>();
 
         // Browser
