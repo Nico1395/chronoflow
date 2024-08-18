@@ -6,23 +6,23 @@ header {
     gap: 2rem;
     padding: 0 1.5rem;
     background: var(--color-primary-10);
-}
-
-    header > section {
+    
+    > section {
         flex: 1;
         display: flex;
         flex-direction: row;
         align-items: center;
         gap: 2rem;
-    }
 
-        header > section:first-child {
+        &:first-child {
             justify-content: start;
         }
 
-        header > section:last-child {
+        &:last-child {
             justify-content: end;
         }
+    }
+}
 
 main {
     display: flex;

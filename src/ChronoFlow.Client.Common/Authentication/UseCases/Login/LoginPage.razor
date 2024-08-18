@@ -1,0 +1,35 @@
+﻿@page "/login"
+
+<div class="auth-login">
+    <Form Item="@_authenticationRequest" MessagePlacement="@FormMessagePlacement.OnFields" OnValidSubmit="@OnSubmitAsync">
+        <section>
+            <LoginLogo />
+        </section>
+
+        <div>
+            <Field Label="@Localizer["PersonnelNumber"]" For="@(() => _authenticationRequest.PersonnelNumber)" Width="100%">
+                <Textbox @bind-Value="@_authenticationRequest.PersonnelNumber" />
+            </Field>
+
+            <Field Label="@Localizer["Password"]" For="@(() => _authenticationRequest.Password)" Width="100%">
+                <Textbox @bind-Value="@_authenticationRequest.Password" Type="password" />
+            </Field>
+        </div>
+
+        <footer>
+            <div>
+                <Button Class="alt" Type="submit" IconRight="bi bi-unlock-fill" OnClick="@SetLogin">
+                    @Localizer["Login"]
+                </Button>
+
+                <Button Class="alt" Type="submit" IconRight="bi bi-door-open-fill" OnClick="@SetClockIn">
+                    @Localizer["ClockIn"]
+                </Button>
+            </div>
+
+            <a class="auth-login-forgot-password" href="login/forgot-password">
+                @Localizer["IForgotMyPassword"]
+            </a>
+        </footer>
+    </Form>
+</div>
