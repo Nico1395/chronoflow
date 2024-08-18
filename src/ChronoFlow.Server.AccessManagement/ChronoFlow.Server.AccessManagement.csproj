@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ChronoFlow.Server.Common\ChronoFlow.Server.Common.csproj" />
+    <ProjectReference Include="..\ChronoFlow.Shared.AccessManagement\ChronoFlow.Shared.AccessManagement.csproj" />
   </ItemGroup>
 
   <ItemGroup>
