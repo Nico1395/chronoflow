@@ -8,13 +8,15 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    
+    &.has-url {
+        &:hover {
+            background: var(--color-primary-20);
+            cursor: pointer;
+        }
+    
+        &:visited {
+            color: var(--color-primary-100);
+        }
+    }
 }
-
-    .l-logo:hover {
-        background: var(--color-primary-20);
-        cursor: pointer;
-    }
-
-    .l-logo:visited {
-        color: var(--color-primary-100);
-    }
