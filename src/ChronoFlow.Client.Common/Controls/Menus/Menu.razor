@@ -1,0 +1,51 @@
+﻿<div class="c-menu">
+    <aside>
+        @if (Header != null)
+        {
+            <header class="@HeaderClass">
+                @Header
+            </header>
+        }
+
+        @foreach (var grouping in GetGroupings())
+        {
+            <div class="c-menu-grouping">
+                <p>@grouping.Key</p>
+
+                <div class="c-menu-grouping-items">
+                    @foreach (var menuItem in grouping.Value)
+                    {
+                        var selected = SelectedMenuItem == menuItem ? "selected" : null;
+
+                        <NavButton Class="@selected"
+                                   Href="@menuItem.Uri"
+                                   Width="100%"
+                                   IconLeft="@menuItem.IconLeft"
+                                   IconRight="@menuItem.IconRight"
+                                   OnClick="@(async () => await OnSelectAsync(menuItem))">
+
+                            @Localizer[menuItem.Title]
+                        </NavButton>
+                    }
+                </div>
+            </div>
+        }
+    </aside>
+
+    <section>
+        @if (SelectedMenuItem != null)
+        {
+            <DynamicComponent Type="@SelectedMenuItem.Component" Parameters="@SelectedMenuItem.Parameters" />
+        }
+        else if (NothingSelected != null)
+        {
+            @NothingSelected
+        }
+        else
+        {
+            <div class="c-menu-nothing-selected">
+                @Localizer["NothingSelected"]
+            </div>
+        }
+    </section>
+</div>
