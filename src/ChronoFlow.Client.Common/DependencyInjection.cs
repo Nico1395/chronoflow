@@ -5,19 +5,24 @@ using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
 using ChronoFlow.Client.Common.Notifications;
 using ChronoFlow.Client.Common.Validation;
+using ChronoFlow.Shared.Common.Mapping;
 using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace ChronoFlow.Client.Common;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddCommon(this IServiceCollection services)
+    public static IServiceCollection AddCommon(this IServiceCollection services, Assembly[] assemblies)
     {
         // Localization
         services.AddLocalizer(options =>
         {
             options.AddResource<LocalizationResources>();
         });
+
+        // Mapping
+        services.AddMapper(assemblies);
 
         // Authentication
         services.AddCascadingAuthenticationState();
@@ -39,6 +44,7 @@ public static class DependencyInjection
 
         // Notifications
         services.AddScoped<ILocalNotificationPublisher, LocalNotificationPublisher>();
+        services.AddScoped<ILocalNotificationManager, LocalNotificationManager>();
 
         return services;
     }
