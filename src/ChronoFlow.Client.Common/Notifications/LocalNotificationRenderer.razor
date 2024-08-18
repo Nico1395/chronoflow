@@ -1,0 +1,10 @@
+﻿@{
+    var notifications = LocalNotificationManager.GetActiveNotifications();
+}
+
+<div class="c-notification-renderer">
+    @foreach (var notification in notifications)
+    {
+        <LocalNotification Notification="@notification" OnRemove="@OnRemoveNotification" />
+    }
+</div>

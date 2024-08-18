@@ -14,4 +14,5 @@ html {
     --container-radius-large: 25px;
     --container-radius-xlarge: 50px;
     --font-family-regular: "Inter";
+    --shadow-notification: 0px 0px 40px 0px rgba(0,0,0,0.3);
 }
