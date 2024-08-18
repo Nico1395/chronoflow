@@ -1,0 +1,22 @@
+.l-logo {
+    height: 40px;
+    border-radius: var(--container-radius-regular);
+    height: 40px;
+    padding: 0 0.7rem;
+    color: var(--color-primary-100);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    &.has-url {
+        &:hover {
+            background: var(--color-primary-20);
+            cursor: pointer;
+        }
+    
+        &:visited {
+            color: var(--color-primary-100);
+        }
+    }
+}

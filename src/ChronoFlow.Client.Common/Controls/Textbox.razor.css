@@ -1,0 +1,26 @@
+.c-textbox {
+    height: 35px;
+    border: 0;
+    border-radius: var(--container-radius-regular);
+    font-family: var(--font-family-regular);
+    font-size: 12pt;
+    font-weight: 600;
+    background: var(--color-primary-10);
+    color: var(--color-primary-100);
+
+    &:hover {
+        background: var(--color-primary-20);
+    }
+
+    &:focus {
+        outline: 2px solid var(--color-primary-100);
+    }
+
+    > .bi {
+        font-weight: 15px;
+    }
+
+    &.invalid {
+        outline: 2px solid var(--color-accent-100);
+    }
+}

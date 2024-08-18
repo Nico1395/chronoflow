@@ -1,0 +1,51 @@
+.c-button {
+    height: 35px;
+    padding: 0 0.7rem;
+    border: 0;
+    border-radius: var(--container-radius-regular);
+    font-family: var(--font-family-regular);
+    font-size: 12pt;
+    font-weight: 600;
+    background: var(--color-primary-20);
+    color: var(--color-primary-100);
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    gap: 0.7rem;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: var(--color-primary-30);
+    }
+
+    &:active {
+        background: var(--color-primary-40);
+    }
+
+    &:focus {
+        outline: 2px solid var(--color-primary-100);
+    }
+
+    > .bi {
+        font-weight: 15px;
+    }
+
+    &.alt {
+        background: var(--color-primary-80);
+        color: var(--color-background);
+
+        &:hover {
+            background: var(--color-primary-70);
+        }
+    
+        &:active {
+            background: var(--color-primary-60);
+        }
+    
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+    }
+}
+

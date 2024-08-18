@@ -1,0 +1,9 @@
+﻿<EditForm EditContext="@EditContext">
+    <CascadingValue Value="@this">
+        @if (ChildContent != null)
+        {
+            @ChildContent(GenerateFormContext())
+        }
+    </CascadingValue>
+</EditForm>
+

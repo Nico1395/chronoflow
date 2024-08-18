@@ -17,6 +17,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{EDCE9D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Shared.Common", "ChronoFlow.Shared.Common\ChronoFlow.Shared.Common.csproj", "{4710D362-878B-4E0A-BBA4-1060B46E7D57}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Client", "ChronoFlow.Client\ChronoFlow.Client.csproj", "{6FFB02C4-E41A-45DD-BD7A-92507CAC6D62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Client.Common", "ChronoFlow.Client.Common\ChronoFlow.Client.Common.csproj", "{15A3BD24-3E1A-477A-8934-E84022BB3A5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{4710D362-878B-4E0A-BBA4-1060B46E7D57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4710D362-878B-4E0A-BBA4-1060B46E7D57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4710D362-878B-4E0A-BBA4-1060B46E7D57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6FFB02C4-E41A-45DD-BD7A-92507CAC6D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6FFB02C4-E41A-45DD-BD7A-92507CAC6D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6FFB02C4-E41A-45DD-BD7A-92507CAC6D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6FFB02C4-E41A-45DD-BD7A-92507CAC6D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15A3BD24-3E1A-477A-8934-E84022BB3A5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15A3BD24-3E1A-477A-8934-E84022BB3A5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15A3BD24-3E1A-477A-8934-E84022BB3A5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15A3BD24-3E1A-477A-8934-E84022BB3A5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +60,8 @@ Global
 		{0CFC4059-4035-4036-85D4-9670795AF604} = {9E29E8A3-04F3-4E98-8859-2EC63D09FA61}
 		{96E370DE-4BC4-4D33-9699-95DF8C176938} = {9E29E8A3-04F3-4E98-8859-2EC63D09FA61}
 		{4710D362-878B-4E0A-BBA4-1060B46E7D57} = {EDCE9D29-CFF6-44B3-9BCA-F2FE524D9449}
+		{6FFB02C4-E41A-45DD-BD7A-92507CAC6D62} = {CD99FAF5-4429-43D8-AA95-70170235F253}
+		{15A3BD24-3E1A-477A-8934-E84022BB3A5D} = {CD99FAF5-4429-43D8-AA95-70170235F253}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C2B65180-9C0D-457C-B3C9-603E3EC21D3B}
