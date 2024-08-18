@@ -120,16 +120,43 @@
   <data name="ClockIn" xml:space="preserve">
     <value>Einstempeln</value>
   </data>
+  <data name="EmailAddressValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' ist keine gültige E-Mail Adresse</value>
+  </data>
+  <data name="FileExtensionsValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' ist keine gültige Dateiendung</value>
+  </data>
   <data name="IForgotMyPassword" xml:space="preserve">
     <value>Ich habe mein Password vergessen</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Einloggen</value>
   </data>
+  <data name="MaxLengthValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' hat eine maximale Länge von {2} Zeichen</value>
+  </data>
+  <data name="MinLengthValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' hat eine minimale Länge von {2} Zeichen</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Passwort</value>
   </data>
   <data name="PersonnelNumber" xml:space="preserve">
     <value>Personalnummer</value>
+  </data>
+  <data name="RangeValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' muss zwischen {2} und {3} liegen</value>
+  </data>
+  <data name="RequiredValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' ist erforderlich</value>
+  </data>
+  <data name="StringLengthValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' muss eine Länge von {2} Zeichen haben</value>
+  </data>
+  <data name="UnhandledValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' ist invalide aus einem unbekannten Grund</value>
+  </data>
+  <data name="UrlValidationErrorMessage" xml:space="preserve">
+    <value>'{0}' ist keine gültige URL</value>
   </data>
 </root>

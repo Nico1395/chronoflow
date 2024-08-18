@@ -70,6 +70,24 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid e-mail address.
+        /// </summary>
+        internal static string EmailAddressValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("EmailAddressValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid file extension.
+        /// </summary>
+        internal static string FileExtensionsValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("FileExtensionsValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I forgot my password.
         /// </summary>
         internal static string IForgotMyPassword {
@@ -88,6 +106,24 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; has a maximum length of {2} characters.
+        /// </summary>
+        internal static string MaxLengthValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("MaxLengthValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; has a minimum length of {2} characters.
+        /// </summary>
+        internal static string MinLengthValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("MinLengthValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string Password {
@@ -102,6 +138,51 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string PersonnelNumber {
             get {
                 return ResourceManager.GetString("PersonnelNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; has to be in range of {2} to {3}.
+        /// </summary>
+        internal static string RangeValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("RangeValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is required.
+        /// </summary>
+        internal static string RequiredValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("RequiredValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; has to be {2} characters long.
+        /// </summary>
+        internal static string StringLengthValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("StringLengthValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is invalid for an unknown reason.
+        /// </summary>
+        internal static string UnhandledValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("UnhandledValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid URL.
+        /// </summary>
+        internal static string UrlValidationErrorMessage {
+            get {
+                return ResourceManager.GetString("UrlValidationErrorMessage", resourceCulture);
             }
         }
     }
