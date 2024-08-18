@@ -1,0 +1,9 @@
+﻿@inherits FormComponentBase
+
+<input id="@Id"
+       type="@Type"
+       class="@GetClasses()"
+       style="@GetStyles()"
+       title="@Tooltip"
+       @oninput="@InvokeOnInputAsync"
+       @onchange="@InvokeOnChangeAsync" />

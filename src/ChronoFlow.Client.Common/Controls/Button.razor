@@ -1,6 +1,7 @@
 ﻿<button id="@Id"
         type="@Type"
         class="c-button"
+        style="@GetStyles()"
         title="@Tooltip"
         @onclick="@OnClick">
 
@@ -12,5 +13,10 @@
     @if (ChildContent != null)
     {
         @ChildContent
+    }
+    
+    @if (IconRight != null)
+    {
+        <i class="@IconRight" style="@(IconRightSize != null ? $"font-size:{IconRightSize};" : null)"></i>
     }
 </button>

@@ -11,24 +11,24 @@
     padding: 0 0.7rem;
     color: var(--color-primary-100);
     text-decoration: none;
-}
-
-    .l-user-control:hover {
+    
+    &:hover {
         background: var(--color-primary-20);
         cursor: pointer;
     }
 
-    .l-user-control:visited {
+    &:visited {
         color: var(--color-primary-100);
     }
 
-    .l-user-control > section {
+    > section {
         font-weight: 700;
     }
 
-    .l-user-control > div {
+    > div {
         height: 35px;
         width: 35px;
         background: var(--color-primary-20);
         border-radius: 50%;
     }
+}
