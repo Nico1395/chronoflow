@@ -89,7 +89,7 @@ public partial class MainDataList<TViewModel> : ComponentBase
         }
     }
 
-    private async Task DeleteItemAsync(TViewModel item)
+    internal async Task DeleteItemAsync(TViewModel item)
     {
         await SetBusyAsync(true);
 
@@ -137,5 +137,15 @@ public partial class MainDataList<TViewModel> : ComponentBase
     private List<TViewModel> GetProcessedItems()
     {
         return _items;
+    }
+
+    private Dictionary<string, object?> CreateTemplateParameters(TViewModel item, MainDataListContext<TViewModel> context)
+    {
+        return new Dictionary<string, object?>()
+        {
+            { nameof(MainDataListItemTemplate<TViewModel>.Object), item },
+            { nameof(MainDataListItemTemplate<TViewModel>.Context), context },
+            { nameof(MainDataListItemTemplate<TViewModel>.ParentList), this },
+        };
     }
 }

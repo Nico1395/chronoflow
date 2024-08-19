@@ -16,15 +16,20 @@
         outline: 2px solid var(--color-primary-100);
     }
 
+    &:disabled {
+        background: none !important;
+        color: var(--color-primary-20) !important;
+    }
+
     &::placeholder {
         color: var(--color-primary-40);
     }
 
-    > .bi {
-        font-weight: 15px;
-    }
-
     &.invalid {
         outline: 2px solid var(--color-accent-100);
+    }
+
+    > .bi {
+        font-weight: 15px;
     }
 }

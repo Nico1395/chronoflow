@@ -1,0 +1,41 @@
+﻿@typeparam TItem
+
+<div class="c-container-list">
+    <header>
+        <Textbox Placeholder="@Localizer["TypeToSearch"]" @bind-Value="@_searchTerm" />
+
+        @if (Header != null)
+        {
+            @Header
+        }
+
+        @if (_canSort)
+        {
+            @* TODO -> Dropdown with sort options *@
+            <Button>
+                @Localizer["Sort"]
+            </Button>
+        }
+    </header>
+
+    <section>
+        @foreach (var item in GetProcessedItems())
+        {
+            <div class="c-container-list-item">
+                @if (Item != null)
+                {
+                    @Item(item)
+                }
+                else if (Template != null && TemplateParameterFactory != null)
+                {
+                    var parameters = TemplateParameterFactory(item);
+                    <DynamicComponent Type="@Template" Parameters="@parameters" />
+                }
+            </div>
+        }
+    </section>
+
+    <footer>
+        @* TODO -> Pagination *@
+    </footer>
+</div>

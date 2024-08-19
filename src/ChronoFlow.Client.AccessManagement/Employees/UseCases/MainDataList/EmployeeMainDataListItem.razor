@@ -17,3 +17,11 @@
         @GetDescription()
     </div>
 </section>
+
+<aside>
+    <Button Class="squared danger"
+            IconLeft="bi bi-x"
+            IconLeftSize="18px"
+            Disabled="@Context.Busy"
+            OnClick="@OnDeleteAsync" />
+</aside>

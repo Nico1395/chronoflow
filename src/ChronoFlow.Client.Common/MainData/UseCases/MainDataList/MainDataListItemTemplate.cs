@@ -2,22 +2,17 @@
 
 namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
 
-public abstract class MainDataListItemTemplate<TViewModel> : ComponentBase
+public abstract class MainDataListItemTemplate<TViewModel> : ContainerListItemTemplate<TViewModel>
     where TViewModel : class
 {
-    protected TViewModel Item => Object as TViewModel ?? throw new InvalidCastException();
-
-    [Parameter, EditorRequired]
-    public required object Object { get; set; }
-
     [Parameter, EditorRequired]
     public required MainDataListContext<TViewModel> Context { get; set; }
 
     [Parameter, EditorRequired]
-    public required EventCallback<TViewModel> OnDelete { get; set; }
+    public required MainDataList<TViewModel> ParentList { get; set; }
 
-    protected Task InvokeOnDeleteAsync()
+    protected Task OnDeleteAsync()
     {
-        return OnDelete.InvokeAsync(Item);
+        return ParentList.DeleteItemAsync(Item);
     }
 }

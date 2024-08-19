@@ -1,0 +1,46 @@
+.c-container-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    > header {
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 0.4rem;
+
+        > .c-textbox {
+            flex: 1;
+        }
+
+        > .c-button {
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+    }
+
+    > section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+    }
+
+    > footer {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+}
+
+.c-container-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    background: var(--color-primary-10);
+    border-radius: var(--container-radius-regular);
+    padding: 0.8rem 1.4rem;
+}

@@ -35,6 +35,9 @@ public partial class Button : ComponentBase
     public string? Width { get; set; }
 
     [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
     public EventCallback OnClick { get; set; }
     
     private string GetStyles()

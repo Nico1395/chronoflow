@@ -32,6 +32,11 @@
         color: var(--color-primary-100);
     }
 
+    &:disabled, &.disabled {
+        background: none !important;
+        color: var(--color-primary-20) !important;
+    }
+
     > .bi {
         font-weight: 15px;
     }

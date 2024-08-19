@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.Net;
 
 namespace ChronoFlow.Client.Common.Controls;
 
@@ -35,6 +36,9 @@ public partial class NavButton : ComponentBase
     public string? Width { get; set; }
 
     [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
     public EventCallback OnClick { get; set; }
 
     private string GetStyles()
@@ -45,6 +49,12 @@ public partial class NavButton : ComponentBase
 
     private string GetClasses()
     {
-        return $"c-nav-button {Class}";
+        var disabled = Disabled ? "disabled" : null;
+        return $"c-nav-button {disabled} {Class}";
+    }
+
+    private string? GetHref()
+    {
+        return !Disabled ? Href : null;
     }
 }
