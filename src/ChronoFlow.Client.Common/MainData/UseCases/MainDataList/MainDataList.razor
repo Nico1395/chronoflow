@@ -1,0 +1,51 @@
+﻿@typeparam TViewModel
+
+@{
+    var processedItems = GetProcessedItems();
+    var mainDataListContext = new MainDataListContext<TViewModel>(
+        processedItems,
+        _busy);
+}
+
+<div class="md-list">
+    <header>
+        @if (Header != null)
+        {
+            @Header(mainDataListContext)
+        }
+    </header>
+
+    <div>
+        <Textbox Placeholder="@Localizer["TypeToSearch"]" @bind-Value="@_searchTerm" />
+
+        <Button>
+            @Localizer["Sort"]
+        </Button>
+    </div>
+
+    <section>
+        @foreach (var item in processedItems)
+        {
+            var parameters = new Dictionary<string, object?>()
+            {
+                { nameof(MainDataListItemTemplate<TViewModel>.Object), item },
+                { nameof(MainDataListItemTemplate<TViewModel>.Context), mainDataListContext },
+            };
+
+            <div class="@GetItemClasses()">
+                <DynamicComponent Type="@ItemTemplate" Parameters="@parameters" />
+
+                <aside>
+                    <Button Class="squared danger"
+                            IconLeft="bi bi-x"
+                            IconLeftSize="18px"
+                            OnClick="@(async () => await DeleteItemAsync(item))"/>
+                </aside>
+            </div>
+        }
+    </section>
+
+    <footer>
+        Footer
+    </footer>
+</div>

@@ -3,6 +3,8 @@ using ChronoFlow.Client.Common.Authentication.UseCases.Login;
 using ChronoFlow.Client.Common.Browser;
 using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
+using ChronoFlow.Client.Common.MainData;
+using ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
 using ChronoFlow.Client.Common.Notifications;
 using ChronoFlow.Client.Common.Validation;
 using ChronoFlow.Shared.Common.Mapping;
@@ -45,6 +47,10 @@ public static class DependencyInjection
         // Notifications
         services.AddScoped<ILocalNotificationPublisher, LocalNotificationPublisher>();
         services.AddScoped<ILocalNotificationManager, LocalNotificationManager>();
+
+        // Main Data
+        services.AddMainDataMenu(assemblies);
+        services.AddScoped<ITimespanMessageCalculator, TimespanMessageCalculator>();
 
         return services;
     }
