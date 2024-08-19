@@ -1,5 +1,5 @@
 ﻿using ChronoFlow.Client.Common.Localization;
-using ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
+using ChronoFlow.Client.Common.Processing.Search;
 using Microsoft.AspNetCore.Components;
 
 namespace ChronoFlow.Client.Common.Controls.Data;
@@ -9,9 +9,13 @@ public partial class ContainerList<TItem> : ComponentBase
 {
     private bool _canSort;
     private string? _searchTerm;
+    private ContainerListSortOption<TItem>? _selectedSortOption;
 
     [Inject]
     private ILocalizer Localizer { get; set; } = null!;
+
+    [Inject]
+    private ILocalSearchEngine LocalSearchEngine { get; set; } = null!;
 
     [Parameter, EditorRequired]
     public required List<TItem> Items { get; set; }
@@ -47,6 +51,26 @@ public partial class ContainerList<TItem> : ComponentBase
 
     private List<TItem> GetProcessedItems()
     {
-        return Items;
+        var searchedItems = SearchItems(Items);
+        var sortedItems = SortItems(searchedItems);
+
+        return sortedItems.ToList();
+    }
+
+    private IEnumerable<TItem> SearchItems(IEnumerable<TItem> items)
+    {
+        var searchDescriptor = new SearchDescriptor() { SearchTerm = _searchTerm, };
+        return LocalSearchEngine.SearchItems(items, searchDescriptor);
+    }
+
+    private IEnumerable<TItem> SortItems(IEnumerable<TItem> items)
+    {
+        if (_selectedSortOption == null)
+            return items;
+
+        if (_selectedSortOption.Direction == ContainerListSortDirection.Ascending)
+            return items.OrderBy(_selectedSortOption.Field);
+        else
+            return items.OrderByDescending(_selectedSortOption.Field);
     }
 }

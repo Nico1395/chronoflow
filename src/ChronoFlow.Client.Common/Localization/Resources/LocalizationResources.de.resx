@@ -273,6 +273,9 @@
   <data name="StringLengthValidationErrorMessage" xml:space="preserve">
     <value>'{0}' muss eine Länge von {2} Zeichen haben</value>
   </data>
+  <data name="TypeToSearch" xml:space="preserve">
+    <value>Geben sie etwas ein um zu suchen</value>
+  </data>
   <data name="UnhandledValidationErrorMessage" xml:space="preserve">
     <value>'{0}' ist invalide aus einem unbekannten Grund</value>
   </data>

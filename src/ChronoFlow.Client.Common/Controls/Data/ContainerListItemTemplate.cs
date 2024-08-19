@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
+namespace ChronoFlow.Client.Common.Controls.Data;
 
 public abstract class ContainerListItemTemplate<TItem> : ComponentBase
     where TItem : class

@@ -529,6 +529,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type to search.
+        /// </summary>
+        internal static string TypeToSearch {
+            get {
+                return ResourceManager.GetString("TypeToSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is invalid for an unknown reason.
         /// </summary>
         internal static string UnhandledValidationErrorMessage {

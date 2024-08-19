@@ -1,4 +1,5 @@
 ﻿using ChronoFlow.Client.Common.Browser;
+using ChronoFlow.Client.Common.Controls.Data;
 using ChronoFlow.Client.Common.Localization;
 using ChronoFlow.Client.Common.MainData.Results;
 using ChronoFlow.Client.Common.Notifications;
@@ -11,8 +12,6 @@ public partial class MainDataList<TViewModel> : ComponentBase
 {
     private List<TViewModel> _items = [];
     private bool _busy;
-    private MainDataListSortMode _sortMode;
-    private string? _searchTerm;
 
     [Inject]
     private ILocalizer Localizer { get; set; } = null!;
@@ -40,6 +39,9 @@ public partial class MainDataList<TViewModel> : ComponentBase
 
     [Parameter]
     public string? ItemClass { get; set; }
+
+    [Parameter]
+    public List<ContainerListSortOption<TViewModel>> SortOptions { get; set; } = [];
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {

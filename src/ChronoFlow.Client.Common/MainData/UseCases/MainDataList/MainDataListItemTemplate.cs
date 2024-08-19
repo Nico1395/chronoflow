@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using ChronoFlow.Client.Common.Controls.Data;
+using Microsoft.AspNetCore.Components;
 
 namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
 

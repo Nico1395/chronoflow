@@ -6,6 +6,7 @@ using ChronoFlow.Client.Common.Localization.Resources;
 using ChronoFlow.Client.Common.MainData;
 using ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
 using ChronoFlow.Client.Common.Notifications;
+using ChronoFlow.Client.Common.Processing.Search;
 using ChronoFlow.Client.Common.Validation;
 using ChronoFlow.Shared.Common.Mapping;
 using Microsoft.Extensions.DependencyInjection;
@@ -51,6 +52,9 @@ public static class DependencyInjection
         // Main Data
         services.AddMainDataMenu(assemblies);
         services.AddScoped<ITimespanMessageCalculator, TimespanMessageCalculator>();
+
+        // Processing
+        services.AddScoped<ILocalSearchEngine, LocalSearchEngine>();
 
         return services;
     }
