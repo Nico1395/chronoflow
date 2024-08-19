@@ -20,4 +20,8 @@
     <ProjectReference Include="..\ChronoFlow.Shared.AccessManagement\ChronoFlow.Shared.AccessManagement.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Roles\UseCases\" />
+  </ItemGroup>
+
 </Project>

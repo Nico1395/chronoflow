@@ -13,4 +13,10 @@ public sealed record EmployeeNameViewModel
             LastName = string.Empty,
         };
     }
+
+
+    public string GetFullName()
+    {
+        return $"{FirstName} {LastName}";
+    }
 }

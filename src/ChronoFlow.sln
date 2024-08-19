@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Client", "Chrono
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Client.Common", "ChronoFlow.Client.Common\ChronoFlow.Client.Common.csproj", "{15A3BD24-3E1A-477A-8934-E84022BB3A5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronoFlow.Client.AccessManagement", "ChronoFlow.Client.AccessManagement\ChronoFlow.Client.AccessManagement.csproj", "{17C8AC9D-1AC7-4D62-9F83-3FF2FE943546}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Client.AccessManagement", "ChronoFlow.Client.AccessManagement\ChronoFlow.Client.AccessManagement.csproj", "{17C8AC9D-1AC7-4D62-9F83-3FF2FE943546}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChronoFlow.Shared.AccessManagement", "ChronoFlow.Shared.AccessManagement\ChronoFlow.Shared.AccessManagement.csproj", "{9624F5D5-182D-4CF8-A965-02766DE8BF69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChronoFlow.Shared.AccessManagement", "ChronoFlow.Shared.AccessManagement\ChronoFlow.Shared.AccessManagement.csproj", "{9624F5D5-182D-4CF8-A965-02766DE8BF69}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

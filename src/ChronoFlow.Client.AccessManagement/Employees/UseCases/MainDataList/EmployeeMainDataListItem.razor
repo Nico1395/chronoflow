@@ -1,0 +1,19 @@
+﻿@inherits MainDataListItemTemplate<EmployeeViewModel>
+
+<div class="md-employee-avatar"></div>
+
+<section class="md-employee-center">
+    <header>
+        <a href="@GetRedirectUri()">
+            @GetTitle()
+        </a>
+
+        <div>
+            @Item.PersonnelNumber
+        </div>
+    </header>
+
+    <div>
+        @GetDescription()
+    </div>
+</section>
