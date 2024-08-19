@@ -27,5 +27,5 @@ public interface ILocalizer
     /// <param name="formattableKey">Key to be localized.</param>
     /// <param name="args">Formatting arguments.</param>
     /// <returns>Localized and formatted string if found.</returns>
-    public string this[string? formattableKey, params object[] args] { get; }
+    public string this[string? formattableKey, params object?[] args] { get; }
 }
