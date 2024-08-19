@@ -61,6 +61,150 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Access Management.
+        /// </summary>
+        internal static string AccessManagement {
+            get {
+                return ResourceManager.GetString("AccessManagement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unhandled error occurred.
+        /// </summary>
+        internal static string AnUnhandledErrorOccurred {
+            get {
+                return ResourceManager.GetString("AnUnhandledErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unknown error occurred: {0}.
+        /// </summary>
+        internal static string AnUnknownErrorOccurred {
+            get {
+                return ResourceManager.GetString("AnUnknownErrorOccurred", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed a day ago.
+        /// </summary>
+        internal static string ChangedADayAgo {
+            get {
+                return ResourceManager.GetString("ChangedADayAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed a minute ago.
+        /// </summary>
+        internal static string ChangedAMinuteAgo {
+            get {
+                return ResourceManager.GetString("ChangedAMinuteAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed a month ago.
+        /// </summary>
+        internal static string ChangedAMonthAgo {
+            get {
+                return ResourceManager.GetString("ChangedAMonthAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed an hour ago.
+        /// </summary>
+        internal static string ChangedAnHourAgo {
+            get {
+                return ResourceManager.GetString("ChangedAnHourAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed a week ago.
+        /// </summary>
+        internal static string ChangedAWeekAgo {
+            get {
+                return ResourceManager.GetString("ChangedAWeekAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed a year ago.
+        /// </summary>
+        internal static string ChangedAYearAgo {
+            get {
+                return ResourceManager.GetString("ChangedAYearAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed {0} days ago.
+        /// </summary>
+        internal static string ChangedDaysAgo {
+            get {
+                return ResourceManager.GetString("ChangedDaysAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed {0} hours ago.
+        /// </summary>
+        internal static string ChangedHoursAgo {
+            get {
+                return ResourceManager.GetString("ChangedHoursAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed just now.
+        /// </summary>
+        internal static string ChangedJustNow {
+            get {
+                return ResourceManager.GetString("ChangedJustNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed {0} minutes ago.
+        /// </summary>
+        internal static string ChangedMinutesAgo {
+            get {
+                return ResourceManager.GetString("ChangedMinutesAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed {0} months ago.
+        /// </summary>
+        internal static string ChangedMonthsAgo {
+            get {
+                return ResourceManager.GetString("ChangedMonthsAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed {0} weeks ago.
+        /// </summary>
+        internal static string ChangedWeeksAgo {
+            get {
+                return ResourceManager.GetString("ChangedWeeksAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed {0} years ago.
+        /// </summary>
+        internal static string ChangedYearsAgo {
+            get {
+                return ResourceManager.GetString("ChangedYearsAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clock in.
         /// </summary>
         internal static string ClockIn {
@@ -70,11 +214,155 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created a day ago.
+        /// </summary>
+        internal static string CreatedADayAgo {
+            get {
+                return ResourceManager.GetString("CreatedADayAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created a minute ago.
+        /// </summary>
+        internal static string CreatedAMinuteAgo {
+            get {
+                return ResourceManager.GetString("CreatedAMinuteAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created a month ago.
+        /// </summary>
+        internal static string CreatedAMonthAgo {
+            get {
+                return ResourceManager.GetString("CreatedAMonthAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created an hour ago.
+        /// </summary>
+        internal static string CreatedAnHourAgo {
+            get {
+                return ResourceManager.GetString("CreatedAnHourAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created a week ago.
+        /// </summary>
+        internal static string CreatedAWeekAgo {
+            get {
+                return ResourceManager.GetString("CreatedAWeekAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created a year ago.
+        /// </summary>
+        internal static string CreatedAYearAgo {
+            get {
+                return ResourceManager.GetString("CreatedAYearAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created {0} days ago.
+        /// </summary>
+        internal static string CreatedDaysAgo {
+            get {
+                return ResourceManager.GetString("CreatedDaysAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created {0} hours ago.
+        /// </summary>
+        internal static string CreatedHoursAgo {
+            get {
+                return ResourceManager.GetString("CreatedHoursAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created just now.
+        /// </summary>
+        internal static string CreatedJustNow {
+            get {
+                return ResourceManager.GetString("CreatedJustNow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created {0} minutes ago.
+        /// </summary>
+        internal static string CreatedMinutesAgo {
+            get {
+                return ResourceManager.GetString("CreatedMinutesAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created {0} months ago.
+        /// </summary>
+        internal static string CreatedMonthsAgo {
+            get {
+                return ResourceManager.GetString("CreatedMonthsAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created {0} weeks ago.
+        /// </summary>
+        internal static string CreatedWeeksAgo {
+            get {
+                return ResourceManager.GetString("CreatedWeeksAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created {0} years ago.
+        /// </summary>
+        internal static string CreatedYearsAgo {
+            get {
+                return ResourceManager.GetString("CreatedYearsAgo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid e-mail address.
         /// </summary>
         internal static string EmailAddressValidationErrorMessage {
             get {
                 return ResourceManager.GetString("EmailAddressValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employee.
+        /// </summary>
+        internal static string Employee {
+            get {
+                return ResourceManager.GetString("Employee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Employees.
+        /// </summary>
+        internal static string Employees {
+            get {
+                return ResourceManager.GetString("Employees", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry was not found.
+        /// </summary>
+        internal static string EntryNotFound {
+            get {
+                return ResourceManager.GetString("EntryNotFound", resourceCulture);
             }
         }
         
@@ -106,6 +394,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Main Data.
+        /// </summary>
+        internal static string MainData {
+            get {
+                return ResourceManager.GetString("MainData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; has a maximum length of {2} characters.
         /// </summary>
         internal static string MaxLengthValidationErrorMessage {
@@ -124,11 +421,56 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You are not permitted to delete the entry.
+        /// </summary>
+        internal static string MissingPermissionsToDeleteEntry {
+            get {
+                return ResourceManager.GetString("MissingPermissionsToDeleteEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are not permitted to view the list.
+        /// </summary>
+        internal static string MissingPermissionsToViewList {
+            get {
+                return ResourceManager.GetString("MissingPermissionsToViewList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nothing selected.
+        /// </summary>
+        internal static string NothingSelected {
+            get {
+                return ResourceManager.GetString("NothingSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
         internal static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permission.
+        /// </summary>
+        internal static string Permission {
+            get {
+                return ResourceManager.GetString("Permission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Permissions.
+        /// </summary>
+        internal static string Permissions {
+            get {
+                return ResourceManager.GetString("Permissions", resourceCulture);
             }
         }
         
@@ -156,6 +498,24 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string RequiredValidationErrorMessage {
             get {
                 return ResourceManager.GetString("RequiredValidationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Role.
+        /// </summary>
+        internal static string Role {
+            get {
+                return ResourceManager.GetString("Role", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Roles.
+        /// </summary>
+        internal static string Roles {
+            get {
+                return ResourceManager.GetString("Roles", resourceCulture);
             }
         }
         

@@ -117,11 +117,107 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccessManagement" xml:space="preserve">
+    <value>Access Management</value>
+  </data>
+  <data name="AnUnhandledErrorOccurred" xml:space="preserve">
+    <value>An unhandled error occurred</value>
+  </data>
+  <data name="AnUnknownErrorOccurred" xml:space="preserve">
+    <value>An unknown error occurred: {0}</value>
+  </data>
+  <data name="ChangedADayAgo" xml:space="preserve">
+    <value>Changed a day ago</value>
+  </data>
+  <data name="ChangedAMinuteAgo" xml:space="preserve">
+    <value>Changed a minute ago</value>
+  </data>
+  <data name="ChangedAMonthAgo" xml:space="preserve">
+    <value>Changed a month ago</value>
+  </data>
+  <data name="ChangedAnHourAgo" xml:space="preserve">
+    <value>Changed an hour ago</value>
+  </data>
+  <data name="ChangedAWeekAgo" xml:space="preserve">
+    <value>Changed a week ago</value>
+  </data>
+  <data name="ChangedAYearAgo" xml:space="preserve">
+    <value>Changed a year ago</value>
+  </data>
+  <data name="ChangedDaysAgo" xml:space="preserve">
+    <value>Changed {0} days ago</value>
+  </data>
+  <data name="ChangedHoursAgo" xml:space="preserve">
+    <value>Changed {0} hours ago</value>
+  </data>
+  <data name="ChangedJustNow" xml:space="preserve">
+    <value>Changed just now</value>
+  </data>
+  <data name="ChangedMinutesAgo" xml:space="preserve">
+    <value>Changed {0} minutes ago</value>
+  </data>
+  <data name="ChangedMonthsAgo" xml:space="preserve">
+    <value>Changed {0} months ago</value>
+  </data>
+  <data name="ChangedWeeksAgo" xml:space="preserve">
+    <value>Changed {0} weeks ago</value>
+  </data>
+  <data name="ChangedYearsAgo" xml:space="preserve">
+    <value>Changed {0} years ago</value>
+  </data>
   <data name="ClockIn" xml:space="preserve">
     <value>Clock in</value>
   </data>
+  <data name="CreatedADayAgo" xml:space="preserve">
+    <value>Created a day ago</value>
+  </data>
+  <data name="CreatedAMinuteAgo" xml:space="preserve">
+    <value>Created a minute ago</value>
+  </data>
+  <data name="CreatedAMonthAgo" xml:space="preserve">
+    <value>Created a month ago</value>
+  </data>
+  <data name="CreatedAnHourAgo" xml:space="preserve">
+    <value>Created an hour ago</value>
+  </data>
+  <data name="CreatedAWeekAgo" xml:space="preserve">
+    <value>Created a week ago</value>
+  </data>
+  <data name="CreatedAYearAgo" xml:space="preserve">
+    <value>Created a year ago</value>
+  </data>
+  <data name="CreatedDaysAgo" xml:space="preserve">
+    <value>Created {0} days ago</value>
+  </data>
+  <data name="CreatedHoursAgo" xml:space="preserve">
+    <value>Created {0} hours ago</value>
+  </data>
+  <data name="CreatedJustNow" xml:space="preserve">
+    <value>Created just now</value>
+  </data>
+  <data name="CreatedMinutesAgo" xml:space="preserve">
+    <value>Created {0} minutes ago</value>
+  </data>
+  <data name="CreatedMonthsAgo" xml:space="preserve">
+    <value>Created {0} months ago</value>
+  </data>
+  <data name="CreatedWeeksAgo" xml:space="preserve">
+    <value>Created {0} weeks ago</value>
+  </data>
+  <data name="CreatedYearsAgo" xml:space="preserve">
+    <value>Created {0} years ago</value>
+  </data>
   <data name="EmailAddressValidationErrorMessage" xml:space="preserve">
     <value>'{0}' is not a valid e-mail address</value>
+  </data>
+  <data name="Employee" xml:space="preserve">
+    <value>Employee</value>
+  </data>
+  <data name="Employees" xml:space="preserve">
+    <value>Employees</value>
+  </data>
+  <data name="EntryNotFound" xml:space="preserve">
+    <value>Entry was not found</value>
   </data>
   <data name="FileExtensionsValidationErrorMessage" xml:space="preserve">
     <value>'{0}' is not a valid file extension</value>
@@ -132,14 +228,32 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="MainData" xml:space="preserve">
+    <value>Main Data</value>
+  </data>
   <data name="MaxLengthValidationErrorMessage" xml:space="preserve">
     <value>'{0}' has a maximum length of {2} characters</value>
   </data>
   <data name="MinLengthValidationErrorMessage" xml:space="preserve">
     <value>'{0}' has a minimum length of {2} characters</value>
   </data>
+  <data name="MissingPermissionsToDeleteEntry" xml:space="preserve">
+    <value>You are not permitted to delete the entry</value>
+  </data>
+  <data name="MissingPermissionsToViewList" xml:space="preserve">
+    <value>You are not permitted to view the list</value>
+  </data>
+  <data name="NothingSelected" xml:space="preserve">
+    <value>Nothing selected</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
+  </data>
+  <data name="Permission" xml:space="preserve">
+    <value>Permission</value>
+  </data>
+  <data name="Permissions" xml:space="preserve">
+    <value>Permissions</value>
   </data>
   <data name="PersonnelNumber" xml:space="preserve">
     <value>Personnel Number</value>
@@ -149,6 +263,12 @@
   </data>
   <data name="RequiredValidationErrorMessage" xml:space="preserve">
     <value>'{0}' is required</value>
+  </data>
+  <data name="Role" xml:space="preserve">
+    <value>Role</value>
+  </data>
+  <data name="Roles" xml:space="preserve">
+    <value>Roles</value>
   </data>
   <data name="StringLengthValidationErrorMessage" xml:space="preserve">
     <value>'{0}' has to be {2} characters long</value>
