@@ -47,5 +47,28 @@
             outline: 2px solid var(--color-primary-40);
         }
     }
+
+    &.squared {
+        padding: 0;
+        width: 35px;
+    }
+
+    &.danger {
+        background: var(--color-primary-10);
+
+        &:hover {
+            background: var(--color-semantic-danger-100);
+            color: var(--color-background);
+        }
+    
+        &:active {
+            background: var(--color-semantic-danger-90);
+            color: var(--color-background);
+        }
+    
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+    }
 }
 

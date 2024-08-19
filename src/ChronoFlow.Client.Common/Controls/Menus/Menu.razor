@@ -10,7 +10,7 @@
         @foreach (var grouping in GetGroupings())
         {
             <div class="c-menu-grouping">
-                <p>@grouping.Key</p>
+                <p>@Localizer[grouping.Key]</p>
 
                 <div class="c-menu-grouping-items">
                     @foreach (var menuItem in grouping.Value)

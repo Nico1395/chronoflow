@@ -47,6 +47,7 @@
         font-weight: 500;
         justify-content: start;
         background: var(--color-primary-10);
+        border-radius: 10px;
 
         &.selected {
             background: var(--color-primary-20);
