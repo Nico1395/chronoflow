@@ -4,7 +4,7 @@
 
 <LocalNotificationRenderer />
 
-<header>
+<header class="navbar">
     <section>
         <Logo Url="/" />
     </section>
@@ -12,10 +12,14 @@
     <Clock />
 
     <section>
+        <NavButton Href="main-data">
+            @Localizer["MainData"]
+        </NavButton>
+
         <UserControl />
     </section>
 </header>
 
-<main>
+<main class="content">
     @Body
 </main>

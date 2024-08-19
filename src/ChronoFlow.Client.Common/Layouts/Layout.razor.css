@@ -1,4 +1,4 @@
-header {
+.navbar {
     height: 60px;
     display: flex;
     flex-direction: row;
@@ -24,11 +24,11 @@ header {
     }
 }
 
-main {
+.content {
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: center;
     gap: 4rem;
-    padding-top: 4rem;
+    padding-top: 2.5rem;
 }

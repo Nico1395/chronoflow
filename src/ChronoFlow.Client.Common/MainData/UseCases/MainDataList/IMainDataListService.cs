@@ -1,10 +1,10 @@
 ﻿using ChronoFlow.Client.Common.MainData.Results;
 
-namespace ChronoFlow.Client.Common.MainData;
+namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
 
 public interface IMainDataListService<TViewModel>
     where TViewModel : class
 {
-    public Task<MainDataGetAllResult<TViewModel>> GetAllAsync(TViewModel viewModel, CancellationToken cancellationToken = default);
+    public Task<MainDataGetAllResult<TViewModel>> GetAllAsync(CancellationToken cancellationToken = default);
     public Task<MainDataDeleteResult<TViewModel>> DeleteAsync(TViewModel viewModel, CancellationToken cancellationToken = default);
 }

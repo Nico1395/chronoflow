@@ -1,6 +1,6 @@
 ﻿using ChronoFlow.Client.Common.MainData.Results;
 
-namespace ChronoFlow.Client.Common.MainData;
+namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataForm;
 
 public interface IMainDataFormService<TViewModel>
     where TViewModel : class

@@ -1,0 +1,12 @@
+@page "/main-data"
+@page "/main-data/{DomainObject}"
+
+<PageTitle>
+    @GetPageTitle()
+</PageTitle>
+
+<Menu MenuItems="@_menuItems" @bind-SelectedMenuItem="@_selectedMenuItem">
+    <Header>
+        @Localizer["MainData"]
+    </Header>
+</Menu>
