@@ -216,6 +216,9 @@
   <data name="Employees" xml:space="preserve">
     <value>Employees</value>
   </data>
+  <data name="EntryDeleted" xml:space="preserve">
+    <value>Entry successfully deleted</value>
+  </data>
   <data name="EntryNotFound" xml:space="preserve">
     <value>Entry was not found</value>
   </data>

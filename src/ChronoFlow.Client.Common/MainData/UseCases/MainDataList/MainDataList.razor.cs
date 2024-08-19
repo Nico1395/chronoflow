@@ -111,7 +111,11 @@ public partial class MainDataList<TViewModel> : ComponentBase
 
     private void EvaluateDeleteResult(MainDataDeleteResult<TViewModel> result)
     {
-        if (result.Code == MainDataDeleteResultCode.Error)
+        if (result.Code == MainDataDeleteResultCode.Success)
+        {
+            LocalNotificationPublisher.PublishSuccess(Localizer["EntryDeleted"]);
+        }
+        else if (result.Code == MainDataDeleteResultCode.Error)
         {
             LocalNotificationPublisher.PublishError(Localizer["AnUnknownErrorOccurred", result.Message ?? string.Empty]);
         }

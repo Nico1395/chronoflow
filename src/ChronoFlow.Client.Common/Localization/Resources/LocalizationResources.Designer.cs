@@ -358,6 +358,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entry successfully deleted.
+        /// </summary>
+        internal static string EntryDeleted {
+            get {
+                return ResourceManager.GetString("EntryDeleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entry was not found.
         /// </summary>
         internal static string EntryNotFound {
