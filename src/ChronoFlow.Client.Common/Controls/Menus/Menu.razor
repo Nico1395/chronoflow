@@ -7,13 +7,13 @@
             </header>
         }
 
-        @foreach (var grouping in GetGroupings())
+        @foreach (var menuCategory in MenuCategories)
         {
             <div class="c-menu-grouping">
-                <p>@Localizer[grouping.Key]</p>
+                <p>@Localizer[menuCategory.Title]</p>
 
                 <div class="c-menu-grouping-items">
-                    @foreach (var menuItem in grouping.Value)
+                    @foreach (var menuItem in menuCategory.Items)
                     {
                         var selected = SelectedMenuItem == menuItem ? "selected" : null;
 

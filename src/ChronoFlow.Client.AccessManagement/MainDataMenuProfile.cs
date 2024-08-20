@@ -8,12 +8,24 @@ internal sealed class MainDataMenuProfile : MainDataMenuProfileBase
 {
     public override void Configure(MainDataMenuConfiguration configuration)
     {
-        configuration.AddDomainObjectList<EmployeeMainDataList>("employees", "Employees", "AccessManagement", "main-data/employees");
+        configuration.AddCategory(c => c.WithTitle("AccessManagement")
+            .AddItem<EmployeeMainDataList>(i => i
+                .WithUri("main-data/employees")
+                .WithTitle("Employees")
+                .WithIconLeft("bi bi-person-fill"))
+            .AddItem<RoleMainDataList>(i => i
+                .WithUri("main-data/roles")
+                .WithTitle("Roles")
+                .WithIconLeft("bi bi-person-vcard-fill")));
 
-        configuration.AddDomainObjectList<RoleMainDataList>("roles", "Roles", "AccessManagement", "main-data/roles");
-
-
-        configuration.AddDomainObjectList<RoleMainDataList>("locations", "Locations", "Locations", "main-data/locations");
-        configuration.AddDomainObjectList<RoleMainDataList>("workplaces", "Workplaces", "Locations", "main-data/workplaces");
+        configuration.AddCategory(c => c.WithTitle("Locations")
+            .AddItem<RoleMainDataList>(i => i
+                .WithUri("main-data/locations")
+                .WithTitle("Locations")
+                .WithIconLeft("bi bi-buildings-fill"))
+            .AddItem<RoleMainDataList>(i => i
+                .WithUri("main-data/workplaces")
+                .WithTitle("Workplaces")
+                .WithIconLeft("bi bi-pc-display")));
     }
 }

@@ -9,17 +9,17 @@
     <header>
         <Textbox Placeholder="@Localizer["TypeToSearch"]" @bind-Value="@_searchTerm" />
 
-        @if (Header != null)
-        {
-            @Header
-        }
-
         @if (_canSort)
         {
             @* TODO -> Dropdown with sort options *@
             <Button>
                 @Localizer["Sort"]
             </Button>
+        }
+
+        @if (Header != null)
+        {
+            @Header
         }
     </header>
 

@@ -1,10 +1,11 @@
 .c-textbox {
-    height: 35px;
+    min-height: 35px;
+    max-height: 35px;
     border: 0;
     border-radius: var(--container-radius-regular);
     font-family: var(--font-family-regular);
     font-size: 12pt;
-    font-weight: 500;
+    font-weight: 400;
     background: var(--color-primary-10);
     color: var(--color-primary-100);
 
@@ -27,9 +28,5 @@
 
     &.invalid {
         outline: 2px solid var(--color-accent-100);
-    }
-
-    > .bi {
-        font-weight: 15px;
     }
 }

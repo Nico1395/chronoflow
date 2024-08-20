@@ -7,7 +7,7 @@ namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
 public partial class MainDataPage : ComponentBase
 {
     private MenuItem? _selectedMenuItem;
-    private List<MenuItem> _menuItems = [];
+    private List<MenuCategory> _menuCategories = [];
 
     [Inject]
     private IEnumerable<IMainDataMenuProfile> MenuProfiles { get; set; } = null!;
@@ -23,14 +23,16 @@ public partial class MainDataPage : ComponentBase
 
     protected override void OnInitialized()
     {
-        _menuItems = MenuProfiles
-            .SelectMany(c => c.GetMenuConfiguration().MainDataMenuItems)
-            .Select(m => m.ToMenuItem())
+        _menuCategories = MenuProfiles
+            .SelectMany(c => c.GetMenuConfiguration().MainDataMenuCategories)
+            .Select(m => m.ToMenuCategory())
             .ToList();
 
         if (DomainObject != null && DomainObject is string domainObjectUriSegment)
         {
-            _selectedMenuItem = _menuItems.SingleOrDefault(m => m.Key == domainObjectUriSegment);
+            var currentUri = $"main-data/{domainObjectUriSegment}";
+
+            _selectedMenuItem = _menuCategories.SelectMany(c => c.Items).SingleOrDefault(m => m.Uri == currentUri);
             if (_selectedMenuItem == null)
                 NavigationManager.NavigateTo("main-data");
         }

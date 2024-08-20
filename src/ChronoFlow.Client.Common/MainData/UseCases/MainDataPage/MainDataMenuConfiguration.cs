@@ -1,25 +1,15 @@
-﻿using Microsoft.AspNetCore.Components;
-
-namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
+﻿namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
 
 public sealed class MainDataMenuConfiguration
 {
-    internal List<MainDataMenuItem> MainDataMenuItems { get; } = [];
+    internal List<MainDataMenuCategory> MainDataMenuCategories { get; } = [];
 
-    public MainDataMenuConfiguration AddDomainObjectList<TComponent>(string key, string title, string category, string uri, string? tooltip = null)
-        where TComponent : ComponentBase
+    public MainDataMenuConfiguration AddCategory(Action<MainDataMenuCategoryBuilder> builderAction)
     {
-        var menuItem = new MainDataMenuItem()
-        {
-            Category = category,
-            Key = key,
-            Title = title,
-            Uri = uri,
-            Tooltip = tooltip,
-            Component = typeof(TComponent),
-        };
+        var builder = new MainDataMenuCategoryBuilder();
+        builderAction.Invoke(builder);
 
-        MainDataMenuItems.Add(menuItem);
+        MainDataMenuCategories.Add(builder.Build());
         return this;
     }
 }

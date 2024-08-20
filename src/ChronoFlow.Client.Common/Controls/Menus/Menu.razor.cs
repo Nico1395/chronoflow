@@ -18,18 +18,13 @@ public partial class Menu : ComponentBase
     public RenderFragment? NothingSelected { get; set; }
 
     [Parameter, EditorRequired]
-    public required List<MenuItem> MenuItems { get; set; }
+    public required List<MenuCategory> MenuCategories { get; set; }
 
     [Parameter]
     public MenuItem? SelectedMenuItem { get; set; }
 
     [Parameter]
     public EventCallback<MenuItem?> SelectedMenuItemChanged { get; set; }
-
-    private Dictionary<string, List<MenuItem>> GetGroupings()
-    {
-        return MenuItems.GroupBy(item => item.Category).ToDictionary(group => group.Key, group => group.ToList());
-    }
 
     private Task OnSelectAsync(MenuItem menuItem)
     {

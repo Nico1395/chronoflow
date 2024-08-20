@@ -20,6 +20,14 @@
                    Pageable="@true"
                    PageCount="20"
                    Template="@ItemTemplate"
-                   TemplateParameterFactory="@((item) => CreateTemplateParameters(item, context))" />
+                   TemplateParameterFactory="@((item) => CreateTemplateParameters(item, context))">
+    
+        <Header>
+            <Button Class="squared"
+                    IconLeft="bi bi-arrow-repeat"
+                    Disabled="@context.Busy"
+                    OnClick="@LoadItemsAsync" />
+        </Header>
+    </ContainerList>
 </div>
 

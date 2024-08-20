@@ -30,10 +30,11 @@
     &:disabled {
         background: none !important;
         color: var(--color-primary-20) !important;
+        cursor: default !important;
     }
 
     > .bi {
-        font-weight: 15px;
+        font-size: 15px;
     }
 
     &.alt {

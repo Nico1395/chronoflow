@@ -10,9 +10,10 @@ internal sealed class EmployeeMainDataListService : IMainDataListService<Employe
 {
     private List<EmployeeViewModel>? _employees;
 
-    public Task<MainDataGetAllResult<EmployeeViewModel>> GetAllAsync(CancellationToken cancellationToken = default)
+    public async Task<MainDataGetAllResult<EmployeeViewModel>> GetAllAsync(CancellationToken cancellationToken = default)
     {
-        return Task.FromResult(new MainDataGetAllResult<EmployeeViewModel>(MainDataGetAllResultCode.Success, GetEmployees()));
+        await Task.Delay(150);
+        return new MainDataGetAllResult<EmployeeViewModel>(MainDataGetAllResultCode.Success, GetEmployees());
     }
 
     public Task<MainDataDeleteResult<EmployeeViewModel>> DeleteAsync(EmployeeViewModel viewModel, CancellationToken cancellationToken = default)
