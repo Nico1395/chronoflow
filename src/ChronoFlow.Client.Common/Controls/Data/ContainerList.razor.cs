@@ -34,6 +34,9 @@ public partial class ContainerList<TItem> : ComponentBase
     public RenderFragment? Header { get; set; }
 
     [Parameter]
+    public RenderFragment? NoItems { get; set; }
+
+    [Parameter]
     public RenderFragment<TItem>? Item { get; set; }
 
     [Parameter]

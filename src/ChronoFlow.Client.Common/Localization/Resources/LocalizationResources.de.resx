@@ -246,6 +246,9 @@
   <data name="MissingPermissionsToViewList" xml:space="preserve">
     <value>Sie sind nicht berechtigt die Liste auszulesen</value>
   </data>
+  <data name="NoItems" xml:space="preserve">
+    <value>Keine Gegenstände</value>
+  </data>
   <data name="NothingSelected" xml:space="preserve">
     <value>Nichts ausgewählt</value>
   </data>

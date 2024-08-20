@@ -29,9 +29,6 @@ public partial class MainDataList<TViewModel> : ComponentBase
     private IMainDataListService<TViewModel> ListService { get; set; } = null!;
 
     [Parameter, EditorRequired]
-    public required Func<TViewModel, string> ViewItemUri { get; set; }
-
-    [Parameter, EditorRequired]
     public required RenderFragment<MainDataListContext<TViewModel>> Header { get; set; }
 
     [Parameter, EditorRequired]
@@ -42,6 +39,9 @@ public partial class MainDataList<TViewModel> : ComponentBase
 
     [Parameter]
     public List<ContainerListSortOption<TViewModel>> SortOptions { get; set; } = [];
+
+    [Parameter, EditorRequired]
+    public required string NewUri { get; set; }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -127,6 +127,11 @@ public partial class MainDataList<TViewModel> : ComponentBase
         {
             LocalNotificationPublisher.PublishInfo(Localizer["MissingPermissionsToDeleteEntry"]);
         }
+    }
+
+    private void NavigateToNew()
+    {
+        NavigationManager.NavigateTo(NewUri);
     }
 
     private Task SetBusyAsync(bool busy)

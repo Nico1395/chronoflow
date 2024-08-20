@@ -448,6 +448,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No items.
+        /// </summary>
+        internal static string NoItems {
+            get {
+                return ResourceManager.GetString("NoItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nothing selected.
         /// </summary>
         internal static string NothingSelected {

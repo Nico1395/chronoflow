@@ -49,3 +49,10 @@
     border-radius: var(--container-radius-regular);
     padding: 0.8rem;
 }
+
+.c-container-list-no-items {
+    align-self: center;
+    color: var(--color-primary-40);
+    font-size: 10pt;
+    font-weight: 400;
+}

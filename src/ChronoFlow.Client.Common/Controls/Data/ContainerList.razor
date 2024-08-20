@@ -24,23 +24,36 @@
     </header>
 
     <section>
-        @foreach (var item in selectedItemGroup)
+        @if (selectedItemGroup.Count > 0)
         {
-            <div class="c-container-list-item">
-                @if (Item != null)
-                {
-                    @Item(item)
-                }
-                else if (Template != null && TemplateParameterFactory != null)
-                {
-                    var parameters = TemplateParameterFactory(item);
-                    <DynamicComponent Type="@Template" Parameters="@parameters" />
-                }
-            </div>
+            @foreach (var item in selectedItemGroup)
+            {
+                <div class="c-container-list-item">
+                    @if (Item != null)
+                    {
+                        @Item(item)
+                    }
+                    else if (Template != null && TemplateParameterFactory != null)
+                    {
+                        var parameters = TemplateParameterFactory(item);
+                        <DynamicComponent Type="@Template" Parameters="@parameters" />
+                    }
+                </div>
+            }
+        }
+        else if (NoItems != null)
+        {
+            @NoItems
+        }
+        else
+        {
+            <span class="c-container-list-no-items">
+                @Localizer["NoItems"]
+            </span>
         }
     </section>
 
-    @if (Pageable)
+    @if (Pageable && itemGroups.Count > 1)
     {
         <footer>
             @{

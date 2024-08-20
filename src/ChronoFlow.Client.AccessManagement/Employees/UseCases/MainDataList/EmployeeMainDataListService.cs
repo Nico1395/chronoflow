@@ -24,7 +24,7 @@ internal sealed class EmployeeMainDataListService : IMainDataListService<Employe
 
     private List<EmployeeViewModel> GetEmployees()
     {
-        return _employees ??= GenerateEmployees(50);
+        return _employees ??= GenerateEmployees(253);
     }
 
     public static List<EmployeeViewModel> GenerateEmployees(int count)

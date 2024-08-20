@@ -27,6 +27,15 @@
                     IconLeft="bi bi-arrow-repeat"
                     Disabled="@context.Busy"
                     OnClick="@LoadItemsAsync" />
+
+            <Button Class="alt"
+                    IconRight="bi bi-plus"
+                    IconRightSize="18px"
+                    Disabled="@context.Busy"
+                    OnClick="@NavigateToNew">
+
+                @Localizer["New"]
+            </Button>
         </Header>
     </ContainerList>
 </div>

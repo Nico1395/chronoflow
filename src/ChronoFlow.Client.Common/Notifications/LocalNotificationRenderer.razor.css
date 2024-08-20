@@ -1,8 +1,7 @@
 .c-notification-renderer {
-    position: absolute;
-    top: 75px;
-    right: 1.5rem;
-    left: 0;
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.2rem;
     display: flex;
     flex-direction: column-reverse;
     align-items: end;
