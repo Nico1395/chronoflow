@@ -19,7 +19,7 @@
         background: var(--color-primary-15);
     }
 
-    &:active {
+    &:active, &.active {
         background: var(--color-primary-20);
     }
 
@@ -44,12 +44,17 @@
             background: var(--color-primary-70);
         }
     
-        &:active {
+        &:active, &.active {
             background: var(--color-primary-60);
         }
     
         &:focus {
             outline: 2px solid var(--color-primary-40);
+        }
+        
+        &:disabled {
+            background: var(--color-primary-40) !important;
+            color: var(--color-background) !important;
         }
     }
 
@@ -66,7 +71,7 @@
             color: var(--color-background);
         }
     
-        &:active {
+        &:active, &.active {
             background: var(--color-semantic-danger-90);
             color: var(--color-background);
         }

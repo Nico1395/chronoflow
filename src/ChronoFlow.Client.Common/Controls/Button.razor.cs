@@ -38,6 +38,9 @@ public partial class Button : ComponentBase
     public bool Disabled { get; set; }
 
     [Parameter]
+    public bool Active { get; set; }
+
+    [Parameter]
     public EventCallback OnClick { get; set; }
     
     private string GetStyles()
@@ -48,6 +51,7 @@ public partial class Button : ComponentBase
 
     private string GetClasses()
     {
-        return $"c-button {Class}";
+        var active = Active ? "active" : null;
+        return $"c-button {active} {Class}";
     }
 }

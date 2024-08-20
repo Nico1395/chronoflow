@@ -1,6 +1,7 @@
 ﻿using ChronoFlow.Client.Common.Localization;
 using ChronoFlow.Client.Common.Processing.Search;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 
 namespace ChronoFlow.Client.Common.Controls.Data;
 
@@ -16,6 +17,9 @@ public partial class ContainerList<TItem> : ComponentBase
 
     [Inject]
     private ILocalSearchEngine LocalSearchEngine { get; set; } = null!;
+
+    [Inject]
+    private IJSRuntime JsRuntime { get; set; } = null!;
 
     [Parameter, EditorRequired]
     public required List<TItem> Items { get; set; }
@@ -38,6 +42,18 @@ public partial class ContainerList<TItem> : ComponentBase
     [Parameter]
     public Func<TItem, Dictionary<string, object?>>? TemplateParameterFactory { get; set; }
 
+    [Parameter]
+    public bool Pageable { get; set; } = true;
+
+    [Parameter]
+    public int PageCount { get; set; } = 20;
+
+    [Parameter]
+    public int CurrentPage { get; set; } = 1;
+
+    [Parameter]
+    public EventCallback<int> CurrentPageChanged { get; set; }
+
     protected override void OnInitialized()
     {
         _canSort = Sortable && SortOptions.Count > 0;
@@ -59,6 +75,9 @@ public partial class ContainerList<TItem> : ComponentBase
 
     private IEnumerable<TItem> SearchItems(IEnumerable<TItem> items)
     {
+        if (string.IsNullOrEmpty(_searchTerm))
+            return items;
+
         var searchDescriptor = new SearchDescriptor() { SearchTerm = _searchTerm, };
         return LocalSearchEngine.SearchItems(items, searchDescriptor);
     }
@@ -72,5 +91,42 @@ public partial class ContainerList<TItem> : ComponentBase
             return items.OrderBy(_selectedSortOption.Field);
         else
             return items.OrderByDescending(_selectedSortOption.Field);
+    }
+
+    private Dictionary<int, List<TItem>> GetItemGroups()
+    {
+        var processedItems = GetProcessedItems();
+        var itemGroups = new Dictionary<int, List<TItem>>();
+
+        if (!Pageable)
+        {
+            itemGroups[1] = processedItems;
+            return itemGroups;
+        }
+
+        var totalItems = processedItems.Count;
+        var totalPages = (int)Math.Ceiling((double)totalItems / PageCount);
+
+        for (var i = 0; i < totalPages; i++)
+        {
+            var pageItems = processedItems.Skip(i * PageCount).Take(PageCount).ToList();
+            itemGroups.Add(i + 1, pageItems);
+        }
+
+        return itemGroups;
+    }
+
+    private List<TItem> GetSelectedItemGroup(Dictionary<int, List<TItem>> itemGroups)
+    {
+        return itemGroups.TryGetValue(CurrentPage, out var selectedItemGroup) ? selectedItemGroup : [];
+    }
+
+    private async ValueTask SelectItemGroupAsync(int itemGroupIndex)
+    {
+        CurrentPage = itemGroupIndex;
+        StateHasChanged();
+
+        await CurrentPageChanged.InvokeAsync(CurrentPage);
+        await JsRuntime.InvokeVoidAsync("scrollTo", 0, 0);
     }
 }

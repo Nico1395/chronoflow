@@ -1,5 +1,10 @@
 ﻿@typeparam TItem
 
+@{
+    var itemGroups = GetItemGroups();
+    var selectedItemGroup = GetSelectedItemGroup(itemGroups);
+}
+
 <div class="c-container-list">
     <header>
         <Textbox Placeholder="@Localizer["TypeToSearch"]" @bind-Value="@_searchTerm" />
@@ -19,7 +24,7 @@
     </header>
 
     <section>
-        @foreach (var item in GetProcessedItems())
+        @foreach (var item in selectedItemGroup)
         {
             <div class="c-container-list-item">
                 @if (Item != null)
@@ -35,7 +40,32 @@
         }
     </section>
 
-    <footer>
-        @* TODO -> Pagination *@
-    </footer>
+    @if (Pageable)
+    {
+        <footer>
+            @{
+                var previousEnabled = CurrentPage > 1;
+                var nextEnabled = CurrentPage < itemGroups.Count;
+            }
+
+            <Button Class="squared alt"
+                    IconLeft="bi bi-arrow-left"
+                    IconLeftSize="12px"
+                    Disabled="@(!previousEnabled)"
+                    OnClick="@(async () => await SelectItemGroupAsync(CurrentPage - 1))" />
+
+            @foreach (var itemGroup in itemGroups)
+            {
+                <Button Class="squared" Active="@(itemGroup.Key == CurrentPage)" OnClick="@(async () => await SelectItemGroupAsync(itemGroup.Key))">
+                    @itemGroup.Key
+                </Button>
+            }
+
+            <Button Class="squared alt"
+                    IconLeft="bi bi-arrow-right"
+                    IconLeftSize="12px"
+                    Disabled="@(!nextEnabled)"
+                    OnClick="@(async () => await SelectItemGroupAsync(CurrentPage + 1))" />
+        </footer>
+    }
 </div>
