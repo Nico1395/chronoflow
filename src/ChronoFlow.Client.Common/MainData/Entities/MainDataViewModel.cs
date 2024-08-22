@@ -1,8 +1,8 @@
 ﻿using ChronoFlow.Client.Common.Processing.Search;
 
-namespace ChronoFlow.Client.Common.Objects.Aggregates;
+namespace ChronoFlow.Client.Common.MainData.Entities;
 
-public abstract class MainDataAggregateViewModel
+public abstract class MainDataViewModel : IMainDataViewModel
 {
     [IgnoreOnSearch]
     public Guid Id { get; init; } = Guid.NewGuid();

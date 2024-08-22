@@ -77,7 +77,7 @@ public partial class MainDataList<TViewModel> : ComponentBase
             LocalNotificationPublisher.PublishError(Localizer["AnUnknownErrorOccurred", result.Message ?? string.Empty]);
             return _items;
         }
-        else if (result.Code == MainDataGetAllResultCode.MissingPermissions)
+        else if (result.Code == MainDataGetAllResultCode.NotAuthorized)
         {
             LocalNotificationPublisher.PublishInfo(Localizer["MissingPermissionsToViewList"]);
             NavigationManager.NavigateTo("/");
@@ -109,7 +109,7 @@ public partial class MainDataList<TViewModel> : ComponentBase
         await LoadItemsAsync();
     }
 
-    private void EvaluateDeleteResult(MainDataDeleteResult<TViewModel> result)
+    private void EvaluateDeleteResult(MainDataDeleteResult result)
     {
         if (result.Code == MainDataDeleteResultCode.Success)
         {
@@ -123,7 +123,7 @@ public partial class MainDataList<TViewModel> : ComponentBase
         {
             LocalNotificationPublisher.PublishWarning(Localizer["EntryNotFound"]);
         }
-        else if (result.Code == MainDataDeleteResultCode.MissingPermissions)
+        else if (result.Code == MainDataDeleteResultCode.NotAuthorized)
         {
             LocalNotificationPublisher.PublishInfo(Localizer["MissingPermissionsToDeleteEntry"]);
         }

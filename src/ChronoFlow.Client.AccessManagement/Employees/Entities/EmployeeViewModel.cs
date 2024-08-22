@@ -1,11 +1,11 @@
 ﻿using ChronoFlow.Client.AccessManagement.Roles.Entities;
-using ChronoFlow.Client.Common.Objects.Aggregates;
+using ChronoFlow.Client.Common.MainData.Entities;
 using ChronoFlow.Client.Common.Objects.ValueObjects;
 using ChronoFlow.Client.Common.Processing.Search;
 
 namespace ChronoFlow.Client.AccessManagement.Employees.Entities;
 
-public sealed class EmployeeViewModel : MainDataAggregateViewModel
+public sealed class EmployeeViewModel : MainDataViewModel
 {
     [IncludeOnSearch]
     public EmployeeNameViewModel Name { get; init; } = EmployeeNameViewModel.Empty();

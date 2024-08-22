@@ -27,8 +27,8 @@ public partial class EmployeeMainDataListItem : MainDataListItemTemplate<Employe
     private string GetDescription()
     {
         List<string> descriptionDetails = [];
-        string? createdMessage = TimespanMessageCalculator.GetCreatedMessage(Item.Created);
-        string? editedMessage = TimespanMessageCalculator.GetCreatedMessage(Item.LastChanged);
+        var createdMessage = TimespanMessageCalculator.GetCreatedMessage(Item.Created);
+        var editedMessage = TimespanMessageCalculator.GetEditedMessage(Item.LastChanged);
 
         if (createdMessage != null)
             descriptionDetails.Add(createdMessage);

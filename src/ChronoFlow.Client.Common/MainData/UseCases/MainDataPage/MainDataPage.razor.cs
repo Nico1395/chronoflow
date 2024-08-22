@@ -1,5 +1,6 @@
 ﻿using ChronoFlow.Client.Common.Controls.Menus;
 using ChronoFlow.Client.Common.Localization;
+using ChronoFlow.Client.Common.MainData.UseCases.MainDataPage.Configuration;
 using Microsoft.AspNetCore.Components;
 
 namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;

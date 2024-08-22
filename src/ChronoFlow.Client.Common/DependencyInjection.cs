@@ -4,7 +4,7 @@ using ChronoFlow.Client.Common.Browser;
 using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
 using ChronoFlow.Client.Common.MainData;
-using ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
+using ChronoFlow.Client.Common.MainData.UseCases.MainDataPage.Configuration;
 using ChronoFlow.Client.Common.Notifications;
 using ChronoFlow.Client.Common.Processing.Search;
 using ChronoFlow.Client.Common.Validation;

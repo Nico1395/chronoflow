@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
+namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage.Configuration;
 
 internal static class DependencyInjection
 {

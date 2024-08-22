@@ -1,4 +1,4 @@
-﻿namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
+﻿namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage.Configuration;
 
 public interface IMainDataMenuProfile
 {

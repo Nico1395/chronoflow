@@ -1,6 +1,6 @@
 ﻿using ChronoFlow.Client.Common.Controls.Menus;
 
-namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
+namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataPage.Configuration;
 
 internal sealed record MainDataMenuCategory
 {

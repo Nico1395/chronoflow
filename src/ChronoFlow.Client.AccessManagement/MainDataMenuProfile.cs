@@ -1,6 +1,6 @@
 ﻿using ChronoFlow.Client.AccessManagement.Employees.UseCases.MainDataList;
 using ChronoFlow.Client.AccessManagement.Roles.UseCases;
-using ChronoFlow.Client.Common.MainData.UseCases.MainDataPage;
+using ChronoFlow.Client.Common.MainData.UseCases.MainDataPage.Configuration;
 
 namespace ChronoFlow.Client.AccessManagement;
 

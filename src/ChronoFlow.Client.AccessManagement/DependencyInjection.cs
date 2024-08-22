@@ -1,5 +1,6 @@
 ﻿using ChronoFlow.Client.AccessManagement.Employees.Entities;
-using ChronoFlow.Client.AccessManagement.Employees.UseCases.MainDataList;
+using ChronoFlow.Client.AccessManagement.Employees.Persistence;
+using ChronoFlow.Client.Common.MainData.Persistence;
 using ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,7 +10,8 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddAccessManagement(this IServiceCollection services)
     {
-        services.AddScoped<IMainDataListService<EmployeeViewModel>, EmployeeMainDataListService>();
+        services.AddScoped<IMainDataListService<EmployeeViewModel>, MainDataListService<EmployeeViewModel>>();
+        services.AddScoped<IMainDataViewModelService<EmployeeViewModel>, EmployeeMainDataViewModelService>();
 
         return services;
     }

@@ -5,5 +5,5 @@ public enum MainDataDeleteResultCode
     Success,
     Error,
     NotFound,
-    MissingPermissions,
+    NotAuthorized,
 }
