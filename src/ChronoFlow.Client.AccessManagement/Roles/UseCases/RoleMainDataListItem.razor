@@ -1,0 +1,8 @@
+﻿@inherits MainDataListItemComponentBase<RoleViewModel>
+
+<MainDataListItemTemplate TViewModel="@RoleViewModel"
+                          Item="@Item"
+                          Context="@Context"
+                          ItemUriFactory="@(r => $"main-data/roles/{r.Id}")"
+                          ItemTitle="@(r => r.Name)"
+                          OnDelete="@OnDeleteAsync" />

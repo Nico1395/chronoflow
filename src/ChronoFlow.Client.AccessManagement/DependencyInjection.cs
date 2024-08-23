@@ -1,5 +1,7 @@
 ﻿using ChronoFlow.Client.AccessManagement.Employees.Entities;
 using ChronoFlow.Client.AccessManagement.Employees.Persistence;
+using ChronoFlow.Client.AccessManagement.Roles.Entities;
+using ChronoFlow.Client.AccessManagement.Roles.Persistence;
 using ChronoFlow.Client.Common.MainData.Persistence;
 using ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +14,9 @@ public static class DependencyInjection
     {
         services.AddScoped<IMainDataListService<EmployeeViewModel>, MainDataListService<EmployeeViewModel>>();
         services.AddScoped<IMainDataViewModelService<EmployeeViewModel>, EmployeeMainDataViewModelService>();
+
+        services.AddScoped<IMainDataListService<RoleViewModel>, MainDataListService<RoleViewModel>>();
+        services.AddScoped<IMainDataViewModelService<RoleViewModel>, RoleMainDataViewModelService>();
 
         return services;
     }

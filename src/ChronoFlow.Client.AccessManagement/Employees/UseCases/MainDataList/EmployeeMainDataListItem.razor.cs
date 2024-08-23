@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace ChronoFlow.Client.AccessManagement.Employees.UseCases.MainDataList;
 
-public partial class EmployeeMainDataListItem : MainDataListItemTemplate<EmployeeViewModel>
+public partial class EmployeeMainDataListItem : MainDataListItemComponentBase<EmployeeViewModel>
 {
     [Inject]
     private ILocalizer Localizer { get; set; } = null!;
