@@ -1,6 +1,7 @@
 ﻿using ChronoFlow.Client.Common.Authentication;
 using ChronoFlow.Client.Common.Authentication.UseCases.Login;
 using ChronoFlow.Client.Common.Browser;
+using ChronoFlow.Client.Common.Http.DI;
 using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
 using ChronoFlow.Client.Common.MainData;
@@ -23,6 +24,9 @@ public static class DependencyInjection
         {
             options.AddResource<LocalizationResources>();
         });
+
+        // Http
+        services.AddHttp();
 
         // Mapping
         services.AddMapper(assemblies);
