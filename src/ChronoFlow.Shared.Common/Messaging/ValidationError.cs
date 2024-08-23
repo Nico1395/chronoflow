@@ -2,8 +2,6 @@
 
 public sealed record ValidationError
 {
-    private ValidationError() { }
-
     public required string FieldName { get; init; }
     public required string Message { get; init; }
 

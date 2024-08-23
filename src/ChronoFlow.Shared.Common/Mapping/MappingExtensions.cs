@@ -50,7 +50,7 @@ public static class MappingExtensions
         return mappingConfiguration;
     }
 
-    public static Result<TDestination> MapResponse<TSource, TDestination>(this IMapper _mapper, Result<TSource> originalResult)
+    public static Result<TDestination> MapResult<TSource, TDestination>(this IMapper _mapper, Result<TSource> originalResult)
     {
         return _mapper.Map<Result<TDestination>>(originalResult);
     }
