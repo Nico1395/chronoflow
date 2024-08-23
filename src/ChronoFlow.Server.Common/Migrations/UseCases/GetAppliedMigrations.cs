@@ -11,7 +11,7 @@ internal static class GetAppliedMigrations
 {
     internal static IEndpointRouteBuilder UseGetAppliedMigrationsEndpoint(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/migrations/get-applied", async ([FromServices] IMediator mediator) =>
+        endpoints.MapGet("api/migrations/get-applied", async ([FromServices] IMediator mediator) =>
         {
             var result = await mediator.SendAsync(new GetAppliedMigrationsQuery());
             return Results.Ok(result);
