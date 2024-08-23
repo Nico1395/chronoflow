@@ -14,7 +14,7 @@ public static class DeleteRole
 {
     internal static IEndpointRouteBuilder UseDeleteRoleEndpoint(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapDelete("api/access-management/roles/delete", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper, [FromQuery] Guid roleId) =>
+        endpoints.MapDelete("api/access-management/roles/delete", async ([FromServices] IMediator mediator, [FromQuery] Guid roleId) =>
         {
             var result = await mediator.SendAsync(new DeleteRoleCommand(roleId));
             return Results.Ok(result);

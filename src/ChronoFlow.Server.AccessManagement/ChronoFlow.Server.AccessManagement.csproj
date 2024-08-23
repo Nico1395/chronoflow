@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Employees\UseCases\" />
     <Folder Include="Permissions\UseCases\" />
   </ItemGroup>
 

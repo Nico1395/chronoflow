@@ -11,7 +11,7 @@ internal sealed class EmployeeMainDataViewModelService : IMainDataViewModelServi
         throw new NotImplementedException();
     }
 
-    public Task<Result<EmployeeViewModel?>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public Task<Result<EmployeeViewModel>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         throw new NotImplementedException();
     }

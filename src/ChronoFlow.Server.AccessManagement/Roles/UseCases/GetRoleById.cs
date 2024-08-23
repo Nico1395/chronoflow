@@ -19,7 +19,7 @@ public static class GetRoleById
         endpoints.MapGet("api/access-management/roles/get-by-id", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper, [FromQuery] Guid roleId) =>
         {
             var result = await mediator.SendAsync(new GetRoleByIdQuery(roleId));
-            var mappedResult = mapper.MapResult<Role?, RoleDto?>(result);
+            var mappedResult = mapper.MapResult<Role, RoleDto>(result);
 
             return Results.Ok(mappedResult);
         });
@@ -27,17 +27,17 @@ public static class GetRoleById
         return endpoints;
     }
 
-    public sealed record GetRoleByIdQuery(Guid RoleId) : IQuery<Result<Role?>>;
+    public sealed record GetRoleByIdQuery(Guid RoleId) : IQuery<Result<Role>>;
 
-    internal sealed class GetRoleByIdQueryHandler(IRoleReadRepository _roleReadRepository) : IQueryHandler<GetRoleByIdQuery, Result<Role?>>
+    internal sealed class GetRoleByIdQueryHandler(IRoleReadRepository _roleReadRepository) : IQueryHandler<GetRoleByIdQuery, Result<Role>>
     {
-        public async Task<Result<Role?>> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Result<Role>> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
         {
             var role = await _roleReadRepository.GetByIdAsync(request.RoleId, cancellationToken);
             if (role == null)
-                return Result.NotFound<Role?>();
+                return Result.NotFound<Role>();
 
-            return Result.Okay<Role?>(role);
+            return Result.Okay(role);
         }
     }
 }

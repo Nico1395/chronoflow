@@ -8,11 +8,7 @@ internal sealed class RoleWriteRepository(DbContext _dbContext) : IRoleWriteRepo
 {
     public Task AddAsync(Role role, CancellationToken cancellationToken = default)
     {
-        var rolePermissions = role.Permissions.Select(p => new RolePermission() { PermissionId = p.Id, RoleId = role.Id});
-
         _dbContext.Add(role);
-        _dbContext.AddRange(rolePermissions);
-
         return Task.CompletedTask;
     }
 
@@ -20,7 +16,7 @@ internal sealed class RoleWriteRepository(DbContext _dbContext) : IRoleWriteRepo
     {
         _dbContext.Entry(existingRole).CurrentValues.SetValues(updatedRole);
 
-        existingRole.Permissions = updatedRole.Permissions;
+        existingRole.Permissions.Clear();
         foreach (var permission in updatedRole.Permissions)
             existingRole.Permissions.Add(permission);
 
@@ -29,10 +25,10 @@ internal sealed class RoleWriteRepository(DbContext _dbContext) : IRoleWriteRepo
 
     public Task DeleteAsync(Role role, CancellationToken cancellationToken = default)
     {
-        var rolePermissions = role.Permissions.Select(p => new RolePermission() { PermissionId = p.Id, RoleId = role.Id});
+        //var rolePermissions = role.Permissions.Select(p => new RolePermission() { PermissionId = p.Id, RoleId = role.Id});
 
         _dbContext.Remove(role);
-        _dbContext.RemoveRange(rolePermissions);
+        //_dbContext.RemoveRange(rolePermissions);
 
         return Task.CompletedTask;
     }
