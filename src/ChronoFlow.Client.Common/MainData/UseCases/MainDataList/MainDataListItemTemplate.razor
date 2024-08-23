@@ -1,0 +1,39 @@
+﻿@typeparam TViewModel
+
+@if (Left != null)
+{
+    <div class="md-item-template-left">
+        @Left
+    </div>
+}
+
+<section class="md-item-template-center">
+    <header>
+        <a href="@ItemUriFactory(Item)">
+            @ItemTitle(Item)
+        </a>
+
+        <div>
+            @GetTopRow()
+        </div>
+    </header>
+
+    <div>
+        @GetBottomRow()
+    </div>
+</section>
+
+@if (Right != null)
+{
+    <div class="md-item-template-right">
+        @Right
+    </div>
+}
+
+<aside>
+    <Button Class="squared danger"
+            IconLeft="bi bi-x"
+            IconLeftSize="18px"
+            Disabled="@Context.Busy"
+            OnClick="@OnDelete" />
+</aside>
