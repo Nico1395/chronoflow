@@ -7,4 +7,5 @@ public enum ResponseCode
     NotFound,
     NotAuthorized,
     ValidationErrors,
+    AlreadyExists,
 }

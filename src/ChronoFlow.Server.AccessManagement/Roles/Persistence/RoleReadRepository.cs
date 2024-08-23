@@ -15,4 +15,14 @@ internal sealed class RoleReadRepository(DbContext _dbContext) : IRoleReadReposi
     {
         return _dbContext.Set<Role>().Include(r => r.Permissions).SingleOrDefaultAsync(r => r.Id == id, cancellationToken);
     }
+
+    public Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default)
+    {
+        return _dbContext.Set<Role>().AnyAsync(r => r.Id == id, cancellationToken);
+    }
+
+    public Task<bool> ExistsWithNameAsync(string name, CancellationToken cancellationToken = default)
+    {
+        return _dbContext.Set<Role>().AnyAsync(r => r.Name == name, cancellationToken);
+    }
 }

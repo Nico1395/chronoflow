@@ -9,6 +9,9 @@ public static class Endpoints
     {
         endpoints.UseGetAllRolesEndpoint();
         endpoints.UseGetRoleByIdEndpoint();
+        endpoints.UseAddRoleEndpoint();
+        endpoints.UseUpdateRoleEndpoint();
+        endpoints.UseDeleteRoleEndpoint();
 
         return endpoints;
     }
