@@ -12,6 +12,9 @@ public partial class Textbox : FormControlComponentBase
     public string? Value { get; set; }
 
     [Parameter]
+    public string? Placeholder { get; set; }
+
+    [Parameter]
     public EventCallback<string?> ValueChanged { get; set; }
 
     [Parameter]
@@ -19,6 +22,9 @@ public partial class Textbox : FormControlComponentBase
 
     [Parameter]
     public EventCallback<string?> OnInput { get; set; }
+
+    [Parameter]
+    public bool Disabled { get; set; }
 
     [Parameter]
     public string? Class { get; set; }

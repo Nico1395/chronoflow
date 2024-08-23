@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using NLog;
+using NLog.Extensions.Logging;
 
 namespace ChronoFlow.Server;
 
@@ -17,11 +17,13 @@ public class Program
 
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddAuthorization();
             builder.Services.AddChronoFlow();
-            builder.Services.AddControllers().AddNewtonsoftJson(options =>
+            builder.Services.AddLogging(loggingBuilder =>
             {
-                options.SerializerSettings.TypeNameHandling = TypeNameHandling.Auto;
-                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+                loggingBuilder.ClearProviders();
+                loggingBuilder.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+                loggingBuilder.AddNLog(LogManager.Configuration);
             });
 
             var app = builder.Build();
@@ -33,7 +35,16 @@ public class Program
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseChronoFlowEndpoints();
+            app.MapControllers();
+            app.UseCors(c =>
+            {
+                c.AllowAnyOrigin();
+                c.AllowAnyHeader();
+                c.AllowAnyMethod();
+            });
 
             app.Run();
         }

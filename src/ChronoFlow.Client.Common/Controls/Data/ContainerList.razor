@@ -1,0 +1,84 @@
+﻿@typeparam TItem
+
+@{
+    var itemGroups = GetItemGroups();
+    var selectedItemGroup = GetSelectedItemGroup(itemGroups);
+}
+
+<div class="c-container-list">
+    <header>
+        <Textbox Placeholder="@Localizer["TypeToSearch"]" @bind-Value="@_searchTerm" />
+
+        @if (_canSort)
+        {
+            @* TODO -> Dropdown with sort options *@
+            <Button>
+                @Localizer["Sort"]
+            </Button>
+        }
+
+        @if (Header != null)
+        {
+            @Header
+        }
+    </header>
+
+    <section>
+        @if (selectedItemGroup.Count > 0)
+        {
+            @foreach (var item in selectedItemGroup)
+            {
+                <div class="c-container-list-item">
+                    @if (Item != null)
+                    {
+                        @Item(item)
+                    }
+                    else if (Template != null && TemplateParameterFactory != null)
+                    {
+                        var parameters = TemplateParameterFactory(item);
+                        <DynamicComponent Type="@Template" Parameters="@parameters" />
+                    }
+                </div>
+            }
+        }
+        else if (NoItems != null)
+        {
+            @NoItems
+        }
+        else
+        {
+            <span class="c-container-list-no-items">
+                @Localizer["NoItems"]
+            </span>
+        }
+    </section>
+
+    @if (Pageable && itemGroups.Count > 1)
+    {
+        <footer>
+            @{
+                var previousEnabled = CurrentPage > 1;
+                var nextEnabled = CurrentPage < itemGroups.Count;
+            }
+
+            <Button Class="squared alt"
+                    IconLeft="bi bi-arrow-left"
+                    IconLeftSize="12px"
+                    Disabled="@(!previousEnabled)"
+                    OnClick="@(async () => await SelectItemGroupAsync(CurrentPage - 1))" />
+
+            @foreach (var itemGroup in itemGroups)
+            {
+                <Button Class="squared" Active="@(itemGroup.Key == CurrentPage)" OnClick="@(async () => await SelectItemGroupAsync(itemGroup.Key))">
+                    @itemGroup.Key
+                </Button>
+            }
+
+            <Button Class="squared alt"
+                    IconLeft="bi bi-arrow-right"
+                    IconLeftSize="12px"
+                    Disabled="@(!nextEnabled)"
+                    OnClick="@(async () => await SelectItemGroupAsync(CurrentPage + 1))" />
+        </footer>
+    }
+</div>

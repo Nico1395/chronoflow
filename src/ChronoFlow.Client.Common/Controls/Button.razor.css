@@ -6,7 +6,7 @@
     font-family: var(--font-family-regular);
     font-size: 12pt;
     font-weight: 600;
-    background: var(--color-primary-20);
+    background: var(--color-primary-10);
     color: var(--color-primary-100);
     cursor: pointer;
     display: flex;
@@ -16,19 +16,25 @@
     justify-content: center;
 
     &:hover {
-        background: var(--color-primary-30);
+        background: var(--color-primary-15);
     }
 
-    &:active {
-        background: var(--color-primary-40);
+    &:active, &.active {
+        background: var(--color-primary-20);
     }
 
     &:focus {
         outline: 2px solid var(--color-primary-100);
     }
 
+    &:disabled {
+        background: none !important;
+        color: var(--color-primary-20) !important;
+        cursor: default !important;
+    }
+
     > .bi {
-        font-weight: 15px;
+        font-size: 15px;
     }
 
     &.alt {
@@ -39,8 +45,36 @@
             background: var(--color-primary-70);
         }
     
-        &:active {
+        &:active, &.active {
             background: var(--color-primary-60);
+        }
+    
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+        
+        &:disabled {
+            background: var(--color-primary-40) !important;
+            color: var(--color-background) !important;
+        }
+    }
+
+    &.squared {
+        padding: 0;
+        width: 35px;
+    }
+
+    &.danger {
+        background: var(--color-primary-10);
+
+        &:hover {
+            background: var(--color-semantic-danger-100);
+            color: var(--color-background);
+        }
+    
+        &:active, &.active {
+            background: var(--color-semantic-danger-90);
+            color: var(--color-background);
         }
     
         &:focus {

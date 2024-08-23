@@ -30,7 +30,7 @@ internal sealed class Localizer : ILocalizer
     }
 
     public string this[string? key] => GetLocalizedString(key);
-    public string this[string? formattableKey, params object[] args] => GetFormattedLocalizedString(formattableKey, args);
+    public string this[string? formattableKey, params object?[] args] => GetFormattedLocalizedString(formattableKey, args);
 
     /// <summary>
     /// Localizes a specified <paramref name="key"/>.
@@ -66,7 +66,7 @@ internal sealed class Localizer : ILocalizer
     /// <param name="formattableKey">Key to be localized.</param>
     /// <param name="args">Formatting arguments.</param>
     /// <returns>Localized and formatted string if found.</returns>
-    private string GetFormattedLocalizedString(string? formattableKey, params object[] args)
+    private string GetFormattedLocalizedString(string? formattableKey, params object?[] args)
     {
         if (formattableKey == null)
             return string.Empty;
@@ -85,9 +85,9 @@ internal sealed class Localizer : ILocalizer
     /// </summary>
     /// <param name="arguments">Arguments to be flattened.</param>
     /// <returns>Flattened arguments.</returns>
-    private object[] GetFlattenedArguments(object[] arguments)
+    private object?[] GetFlattenedArguments(object?[] arguments)
     {
-        var flattenedArguments = new List<object>();
+        var flattenedArguments = new List<object?>();
 
         foreach (var argument in arguments)
         {

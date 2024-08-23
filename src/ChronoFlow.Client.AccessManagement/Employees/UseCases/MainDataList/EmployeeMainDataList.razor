@@ -1,0 +1,9 @@
+<MainDataList TViewModel="@EmployeeViewModel"
+              NewUri="main-data/employees/new"
+              ItemTemplate="@typeof(EmployeeMainDataListItem)"
+              ItemClass="md-employee">
+
+    <Header>
+        @GetHeader(context.Items.Count)
+    </Header>
+</MainDataList>

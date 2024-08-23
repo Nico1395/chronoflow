@@ -1,0 +1,55 @@
+.c-notification {
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.6rem;
+    min-width: 325px;
+    max-width: 450px;
+    border-radius: var(--container-radius-regular);
+    cursor: pointer;
+    box-shadow: var(--shadow-notification);
+    -o-box-shadow: var(--shadow-notification);
+    -moz-box-shadow: var(--shadow-notification);
+    -webkit-box-shadow: var(--shadow-notification);
+    animation: fadein 0.35s;
+    background: var(--color-primary-100);
+    color: var(--color-background);
+
+    /* &.success > section > .bi {
+        color: var();
+    }
+
+    &.warning > section > .bi {
+        outline: 2px solid $color-semantic-warning-300;
+    }
+
+    &.info > section > .bi {
+        outline: 2px solid $color-semantic-info-300;
+    }
+
+    &.error > section > .bi {
+        outline: 2px solid $color-semantic-error-300;
+    } */
+}
+
+.c-notification > section {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .bi {
+        font-size: 18px;
+    }
+}
+
+.c-notification > main {
+    flex: 1;
+    text-align: left;
+}

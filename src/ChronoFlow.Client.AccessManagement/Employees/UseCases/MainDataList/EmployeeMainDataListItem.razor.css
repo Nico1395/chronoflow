@@ -1,0 +1,59 @@
+.md-employee-avatar {
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    background: var(--color-primary-20);
+    text-align: center;
+}
+
+.md-employee-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 0.1rem;
+
+    > * {
+        flex-grow: 0;
+        flex-shrink: 0;
+    }
+
+    > header {
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        gap: 0.6rem;
+
+        > a {
+            color: var(--color-primary-100);
+            text-decoration: none;
+            font-size: 12pt;
+            font-weight: 600;
+
+            &:hover {
+                text-decoration: underline;
+                text-decoration-color: var(--color-primary-100);
+                text-decoration-thickness: 2px;
+            }
+
+            &:visited {
+                color: var(--color-primary-100);
+            }
+        }
+
+        > div {
+            color: var(--color-primary-60);
+            font-size: 10pt;
+        }
+    }
+
+    > div {
+        font-size: 10pt;
+        font-weight: 400;
+        color: var(--color-primary-60);
+    }
+}

@@ -1,0 +1,27 @@
+﻿@inherits MainDataListItemComponentBase<EmployeeViewModel>
+
+<div class="md-employee-avatar"></div>
+
+<section class="md-employee-center">
+    <header>
+        <a href="@GetRedirectUri()">
+            @GetTitle()
+        </a>
+
+        <div>
+            @Item.PersonnelNumber
+        </div>
+    </header>
+
+    <div>
+        @GetDescription()
+    </div>
+</section>
+
+<aside>
+    <Button Class="squared danger"
+            IconLeft="bi bi-x"
+            IconLeftSize="18px"
+            Disabled="@Context.Busy"
+            OnClick="@OnDeleteAsync" />
+</aside>

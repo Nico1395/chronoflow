@@ -3,6 +3,7 @@ using ChronoFlow.Server.Common.Messaging.DependencyInjection;
 using ChronoFlow.Server.Common.Migrations;
 using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Server.Common.Persistence.Context;
+using ChronoFlow.Shared.Common.Mapping;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
@@ -20,6 +21,7 @@ public static class DependencyInjection
         services.AddEfCore(configurationProvider, assemblies);
         services.AddMessaging(assemblies);
         services.AddServices(assemblies);
+        services.AddMapper(assemblies);
 
         return services;
     }

@@ -11,7 +11,7 @@ internal static class MigrateMigrations
 {
     internal static IEndpointRouteBuilder UseMigrateMigrationsEndpoint(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapPost("/migrations/migrate", async ([FromServices] IMediator mediator) =>
+        endpoints.MapPost("api/migrations/migrate", async ([FromServices] IMediator mediator) =>
         {
             var result = await mediator.SendAsync(new MigrateMigrationsCommand());
             return Results.Ok(result);

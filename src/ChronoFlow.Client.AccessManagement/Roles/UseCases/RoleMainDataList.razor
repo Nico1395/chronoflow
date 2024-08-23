@@ -1,0 +1,10 @@
+<MainDataList TViewModel="@RoleViewModel"
+              NewUri="main-data/roles/new"
+              ItemTemplate="@typeof(RoleMainDataListItem)"
+              ItemClass="md-employee">
+
+    <Header>
+        @GetHeader(context.Items.Count)
+    </Header>
+</MainDataList>
+

@@ -1,0 +1,22 @@
+﻿<a id="@Id"
+   class="@GetClasses()"
+   href="@GetHref()"
+   style="@GetStyles()"
+   title="@Tooltip"
+   @onclick="@OnClick">
+
+    @if (IconLeft != null)
+    {
+        <i class="@IconLeft" style="@(IconLeftSize != null ? $"font-size:{IconLeftSize};" : null)"></i>
+    }
+
+    @if (ChildContent != null)
+    {
+        @ChildContent
+    }
+
+    @if (IconRight != null)
+    {
+        <i class="@IconRight" style="@(IconRightSize != null ? $"font-size:{IconRightSize};" : null)"></i>
+    }
+</a>

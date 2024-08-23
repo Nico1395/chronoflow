@@ -1,0 +1,11 @@
+.c-notification-renderer {
+    position: fixed;
+    bottom: 1.2rem;
+    right: 1.2rem;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: end;
+    gap: 0.6rem;
+    height: fit-content;
+    z-index: 1000;
+}

@@ -11,7 +11,7 @@ internal static class GetPendingMigrations
 {
     internal static IEndpointRouteBuilder UseGetPendingMigrationsEndpoint(this IEndpointRouteBuilder endpoints)
     {
-        endpoints.MapGet("/migrations/get-pending", async ([FromServices] IMediator mediator) =>
+        endpoints.MapGet("api/migrations/get-pending", async ([FromServices] IMediator mediator) =>
         {
             var result = await mediator.SendAsync(new GetPendingMigrationsQuery());
             return Results.Ok(result);

@@ -1,0 +1,42 @@
+﻿@typeparam TViewModel
+
+@{
+    var processedItems = GetProcessedItems();
+    var context = new MainDataListContext<TViewModel>(processedItems, _busy);
+}
+
+<div class="md-list">
+    <header>
+        @if (Header != null)
+        {
+            @Header(context)
+        }
+    </header>
+
+    <ContainerList TItem="@TViewModel"
+                   Items="@_items"
+                   SortOptions="@SortOptions"
+                   Sortable="@true"
+                   Pageable="@true"
+                   PageCount="20"
+                   Template="@ItemTemplate"
+                   TemplateParameterFactory="@((item) => CreateTemplateParameters(item, context))">
+    
+        <Header>
+            <Button Class="squared"
+                    IconLeft="bi bi-arrow-repeat"
+                    Disabled="@context.Busy"
+                    OnClick="@LoadItemsAsync" />
+
+            <Button Class="alt"
+                    IconRight="bi bi-plus"
+                    IconRightSize="18px"
+                    Disabled="@context.Busy"
+                    OnClick="@NavigateToNew">
+
+                @Localizer["New"]
+            </Button>
+        </Header>
+    </ContainerList>
+</div>
+
