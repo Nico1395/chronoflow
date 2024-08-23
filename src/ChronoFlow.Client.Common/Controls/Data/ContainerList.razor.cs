@@ -64,8 +64,8 @@ public partial class ContainerList<TItem> : ComponentBase
         if (Template != null && TemplateParameterFactory == null)
             throw new InvalidOperationException($"If the {nameof(Template)} parameter is provided, the {nameof(TemplateParameterFactory)} also has to be provided.");
 
-        if (Template != null && !Template.IsAssignableTo(typeof(ContainerListItemTemplate<TItem>)))
-            throw new InvalidOperationException($"The type of template has to implement the abstract class {typeof(ContainerListItemTemplate<TItem>)}");
+        if (Template != null && !Template.IsAssignableTo(typeof(ContainerListItemComponentBase<TItem>)))
+            throw new InvalidOperationException($"The type of template has to implement the abstract class {typeof(ContainerListItemComponentBase<TItem>)}");
     }
 
     private List<TItem> GetProcessedItems()

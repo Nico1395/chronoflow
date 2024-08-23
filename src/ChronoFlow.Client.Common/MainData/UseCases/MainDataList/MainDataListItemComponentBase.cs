@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
 
-public abstract class MainDataListItemTemplate<TViewModel> : ContainerListItemTemplate<TViewModel>
+public abstract class MainDataListItemComponentBase<TViewModel> : ContainerListItemComponentBase<TViewModel>
     where TViewModel : class
 {
     [Parameter, EditorRequired]

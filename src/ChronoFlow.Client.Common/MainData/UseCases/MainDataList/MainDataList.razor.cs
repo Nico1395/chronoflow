@@ -154,9 +154,9 @@ public partial class MainDataList<TViewModel> : ComponentBase
     {
         return new Dictionary<string, object?>()
         {
-            { nameof(MainDataListItemTemplate<TViewModel>.Object), item },
-            { nameof(MainDataListItemTemplate<TViewModel>.Context), context },
-            { nameof(MainDataListItemTemplate<TViewModel>.ParentList), this },
+            { nameof(MainDataListItemComponentBase<TViewModel>.Object), item },
+            { nameof(MainDataListItemComponentBase<TViewModel>.Context), context },
+            { nameof(MainDataListItemComponentBase<TViewModel>.ParentList), this },
         };
     }
 }
