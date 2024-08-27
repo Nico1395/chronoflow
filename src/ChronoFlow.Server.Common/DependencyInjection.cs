@@ -1,4 +1,5 @@
 ﻿using ChronoFlow.Server.Common.Configuration;
+using ChronoFlow.Server.Common.Controllers;
 using ChronoFlow.Server.Common.Messaging.DependencyInjection;
 using ChronoFlow.Server.Common.Migrations;
 using ChronoFlow.Server.Common.Persistence;
@@ -22,6 +23,7 @@ public static class DependencyInjection
         services.AddMessaging(assemblies);
         services.AddServices(assemblies);
         services.AddMapper(assemblies);
+        services.AddApiEndpoints(assemblies);
 
         return services;
     }
