@@ -11,7 +11,7 @@ public static class DeleteRole
     [ApiController]
     public sealed class RolesController(IMediator _mediator) : ControllerBase
     {
-        [HttpPost("api/access-management/roles/delete")]
+        [HttpDelete("api/access-management/roles/delete")]
         public async Task<ActionResult<Result>> DeleteRoleAsync([FromQuery] Guid roleId)
         {
             var result = await _mediator.SendAsync(new DeleteRoleCommand(roleId));
