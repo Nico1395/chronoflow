@@ -7,6 +7,7 @@ public interface IMainDataViewModelService<TViewModel>
 {
     public Task<Result<List<TViewModel>>> GetAllAsync(CancellationToken cancellationToken = default);
     public Task<Result<TViewModel>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    public Task<Result<TViewModel>> GetNewAsync(CancellationToken cancellationToken = default);
     public Task<Result> AddAsync(TViewModel viewModel, CancellationToken cancellationToken = default);
     public Task<Result> UpdateAsync(TViewModel viewModel, CancellationToken cancellationToken = default);
     public Task<Result> DeleteAsync(TViewModel viewModel, CancellationToken cancellationToken = default);

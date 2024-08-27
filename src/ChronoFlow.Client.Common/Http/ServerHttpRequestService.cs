@@ -10,11 +10,6 @@ namespace ChronoFlow.Client.Common.Http;
 
 internal sealed class ServerHttpRequestService(IHttpClientProvider _httpClientProvider, IMapper _mapper) : IServerHttpRequestService
 {
-    private readonly JsonSerializerSettings _serializerSettings = new()
-    {
-        TypeNameHandling = TypeNameHandling.All,
-    };
-
     public async Task<Result<TViewModel>> GetAsync<TDto, TViewModel>(string uri, CancellationToken cancellationToken = default)
         where TViewModel : class
         where TDto : class
@@ -132,17 +127,15 @@ internal sealed class ServerHttpRequestService(IHttpClientProvider _httpClientPr
         if (serializedData != null)
             content = new StringContent(serializedData, Encoding.UTF8, "application/json");
 
-        return new HttpRequestMessage()
-        {
-            Content = content,
-        };
+        return new HttpRequestMessage() { Content = content, };
     }
 
     private HttpRequestMessage CreateRequestMessage<TDto, TViewModel>(TViewModel data)
         where TViewModel : class
         where TDto : class
     {
-        var serializedData = JsonConvert.SerializeObject(_mapper.Map<TDto>(data), _serializerSettings);
+        var mappedData = _mapper.Map<TDto>(data);
+        var serializedData = JsonConvert.SerializeObject(mappedData, HttpSerializationConstants.JsonSerializerSettings);
         return CreateRequestMessage(serializedData);
     }
 

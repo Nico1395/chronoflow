@@ -18,6 +18,11 @@ internal sealed class RoleMainDataViewModelService(IServerHttpRequestService _ht
         return _httpRequestService.GetAsync<RoleDto, RoleViewModel>("api/access-management/roles/get-by-id", cancellationToken, ("roleId", id));
     }
 
+    public Task<Result<RoleViewModel>> GetNewAsync(CancellationToken cancellationToken = default)
+    {
+        return _httpRequestService.GetAsync<RoleDto, RoleViewModel>("api/access-management/roles/get-new", cancellationToken);
+    }
+
     public Task<Result> AddAsync(RoleViewModel viewModel, CancellationToken cancellationToken = default)
     {
         return _httpRequestService.PostAsync<RoleDto, RoleViewModel>("api/access-management/roles/add", viewModel, cancellationToken);
