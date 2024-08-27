@@ -1,0 +1,12 @@
+﻿@page "/main-data/roles/new"
+@page "/main-data/roles/{RoleId}"
+
+<MainDataForm TViewModel="@RoleViewModel" Id="@RoleId" Title="@GetTitle" ReturnUri="main-data/roles">
+    <Field Label="@Localizer["Name"]" For="@(() => context.Item.Name)" Width="100%">
+        <Textbox @bind-Value="@context.Item.Name" />
+    </Field>
+
+    <Field Label="@Localizer["Description"]" For="@(() => context.Item.Name)" Width="100%">
+        <Textbox @bind-Value="@context.Item.Description" />
+    </Field>
+</MainDataForm>

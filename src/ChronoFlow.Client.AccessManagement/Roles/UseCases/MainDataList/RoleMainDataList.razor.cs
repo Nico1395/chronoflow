@@ -1,7 +1,7 @@
 ﻿using ChronoFlow.Client.Common.Localization;
 using Microsoft.AspNetCore.Components;
 
-namespace ChronoFlow.Client.AccessManagement.Roles.UseCases;
+namespace ChronoFlow.Client.AccessManagement.Roles.UseCases.MainDataList;
 
 public partial class RoleMainDataList : ComponentBase
 {

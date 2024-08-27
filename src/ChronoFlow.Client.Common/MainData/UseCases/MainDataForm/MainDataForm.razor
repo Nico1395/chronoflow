@@ -1,2 +1,43 @@
 ﻿@typeparam TViewModel
 
+@if (_item == null)
+    return;
+
+<div class="md-form">
+    <Form Item="@_item">
+        @{
+            var mainDataFormContext = new MainDataFormContext<TViewModel>(_item, _isBusy, _isNew, context);
+            var subtitle = GetSubtitle();
+        }
+
+        <header>
+            <section>
+                <Button Class="squared"
+                        IconLeft="bi bi-arrow-left"
+                        OnClick="@NavigateBack"
+                        Disabled="@_isBusy" />
+
+                <div>
+                    @Title(mainDataFormContext)
+                </div>
+            </section>
+
+            @if (subtitle != null)
+            {
+                <section>
+                    @subtitle
+                </section>
+            }
+        </header>
+
+        <main>
+            @ChildContent(mainDataFormContext)
+        </main>
+
+        <footer>
+            <Button Class="alt" IconLeft="bi bi-check-2" OnClick="@SaveAsync" Disabled="@_isBusy">
+                @Localizer["Save"]
+            </Button>
+        </footer>
+    </Form>
+</div>

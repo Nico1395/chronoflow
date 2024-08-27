@@ -2,6 +2,7 @@
 using ChronoFlow.Client.Common.Authentication.UseCases.Login;
 using ChronoFlow.Client.Common.Browser;
 using ChronoFlow.Client.Common.Http.DI;
+using ChronoFlow.Client.Common.Layouts;
 using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
 using ChronoFlow.Client.Common.MainData;
@@ -59,6 +60,9 @@ public static class DependencyInjection
 
         // Processing
         services.AddScoped<ILocalSearchEngine, LocalSearchEngine>();
+
+        // Layout
+        services.AddSingleton(sp => new LayoutRouterOptions(assemblies));
 
         return services;
     }
