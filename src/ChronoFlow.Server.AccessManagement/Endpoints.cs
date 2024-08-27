@@ -1,5 +1,4 @@
 ﻿using ChronoFlow.Server.AccessManagement.Employees.UseCases;
-using ChronoFlow.Server.AccessManagement.Roles.UseCases;
 using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement;
@@ -13,12 +12,7 @@ public static class Endpoints
         endpoints.UseAddEmployeeEndpoint();
         endpoints.UseUpdateEmployeeEndpoint();
         endpoints.UseDeleteEmployeeEndpoint();
-
-        endpoints.UseGetAllRolesEndpoint();
-        endpoints.UseGetRoleByIdEndpoint();
-        endpoints.UseAddRoleEndpoint();
-        endpoints.UseUpdateRoleEndpoint();
-        endpoints.UseDeleteRoleEndpoint();
+        endpoints.UseGetNewEmployeeEndpoint();
 
         return endpoints;
     }

@@ -5,31 +5,28 @@ using ChronoFlow.Shared.AccessManagement.Roles;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Roles.UseCases;
 
 public static class GetAllRoles
 {
-    internal static IEndpointRouteBuilder UseGetAllRolesEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class RolesController(IMediator _mediator, IMapper _mapper) : ControllerBase
     {
-        endpoints.MapGet("api/access-management/roles/get-all", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper) =>
+        [HttpGet("api/access-management/roles/get-all")]
+        public async Task<ActionResult<Result<List<RoleDto>>>> GetAllRolesAsync()
         {
-            var result = await mediator.SendAsync(new GetAllRolesQuery());
-            var mappedResult = mapper.MapResult<List<Role>, List<RoleDto>>(result);
+            var result = await _mediator.SendAsync(new GetAllRolesQuery());
+            var mappedResult = _mapper.MapResult<List<Role>, List<RoleDto>>(result);
 
-            return Results.Ok(mappedResult);
-        });
-
-        return endpoints;
+            return Ok(mappedResult);
+        }
     }
 
     public sealed record GetAllRolesQuery() : IQuery<Result<List<Role>>>;
 
-    internal sealed class GetAllRolesQueryHandler(IRoleReadRepository _roleReadRepository) : IQueryHandler<GetAllRolesQuery, Result<List<Role>>>
+    private sealed class GetAllRolesQueryHandler(IRoleReadRepository _roleReadRepository) : IQueryHandler<GetAllRolesQuery, Result<List<Role>>>
     {
         public async Task<Result<List<Role>>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken)
         {

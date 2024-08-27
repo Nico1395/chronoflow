@@ -5,31 +5,28 @@ using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Shared.AccessManagement.Roles;
 using ChronoFlow.Shared.Common.Messaging;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Roles.UseCases;
 
 public static class UpdateRole
 {
-    internal static IEndpointRouteBuilder UseUpdateRoleEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class RolesController(IMediator _mediator, IMapper _mapper) : ControllerBase
     {
-        endpoints.MapPatch("api/access-management/roles/update", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper, [FromBody] RoleDto updatedRoleDto) =>
+        [HttpPatch("api/access-management/roles/update")]
+        public async Task<ActionResult<Result>> UpdateRoleAsync([FromBody] RoleDto updatedRoleDto)
         {
-            var updatedRole = mapper.Map<Role>(updatedRoleDto);
-            var result = await mediator.SendAsync(new UpdateRoleCommand(updatedRole));
+            var updatedRole = _mapper.Map<Role>(updatedRoleDto);
+            var result = await _mediator.SendAsync(new UpdateRoleCommand(updatedRole));
 
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            return Ok(result);
+        }
     }
 
     public sealed record UpdateRoleCommand(Role UpdatedRole) : ICommand<Result>;
 
-    internal sealed class UpdateRoleCommandHandler(
+    private sealed class UpdateRoleCommandHandler(
         IRoleReadRepository _roleReadRepository,
         IRoleWriteRepository _roleWriteRepository,
         IUnitOfWork _unitOfWork) : ICommandHandler<UpdateRoleCommand, Result>

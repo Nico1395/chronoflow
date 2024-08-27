@@ -11,8 +11,4 @@
     <ProjectReference Include="..\ChronoFlow.Shared.AccessManagement\ChronoFlow.Shared.AccessManagement.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Permissions\UseCases\" />
-  </ItemGroup>
-
 </Project>
