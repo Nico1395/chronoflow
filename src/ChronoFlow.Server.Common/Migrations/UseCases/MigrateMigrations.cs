@@ -1,23 +1,20 @@
 ﻿using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Shared.Common.Messaging;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.Common.Migrations.UseCases;
 
 internal static class MigrateMigrations
 {
-    internal static IEndpointRouteBuilder UseMigrateMigrationsEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class MigrationsController(IMediator _mediator) : ControllerBase
     {
-        endpoints.MapPost("api/migrations/migrate", async ([FromServices] IMediator mediator) =>
+        [HttpPost("api/migrations/migrate")]
+        public async Task<ActionResult<Result>> MigrateMigrationsAsync()
         {
-            var result = await mediator.SendAsync(new MigrateMigrationsCommand());
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            var result = await _mediator.SendAsync(new MigrateMigrationsCommand());
+            return Ok(result);
+        }
     }
 
     private sealed record MigrateMigrationsCommand() : ICommand<Result>;
