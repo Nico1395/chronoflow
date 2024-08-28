@@ -36,12 +36,4 @@ internal static class DependencyInjection
         yield return Assembly.Load("ChronoFlow.Server.Common");
         yield return Assembly.Load("ChronoFlow.Server.AccessManagement");
     }
-
-    private static IMvcBuilder AddApplicationPartsFromAssemblies(this IMvcBuilder mvcBuilder, Assembly[] assemblies)
-    {
-        foreach (var assembly in assemblies)
-            mvcBuilder.AddApplicationPart(assembly);
-
-        return mvcBuilder;
-    }
 }
