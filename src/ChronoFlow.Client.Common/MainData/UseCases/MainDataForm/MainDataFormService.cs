@@ -1,14 +1,20 @@
 ﻿using ChronoFlow.Client.Common.MainData.Entities;
 using ChronoFlow.Client.Common.MainData.Persistence;
 using ChronoFlow.Client.Common.MainData.Results;
+using ChronoFlow.Client.Common.MainData.UseCases.MainDataForm.Controller;
 using ChronoFlow.Shared.Common.Messaging;
 
 namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataForm;
 
-public class MainDataFormService<TViewModel>(IMainDataViewModelService<TViewModel> _mainDataViewModelService) : IMainDataFormService<TViewModel>
+public class MainDataFormService<TViewModel>(
+    IMainDataViewModelService<TViewModel> mainDataViewModelService,
+    IMainDataFormController<TViewModel> mainDataFormController) : IMainDataFormService<TViewModel>
     where TViewModel : class, IMainDataViewModel
 {
-    public async Task<MainDataGetNewResult<TViewModel>> GetNewAsync(CancellationToken cancellationToken = default)
+    protected readonly IMainDataViewModelService<TViewModel> _mainDataViewModelService = mainDataViewModelService;
+    protected readonly IMainDataFormController<TViewModel> _formController = mainDataFormController;
+
+    public virtual async Task<MainDataGetNewResult<TViewModel>> GetNewAsync(CancellationToken cancellationToken = default)
     {
         var response = await _mainDataViewModelService.GetNewAsync(cancellationToken);
         var resultCode = response.Code switch
@@ -22,7 +28,7 @@ public class MainDataFormService<TViewModel>(IMainDataViewModelService<TViewMode
         return new MainDataGetNewResult<TViewModel>(resultCode, response.Data);
     }
 
-    public async Task<MainDataGetByIdResult<TViewModel>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public virtual async Task<MainDataGetByIdResult<TViewModel>> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         var response = await _mainDataViewModelService.GetByIdAsync(id, cancellationToken);
         var resultCode = response.Code switch
@@ -37,7 +43,7 @@ public class MainDataFormService<TViewModel>(IMainDataViewModelService<TViewMode
         return new MainDataGetByIdResult<TViewModel>(resultCode, response.Data);
     }
 
-    public async Task<MainDataAddResult> AddAsync(TViewModel viewModel, CancellationToken cancellationToken = default)
+    public virtual async Task<MainDataAddResult> AddAsync(TViewModel viewModel, CancellationToken cancellationToken = default)
     {
         var response = await _mainDataViewModelService.AddAsync(viewModel, cancellationToken);
         var resultCode = response.Code switch
@@ -53,7 +59,7 @@ public class MainDataFormService<TViewModel>(IMainDataViewModelService<TViewMode
         return new MainDataAddResult(resultCode);
     }
 
-    public async Task<MainDataUpdateResult> UpdateAsync(TViewModel viewModel, CancellationToken cancellationToken = default)
+    public virtual async Task<MainDataUpdateResult> UpdateAsync(TViewModel viewModel, CancellationToken cancellationToken = default)
     {
         var response = await _mainDataViewModelService.AddAsync(viewModel, cancellationToken);
         var resultCode = response.Code switch
@@ -68,5 +74,15 @@ public class MainDataFormService<TViewModel>(IMainDataViewModelService<TViewMode
         };
 
         return new MainDataUpdateResult(resultCode);
+    }
+
+    public virtual Task OnLoadedAsync(CancellationToken cancellationToken = default)
+    {
+        return Task.CompletedTask;
+    }
+
+    public virtual Task OnSavedAsync(CancellationToken cancellationToken = default)
+    {
+        return Task.CompletedTask;
     }
 }

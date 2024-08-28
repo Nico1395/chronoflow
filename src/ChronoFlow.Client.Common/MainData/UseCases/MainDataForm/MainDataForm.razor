@@ -1,12 +1,12 @@
 ﻿@typeparam TViewModel
 
-@if (_item == null)
+@if (Item == null)
     return;
 
 <div class="md-form">
-    <Form Item="@_item">
+    <Form Item="@Item">
         @{
-            var mainDataFormContext = new MainDataFormContext<TViewModel>(_item, _isBusy, _isNew, context);
+            var mainDataFormContext = new MainDataFormContext<TViewModel>(Item, IsBusy, IsNew, context);
             var subtitle = GetSubtitle();
         }
 
@@ -15,7 +15,7 @@
                 <Button Class="squared"
                         IconLeft="bi bi-arrow-left"
                         OnClick="@NavigateBack"
-                        Disabled="@_isBusy" />
+                        Disabled="@IsBusy" />
 
                 <div>
                     @Title(mainDataFormContext)
@@ -35,7 +35,7 @@
         </main>
 
         <footer>
-            <Button Class="alt" IconLeft="bi bi-check-2" OnClick="@SaveAsync" Disabled="@_isBusy">
+            <Button Class="alt" IconLeft="bi bi-check-2" OnClick="@SaveAsync" Disabled="@IsBusy">
                 @Localizer["Save"]
             </Button>
         </footer>

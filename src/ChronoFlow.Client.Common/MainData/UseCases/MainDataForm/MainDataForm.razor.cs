@@ -2,18 +2,19 @@
 using ChronoFlow.Client.Common.Localization;
 using ChronoFlow.Client.Common.MainData.Entities;
 using ChronoFlow.Client.Common.MainData.Results;
+using ChronoFlow.Client.Common.MainData.UseCases.MainDataForm.Controller;
 using ChronoFlow.Client.Common.Notifications;
 using Microsoft.AspNetCore.Components;
 
 namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataForm;
 
-public partial class MainDataForm<TViewModel> : ComponentBase
+public partial class MainDataForm<TViewModel> : ComponentBase, IDisposable
     where TViewModel : class, IMainDataViewModel
 {
-    private Guid? _itemId;
-    private bool _isNew;
-    private bool _isBusy;
-    private TViewModel? _item;
+    internal Guid? ItemId { get; private set; }
+    internal bool IsNew { get; private set; }
+    internal bool IsBusy { get; private set; }
+    internal TViewModel? Item { get; private set; }
 
     [Inject]
     private ILocalizer Localizer { get; set; } = null!;
@@ -33,6 +34,9 @@ public partial class MainDataForm<TViewModel> : ComponentBase
     [Inject]
     private IMainDataFormService<TViewModel> FormService { get; set; } = null!;
 
+    [Inject]
+    private IMainDataFormControllerManager FormControllerManager { get; set; } = null!;
+
     [Parameter]
     public object? Id { get; set; }
 
@@ -45,16 +49,34 @@ public partial class MainDataForm<TViewModel> : ComponentBase
     [Parameter]
     public required RenderFragment<MainDataFormContext<TViewModel>> ChildContent { get; set; }
 
+    public void Dispose()
+    {
+        FormControllerManager.Unregister(this);
+    }
+
+    internal void Render()
+    {
+        StateHasChanged();
+    }
+
+    internal Task SetBusyAsync(bool busy)
+    {
+        IsBusy = busy;
+        return Task.Run(StateHasChanged);
+    }
+
     protected override async Task OnInitializedAsync()
     {
+        FormControllerManager.Register(this);
+
         if (Id == null)
         {
-            _isNew = true;
+            IsNew = true;
         }
         else if (Guid.TryParse(Id.ToString(), out var id) && id != Guid.Empty)
         {
-            _itemId = id;
-            _isNew = false;
+            ItemId = id;
+            IsNew = false;
         }
 
         await LoadItemAsync();
@@ -66,12 +88,12 @@ public partial class MainDataForm<TViewModel> : ComponentBase
 
         try
         {
-            if (_isNew)
-                _item = await GetNewAsync();
+            if (IsNew)
+                Item = await GetNewAsync();
             else
-                _item = await GetByIdAsync();
+                Item = await GetByIdAsync();
 
-            ArgumentNullException.ThrowIfNull(_item, "The item should not be null here");
+            ArgumentNullException.ThrowIfNull(Item, "The item should not be null here");
         }
         catch (Exception ex)
         {
@@ -80,6 +102,7 @@ public partial class MainDataForm<TViewModel> : ComponentBase
             NavigateBack();
         }
 
+        await FormService.OnLoadedAsync();
         await SetBusyAsync(false);
     }
 
@@ -99,10 +122,10 @@ public partial class MainDataForm<TViewModel> : ComponentBase
 
     private async Task<TViewModel?> GetByIdAsync()
     {
-        if (!_itemId.HasValue)
+        if (!ItemId.HasValue)
             return null;
 
-        var result = await FormService.GetByIdAsync(_itemId.Value);
+        var result = await FormService.GetByIdAsync(ItemId.Value);
         if (result.Code == MainDataGetByIdResultCode.Success)
             return result.Item;
         else if (result.Code == MainDataGetByIdResultCode.Error)
@@ -118,17 +141,17 @@ public partial class MainDataForm<TViewModel> : ComponentBase
 
     private async Task SaveAsync()
     {
-        if (_item == null)
+        if (Item == null)
             return;
 
         await SetBusyAsync(true);
 
         try
         {
-            if (_isNew)
-                await AddAsync(_item);
+            if (IsNew)
+                await AddAsync(Item);
             else
-                await UpdateAsync(_item);
+                await UpdateAsync(Item);
         }
         catch (Exception ex)
         {
@@ -137,6 +160,7 @@ public partial class MainDataForm<TViewModel> : ComponentBase
             NavigateBack();
         }
 
+        await FormService.OnSavedAsync();
         await SetBusyAsync(false);
     }
 
@@ -205,18 +229,12 @@ public partial class MainDataForm<TViewModel> : ComponentBase
 
     private string? GetSubtitle()
     {
-        if (_isNew || _item == null)
+        if (IsNew || Item == null)
             return null;
 
-        var created = TimespanMessageCalculator.GetCreatedMessage(_item.Created);
-        var edited = TimespanMessageCalculator.GetEditedMessage(_item.LastChanged);
+        var created = TimespanMessageCalculator.GetCreatedMessage(Item.Created);
+        var edited = TimespanMessageCalculator.GetEditedMessage(Item.LastChanged);
 
         return string.Join(" • ", [created, edited]);
-    }
-
-    private Task SetBusyAsync(bool busy)
-    {
-        _isBusy = busy;
-        return Task.Run(StateHasChanged);
     }
 }

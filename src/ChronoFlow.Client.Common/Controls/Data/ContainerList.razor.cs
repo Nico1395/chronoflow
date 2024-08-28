@@ -21,8 +21,11 @@ public partial class ContainerList<TItem> : ComponentBase
     [Inject]
     private IJSRuntime JsRuntime { get; set; } = null!;
 
-    [Parameter, EditorRequired]
-    public required List<TItem> Items { get; set; }
+    [Parameter]
+    public List<TItem> Items { get; set; } = [];
+
+    [Parameter]
+    public Func<List<TItem>>? ItemSource { get; set; }
 
     [Parameter]
     public List<ContainerListSortOption<TItem>> SortOptions { get; set; } = [];
@@ -66,6 +69,12 @@ public partial class ContainerList<TItem> : ComponentBase
 
         if (Template != null && !Template.IsAssignableTo(typeof(ContainerListItemComponentBase<TItem>)))
             throw new InvalidOperationException($"The type of template has to implement the abstract class {typeof(ContainerListItemComponentBase<TItem>)}");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (ItemSource != null)
+            Items = ItemSource.Invoke();
     }
 
     private List<TItem> GetProcessedItems()

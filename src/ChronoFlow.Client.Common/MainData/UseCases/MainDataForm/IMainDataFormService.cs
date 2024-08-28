@@ -10,4 +10,6 @@ public interface IMainDataFormService<TViewModel>
     public Task<MainDataGetNewResult<TViewModel>> GetNewAsync(CancellationToken cancellationToken = default);
     public Task<MainDataAddResult> AddAsync(TViewModel viewModel, CancellationToken cancellationToken = default);
     public Task<MainDataUpdateResult> UpdateAsync(TViewModel viewModel, CancellationToken cancellationToken = default);
+    public Task OnLoadedAsync(CancellationToken cancellationToken = default);
+    public Task OnSavedAsync(CancellationToken cancellationToken = default);
 }

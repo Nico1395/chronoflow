@@ -10,6 +10,9 @@ public partial class RoleMainDataForm : ComponentBase
     [Inject]
     private ILocalizer Localizer { get; set; } = null!;
 
+    [Inject]
+    private IRoleMainDataFormService FormService { get; set; } = null!;
+
     [Parameter]
     public string? RoleId { get; set; }
 
