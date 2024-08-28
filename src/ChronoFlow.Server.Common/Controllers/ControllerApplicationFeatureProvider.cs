@@ -11,7 +11,10 @@ internal sealed class ControllerApplicationFeatureProvider(ControllerOptions opt
     {
         var controllerTypeInfos = ResolveControllerTypeInfos();
         foreach (var controllerTypeInfo in controllerTypeInfos)
-            feature.Controllers.Add(controllerTypeInfo);
+        {
+            if (!feature.Controllers.Any(c => c == controllerTypeInfo))
+                feature.Controllers.Add(controllerTypeInfo);
+        }
     }
 
     private List<TypeInfo> ResolveControllerTypeInfos()
