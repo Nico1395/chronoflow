@@ -5,31 +5,28 @@ using ChronoFlow.Shared.AccessManagement.Employees;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.UseCases;
 
 public static class GetEmployeeById
 {
-    internal static IEndpointRouteBuilder UseGetEmployeeByIdEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class EmployeesController(IMediator _mediator, IMapper _mapper) : ControllerBase
     {
-        endpoints.MapGet("api/access-management/employees/get-by-id", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper, [FromQuery] Guid employeeId) =>
+        [HttpGet("api/access-management/employees/get-by-id")]
+        public async Task<ActionResult<Result<EmployeeDto>>> GetEmployeeByIdAsync([FromQuery] Guid employeeId)
         {
-            var result = await mediator.SendAsync(new GetEmployeeByIdQuery(employeeId));
-            var mappedResult = mapper.MapResult<Employee, EmployeeDto>(result);
+            var result = await _mediator.SendAsync(new GetEmployeeByIdQuery(employeeId));
+            var mappedResult = _mapper.MapResult<Employee, EmployeeDto>(result);
 
-            return Results.Ok(mappedResult);
-        });
-
-        return endpoints;
+            return Ok(mappedResult);
+        }
     }
 
     public sealed record GetEmployeeByIdQuery(Guid EmployeeId) : IQuery<Result<Employee>>;
 
-    internal sealed class GetEmployeeByIdQueryHandler(IEmployeeReadRepository _employeeReadRepository) : IQueryHandler<GetEmployeeByIdQuery, Result<Employee>>
+    private sealed class GetEmployeeByIdQueryHandler(IEmployeeReadRepository _employeeReadRepository) : IQueryHandler<GetEmployeeByIdQuery, Result<Employee>>
     {
         public async Task<Result<Employee>> Handle(GetEmployeeByIdQuery request, CancellationToken cancellationToken)
         {

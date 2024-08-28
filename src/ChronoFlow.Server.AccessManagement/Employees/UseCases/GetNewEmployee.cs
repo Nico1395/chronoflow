@@ -4,26 +4,23 @@ using ChronoFlow.Shared.AccessManagement.Employees;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.UseCases;
 
 public static class GetNewEmployee
 {
-    internal static IEndpointRouteBuilder UseGetNewEmployeeEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class EmployeesController(IMediator mediator, IMapper mapper) : ControllerBase
     {
-        endpoints.MapGet("api/access-management/employees/get-new", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper) =>
+        [HttpGet("api/access-management/employees/new")]
+        public async Task<ActionResult<Result<EmployeeDto>>> GetNewEmployeeAsync()
         {
             var result = await mediator.SendAsync(new GetNewEmployeeQuery());
             var mappedResult = mapper.MapResult<Employee, EmployeeDto>(result);
 
-            return Results.Ok(mappedResult);
-        });
-
-        return endpoints;
+            return Ok(mappedResult);
+        }
     }
 
     public sealed record GetNewEmployeeQuery() : IQuery<Result<Employee>>;

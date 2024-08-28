@@ -5,31 +5,28 @@ using ChronoFlow.Shared.AccessManagement.Employees;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.UseCases;
 
 public static class GetAllEmployees
 {
-    internal static IEndpointRouteBuilder UseGetAllEmployeesEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class EmployeesController(IMediator _mediator, IMapper _mapper) : ControllerBase
     {
-        endpoints.MapGet("api/access-management/employees/get-all", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper) =>
+        [HttpGet("api/access-management/employees/get-all")]
+        public async Task<ActionResult<Result<List<EmployeeDto>>>> GetAllEmployeesAsync()
         {
-            var result = await mediator.SendAsync(new GetAllEmployeesQuery());
-            var mappedResult = mapper.MapResult<List<Employee>, List<EmployeeDto>>(result);
-            
-            return Results.Ok(mappedResult);
-        });
+            var result = await _mediator.SendAsync(new GetAllEmployeesQuery());
+            var mappedResult = _mapper.MapResult<List<Employee>, List<EmployeeDto>>(result);
 
-        return endpoints;
+            return Ok(mappedResult);
+        }
     }
 
     public sealed record GetAllEmployeesQuery() : IQuery<Result<List<Employee>>>;
 
-    internal sealed class GetAllEmployeesQueryHandler(IEmployeeReadRepository _employeeReadRepository) : IQueryHandler<GetAllEmployeesQuery, Result<List<Employee>>>
+    private sealed class GetAllEmployeesQueryHandler(IEmployeeReadRepository _employeeReadRepository) : IQueryHandler<GetAllEmployeesQuery, Result<List<Employee>>>
     {
         public async Task<Result<List<Employee>>> Handle(GetAllEmployeesQuery request, CancellationToken cancellationToken)
         {

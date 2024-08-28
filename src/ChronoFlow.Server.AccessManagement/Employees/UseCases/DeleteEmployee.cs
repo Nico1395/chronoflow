@@ -2,29 +2,26 @@
 using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Shared.Common.Messaging;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.UseCases;
 
 public static class DeleteEmployee
 {
-    internal static IEndpointRouteBuilder UseDeleteEmployeeEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class EmployeesController(IMediator _mediator) : ControllerBase
     {
-        endpoints.MapDelete("api/access-management/employees/delete", async ([FromServices] IMediator mediator, [FromQuery] Guid employeeId) =>
+        [HttpDelete("api/access-management/employees/delete")]
+        public async Task<ActionResult<Result>> DeleteEmployeeAsync([FromQuery] Guid employeeId)
         {
-            var result = await mediator.SendAsync(new DeleteEmployeeCommand(employeeId));
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            var result = await _mediator.SendAsync(new DeleteEmployeeCommand(employeeId));
+            return Ok(result);
+        }
     }
 
     public sealed record DeleteEmployeeCommand(Guid EmployeeId) : ICommand<Result>;
 
-    internal sealed class DeleteEmployeeCommandHandler(
+    private sealed class DeleteEmployeeCommandHandler(
         IEmployeeReadRepository _employeeReadRepository,
         IEmployeeWriteRepository _employeeWriteRepository,
         IUnitOfWork _unitOfWork) : ICommandHandler<DeleteEmployeeCommand, Result>

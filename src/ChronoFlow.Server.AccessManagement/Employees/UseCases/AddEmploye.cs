@@ -5,31 +5,28 @@ using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Shared.AccessManagement.Employees;
 using ChronoFlow.Shared.Common.Messaging;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.UseCases;
 
 public static class AddEmploye
 {
-    internal static IEndpointRouteBuilder UseAddEmployeeEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class EmployeesController(IMediator _mediator, IMapper _mapper) : ControllerBase
     {
-        endpoints.MapPost("api/access-management/employees/add", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper, [FromBody] EmployeeDto employeeDto) =>
+        [HttpPost("api/access-management/employees/add")]
+        public async Task<ActionResult<Result>> AddEmployeeAsync([FromBody] EmployeeDto employeeDto)
         {
-            var employee = mapper.Map<Employee>(employeeDto);
-            var result = await mediator.SendAsync(new AddEmployeCommand(employee));
+            var employee = _mapper.Map<Employee>(employeeDto);
+            var result = await _mediator.SendAsync(new AddEmployeCommand(employee));
 
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            return Ok(result);
+        }
     }
 
     public sealed record AddEmployeCommand(Employee Employee) : ICommand<Result>;
 
-    internal sealed class AddEmployeeCommandHandler(
+    private sealed class AddEmployeeCommandHandler(
         IEmployeeReadRepository _employeeReadRepository,
         IEmployeeWriteRepository _employeeWriteRepository,
         IUnitOfWork _unitOfWork) : ICommandHandler<AddEmployeCommand, Result>
