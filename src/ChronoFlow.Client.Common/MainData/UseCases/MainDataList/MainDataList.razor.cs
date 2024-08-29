@@ -38,7 +38,7 @@ public partial class MainDataList<TViewModel> : ComponentBase
     public string? ItemClass { get; set; }
 
     [Parameter]
-    public List<ContainerListSortOption<TViewModel>> SortOptions { get; set; } = [];
+    public List<ListSortOption<TViewModel>> SortOptions { get; set; } = [];
 
     [Parameter, EditorRequired]
     public required string NewUri { get; set; }

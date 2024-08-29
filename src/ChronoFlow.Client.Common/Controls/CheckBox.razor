@@ -1,3 +1,15 @@
-﻿<div>
+﻿<button class="c-check-box" @onclick="@ValueChangedAsync">
+    <div>
+        @if (Value)
+        {
+            <div></div>
+        }
+    </div>
 
-</div>
+    @if (Label != null)
+    {
+        <section>
+            @Label
+        </section>
+    }
+</button>

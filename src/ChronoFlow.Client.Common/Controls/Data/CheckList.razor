@@ -6,7 +6,7 @@
     var selectedItemGroup = GetSelectedItemGroup(itemGroups);
 }
 
-<div class="c-container-list">
+<div class="c-check-list">
     @if (Searchable || _canSort || Header != null)
     {
         <header>
@@ -35,7 +35,9 @@
         {
             @foreach (var item in selectedItemGroup)
             {
-                <div class="c-container-list-item">
+                <div class="c-check-list-item">
+                    <CheckBox Value="@CheckCondition(item)" ValueChanged="@(async () => await OnToggleAsync(item))" />
+
                     @if (Item != null)
                     {
                         @Item(item)
@@ -54,7 +56,7 @@
         }
         else
         {
-            <span class="c-container-list-no-items">
+            <span class="c-check-list-no-items">
                 @Localizer["NoItems"]
             </span>
         }

@@ -13,6 +13,7 @@ html {
     --color-semantic-danger-80: #fd6660;
     --color-semantic-danger-90: #fe5451;
     --color-semantic-danger-100: #FF4242;
+    --container-outline: 2px solid var(--color-primary-20);
     --container-radius-small: 6px;
     --container-radius-regular: 12px;
     --container-radius-large: 25px;

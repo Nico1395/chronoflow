@@ -1,0 +1,75 @@
+.c-check-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--container-radius-regular);
+    outline: var(--container-outline);
+    background: var(--color-primary-15);
+
+    > header {
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.4rem;
+        border-bottom: var(--container-outline);
+        padding: 0.8rem;
+
+        > .c-textbox {
+            flex: 1;
+        }
+
+        > .c-button {
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+    }
+
+    > section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 0 0 var(--container-radius-regular) var(--container-radius-regular);
+        min-height: 40px;
+        background: var(--color-primary-10);
+    }
+
+    &:has(footer) > section {
+        border-radius: 0;
+    }
+
+    > footer {
+        flex-grow: 0;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 0.4rem;
+        justify-content: center;
+    }
+}
+
+.c-check-list-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 0.8rem;
+    padding: 0 0.8rem;
+    border-bottom: var(--container-outline);
+    min-height: 40px;
+    font-weight: 400;
+    font-size: 12pt;
+
+    &:last-child {
+        border: 0;
+    }
+}
+
+.c-check-list-no-items {
+    align-self: center;
+    color: var(--color-primary-40);
+    font-size: 10pt;
+    font-weight: 400;
+}
