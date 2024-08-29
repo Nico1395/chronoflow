@@ -2,10 +2,6 @@
 @page "/main-data/roles/{RoleId}"
 
 <MainDataForm TViewModel="@RoleViewModel" Id="@RoleId" Title="@GetTitle" ReturnUri="main-data/roles">
-    @{
-        var test = 1;
-    }
-
     <Field Label="@Localizer["Name"]" For="@(() => context.Item.Name)" Width="100%">
         <Textbox @bind-Value="@context.Item.Name" />
     </Field>

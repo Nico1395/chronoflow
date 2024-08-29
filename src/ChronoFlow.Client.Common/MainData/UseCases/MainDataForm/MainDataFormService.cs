@@ -61,7 +61,7 @@ public class MainDataFormService<TViewModel>(
 
     public virtual async Task<MainDataUpdateResult> UpdateAsync(TViewModel viewModel, CancellationToken cancellationToken = default)
     {
-        var response = await _mainDataViewModelService.AddAsync(viewModel, cancellationToken);
+        var response = await _mainDataViewModelService.UpdateAsync(viewModel, cancellationToken);
         var resultCode = response.Code switch
         {
             ResponseCode.Okay => MainDataUpdateResultCode.Success,

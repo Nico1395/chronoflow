@@ -27,7 +27,6 @@ internal sealed class RoleMainDataFormService(
             // TODO -> Evaluate
 
             _permissions = result.Data;
-            _formController.Render();
         }
         catch (Exception ex)
         {

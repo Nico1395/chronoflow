@@ -5,19 +5,21 @@ namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataForm.Controller;
 internal sealed class MainDataFormController<TViewModel>(IMainDataFormControllerManager _mainDataFormControllerManager) : IMainDataFormController<TViewModel>
     where TViewModel : class, IMainDataViewModel
 {
-    public Guid? ItemId => _mainDataFormControllerManager.Find<TViewModel>().ItemId;
-    public bool IsNew => _mainDataFormControllerManager.Find<TViewModel>().IsNew;
-    public bool IsBusy => _mainDataFormControllerManager.Find<TViewModel>().IsBusy;
-    public TViewModel? Item => _mainDataFormControllerManager.Find<TViewModel>().Item;
-    public MainDataFormContext<TViewModel> Context { get; }
+    private MainDataForm<TViewModel> MainDataForm => _mainDataFormControllerManager.Find<TViewModel>();
+
+    public Guid? ItemId => MainDataForm.ItemId;
+    public bool IsNew => MainDataForm.IsNew;
+    public bool IsBusy => MainDataForm.IsBusy;
+    public TViewModel? Item => MainDataForm.Item;
+    public MainDataFormContext<TViewModel>? Context => MainDataForm.Context;
 
     public void Render()
     {
-        _mainDataFormControllerManager.Find<TViewModel>().Render();
+        MainDataForm.Render();
     }
 
     public Task SetBusyAsync(bool busy)
     {
-        return _mainDataFormControllerManager.Find<TViewModel>().SetBusyAsync(busy);
+        return MainDataForm.SetBusyAsync(busy);
     }
 }

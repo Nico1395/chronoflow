@@ -24,16 +24,13 @@ public partial class Textbox : FormControlComponentBase
     public EventCallback<string?> OnInput { get; set; }
 
     [Parameter]
-    public bool Disabled { get; set; }
-
-    [Parameter]
     public string? Class { get; set; }
     
     [Parameter]
     public string? Tooltip { get; set; }
 
     [Parameter]
-    public string? Id { get; set; }
+    public int? MaxLength { get; set; }
 
     private string GetClasses()
     {
@@ -51,15 +48,15 @@ public partial class Textbox : FormControlComponentBase
     {
         Value = args.Value as string;
 
-        await ValueChanged.InvokeAsync(Value);
         await OnInput.InvokeAsync(Value);
+        await ValueChanged.InvokeAsync(Value);
     }
 
     private async Task InvokeOnChangeAsync(ChangeEventArgs args)
     {
-        Value = args.Value as string;
+        if (args.Value as string != Value)
+            Value = args.Value as string;
 
-        await ValueChanged.InvokeAsync(Value);
         await OnChange.InvokeAsync(Value);
     }
 }

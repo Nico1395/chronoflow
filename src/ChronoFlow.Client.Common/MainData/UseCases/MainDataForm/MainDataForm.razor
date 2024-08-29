@@ -4,9 +4,9 @@
     return;
 
 <div class="md-form">
-    <Form Item="@Item">
+    <Form Item="@Item" Context="formContext">
         @{
-            var mainDataFormContext = new MainDataFormContext<TViewModel>(Item, IsBusy, IsNew, context);
+            Context = CreateNewContext(Item, formContext);
             var subtitle = GetSubtitle();
         }
 
@@ -18,7 +18,7 @@
                         Disabled="@IsBusy" />
 
                 <div>
-                    @Title(mainDataFormContext)
+                    @Title(Context)
                 </div>
             </section>
 
@@ -31,7 +31,7 @@
         </header>
 
         <main>
-            @ChildContent(mainDataFormContext)
+            @ChildContent(Context)
         </main>
 
         <footer>

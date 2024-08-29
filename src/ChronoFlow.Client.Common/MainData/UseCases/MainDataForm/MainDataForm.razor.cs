@@ -1,4 +1,5 @@
 ﻿using ChronoFlow.Client.Common.Browser;
+using ChronoFlow.Client.Common.Controls.Forms;
 using ChronoFlow.Client.Common.Localization;
 using ChronoFlow.Client.Common.MainData.Entities;
 using ChronoFlow.Client.Common.MainData.Results;
@@ -15,6 +16,7 @@ public partial class MainDataForm<TViewModel> : ComponentBase, IDisposable
     internal bool IsNew { get; private set; }
     internal bool IsBusy { get; private set; }
     internal TViewModel? Item { get; private set; }
+    internal MainDataFormContext<TViewModel>? Context { get; private set; }
 
     [Inject]
     private ILocalizer Localizer { get; set; } = null!;
@@ -236,5 +238,10 @@ public partial class MainDataForm<TViewModel> : ComponentBase, IDisposable
         var edited = TimespanMessageCalculator.GetEditedMessage(Item.LastChanged);
 
         return string.Join(" • ", [created, edited]);
+    }
+
+    private MainDataFormContext<TViewModel> CreateNewContext(TViewModel item, FormContext formContext)
+    {
+        return new MainDataFormContext<TViewModel>(item, IsBusy, IsNew, formContext);
     }
 }

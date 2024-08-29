@@ -37,8 +37,11 @@ public static class UpdateRole
             if (existingRole == null)
                 return Result.NotFound();
 
-            if (await _roleReadRepository.ExistsWithNameAsync(request.UpdatedRole.Name, cancellationToken))
+            var nameHasChanged = existingRole.Name != request.UpdatedRole.Name;
+            if (nameHasChanged && await _roleReadRepository.ExistsWithNameAsync(request.UpdatedRole.Name, cancellationToken))
                 return Result.AlreadyExists([ValidationError.AlreadyExists($"TODO -> Localize: A role with the name {request.UpdatedRole.Name} already exists.")]);
+
+            request.UpdatedRole.LastChanged = DateTime.Now;
 
             await _roleWriteRepository.UpdateAsync(
                 existingRole,

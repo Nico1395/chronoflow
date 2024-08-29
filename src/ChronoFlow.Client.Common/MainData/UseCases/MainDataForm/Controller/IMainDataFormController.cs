@@ -9,7 +9,7 @@ public interface IMainDataFormController<TViewModel>
     public bool IsNew { get; }
     public bool IsBusy { get; }
     public TViewModel? Item { get; }
-    public MainDataFormContext<TViewModel> Context { get; }
+    public MainDataFormContext<TViewModel>? Context { get; }
     public void Render();
     public Task SetBusyAsync(bool busy);
 }
