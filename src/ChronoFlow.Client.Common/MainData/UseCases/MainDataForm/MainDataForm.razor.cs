@@ -116,7 +116,7 @@ public partial class MainDataForm<TViewModel> : ComponentBase, IDisposable
         else if (result.Code == MainDataGetNewResultCode.Error)
             LocalNotificationPublisher.PublishError(Localizer["AnUnhandledErrorOccurred"]);
         else if (result.Code == MainDataGetNewResultCode.NotAuthorized)
-            LocalNotificationPublisher.PublishInfo(Localizer["MissingPermissionsToCreateAnEntry"]);
+            LocalNotificationPublisher.PublishInfo(Localizer["NotAuthorizedToCreateEntry"]);
 
         NavigateBack();
         return null;

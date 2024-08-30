@@ -19,9 +19,9 @@ public class MainDataFormService<TViewModel>(
         var response = await _mainDataViewModelService.GetNewAsync(cancellationToken);
         var resultCode = response.Code switch
         {
-            ResponseCode.Okay => MainDataGetNewResultCode.Success,
-            ResponseCode.Error => MainDataGetNewResultCode.Error,
-            ResponseCode.NotAuthorized => MainDataGetNewResultCode.NotAuthorized,
+            ResultCode.Okay => MainDataGetNewResultCode.Success,
+            ResultCode.Error => MainDataGetNewResultCode.Error,
+            ResultCode.NotAuthorized => MainDataGetNewResultCode.NotAuthorized,
             _ => MainDataGetNewResultCode.Error,
         };
 
@@ -33,10 +33,10 @@ public class MainDataFormService<TViewModel>(
         var response = await _mainDataViewModelService.GetByIdAsync(id, cancellationToken);
         var resultCode = response.Code switch
         {
-            ResponseCode.Okay => MainDataGetByIdResultCode.Success,
-            ResponseCode.Error => MainDataGetByIdResultCode.Error,
-            ResponseCode.NotFound => MainDataGetByIdResultCode.NotFound,
-            ResponseCode.NotAuthorized => MainDataGetByIdResultCode.NotAuthorized,
+            ResultCode.Okay => MainDataGetByIdResultCode.Success,
+            ResultCode.Error => MainDataGetByIdResultCode.Error,
+            ResultCode.NotFound => MainDataGetByIdResultCode.NotFound,
+            ResultCode.NotAuthorized => MainDataGetByIdResultCode.NotAuthorized,
             _ => MainDataGetByIdResultCode.Error,
         };
 
@@ -48,11 +48,11 @@ public class MainDataFormService<TViewModel>(
         var response = await _mainDataViewModelService.AddAsync(viewModel, cancellationToken);
         var resultCode = response.Code switch
         {
-            ResponseCode.Okay => MainDataAddResultCode.Success,
-            ResponseCode.Error => MainDataAddResultCode.Error,
-            ResponseCode.AlreadyExists => MainDataAddResultCode.AlreadyExists,
-            ResponseCode.ValidationErrors => MainDataAddResultCode.ValidationErrors,
-            ResponseCode.NotAuthorized => MainDataAddResultCode.NotAuthorized,
+            ResultCode.Okay => MainDataAddResultCode.Success,
+            ResultCode.Error => MainDataAddResultCode.Error,
+            ResultCode.AlreadyExists => MainDataAddResultCode.AlreadyExists,
+            ResultCode.ValidationErrors => MainDataAddResultCode.ValidationErrors,
+            ResultCode.NotAuthorized => MainDataAddResultCode.NotAuthorized,
             _ => MainDataAddResultCode.Error,
         };
 
@@ -64,12 +64,12 @@ public class MainDataFormService<TViewModel>(
         var response = await _mainDataViewModelService.UpdateAsync(viewModel, cancellationToken);
         var resultCode = response.Code switch
         {
-            ResponseCode.Okay => MainDataUpdateResultCode.Success,
-            ResponseCode.Error => MainDataUpdateResultCode.Error,
-            ResponseCode.NotFound => MainDataUpdateResultCode.NotFound,
-            ResponseCode.NotAuthorized => MainDataUpdateResultCode.NotAuthorized,
-            ResponseCode.AlreadyExists => MainDataUpdateResultCode.AlreadyExists,
-            ResponseCode.ValidationErrors => MainDataUpdateResultCode.ValidationErrors,
+            ResultCode.Okay => MainDataUpdateResultCode.Success,
+            ResultCode.Error => MainDataUpdateResultCode.Error,
+            ResultCode.NotFound => MainDataUpdateResultCode.NotFound,
+            ResultCode.NotAuthorized => MainDataUpdateResultCode.NotAuthorized,
+            ResultCode.AlreadyExists => MainDataUpdateResultCode.AlreadyExists,
+            ResultCode.ValidationErrors => MainDataUpdateResultCode.ValidationErrors,
             _ => MainDataUpdateResultCode.Error,
         };
 

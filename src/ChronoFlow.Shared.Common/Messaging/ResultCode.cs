@@ -1,6 +1,6 @@
 ﻿namespace ChronoFlow.Shared.Common.Messaging;
 
-public enum ResponseCode
+public enum ResultCode
 {
     Okay,
     Error,

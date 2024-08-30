@@ -12,9 +12,9 @@ public class MainDataListService<TViewModel>(IMainDataViewModelService<TViewMode
         var response = await _viewModelService.GetAllAsync(cancellationToken);
         var resultCode = response.Code switch
         {
-            ResponseCode.Okay => MainDataGetAllResultCode.Success,
-            ResponseCode.Error => MainDataGetAllResultCode.Error,
-            ResponseCode.NotAuthorized => MainDataGetAllResultCode.NotAuthorized,
+            ResultCode.Okay => MainDataGetAllResultCode.Success,
+            ResultCode.Error => MainDataGetAllResultCode.Error,
+            ResultCode.NotAuthorized => MainDataGetAllResultCode.NotAuthorized,
             _ => MainDataGetAllResultCode.Error
         };
 
@@ -26,10 +26,10 @@ public class MainDataListService<TViewModel>(IMainDataViewModelService<TViewMode
         var response = await _viewModelService.DeleteAsync(viewModel, cancellationToken);
         var resultCode = response.Code switch
         {
-            ResponseCode.Okay => MainDataDeleteResultCode.Success,
-            ResponseCode.Error => MainDataDeleteResultCode.Error,
-            ResponseCode.NotFound => MainDataDeleteResultCode.NotFound,
-            ResponseCode.NotAuthorized => MainDataDeleteResultCode.NotAuthorized,
+            ResultCode.Okay => MainDataDeleteResultCode.Success,
+            ResultCode.Error => MainDataDeleteResultCode.Error,
+            ResultCode.NotFound => MainDataDeleteResultCode.NotFound,
+            ResultCode.NotAuthorized => MainDataDeleteResultCode.NotAuthorized,
             _ => MainDataDeleteResultCode.Error
         };
 
