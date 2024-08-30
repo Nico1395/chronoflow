@@ -331,6 +331,24 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Editing &apos;{0}&apos;.
+        /// </summary>
+        internal static string EditingEntry {
+            get {
+                return ResourceManager.GetString("EditingEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid e-mail address.
         /// </summary>
         internal static string EmailAddressValidationErrorMessage {
@@ -448,6 +466,33 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New.
+        /// </summary>
+        internal static string New {
+            get {
+                return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Role.
+        /// </summary>
+        internal static string NewRole {
+            get {
+                return ResourceManager.GetString("NewRole", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No items.
         /// </summary>
         internal static string NoItems {
@@ -534,6 +579,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string Roles {
             get {
                 return ResourceManager.GetString("Roles", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Save {
+            get {
+                return ResourceManager.GetString("Save", resourceCulture);
             }
         }
         

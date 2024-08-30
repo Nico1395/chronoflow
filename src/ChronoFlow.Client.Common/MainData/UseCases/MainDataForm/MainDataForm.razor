@@ -11,22 +11,21 @@
         }
 
         <header>
-            <section>
-                <Button Class="squared"
-                        IconLeft="bi bi-arrow-left"
-                        OnClick="@NavigateBack"
-                        Disabled="@IsBusy" />
+            <div class="md-form-title">
+                <Button Class="squared flat" OnClick="@NavigateBack" Disabled="@(IsBusy || formContext.IsValidating)">
+                    <i class="md-form-redirect bi bi-arrow-left"></i>
+                </Button>
 
                 <div>
                     @Title(Context)
                 </div>
-            </section>
+            </div>
 
             @if (subtitle != null)
             {
-                <section>
+                <div class="md-form-subtitle">
                     @subtitle
-                </section>
+                </div>
             }
         </header>
 
@@ -35,7 +34,13 @@
         </main>
 
         <footer>
-            <Button Class="alt" IconLeft="bi bi-check-2" OnClick="@SaveAsync" Disabled="@IsBusy">
+            <Button Class="alt"
+                    Type="submit"
+                    IconLeft="bi bi-check2"
+                    IconLeftSize="18px"
+                    OnClick="@SaveAsync"
+                    Disabled="@(IsBusy || formContext.IsValidating)">
+
                 @Localizer["Save"]
             </Button>
         </footer>

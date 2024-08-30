@@ -13,25 +13,6 @@
             flex-direction: column;
             align-items: start;
             gap: 0.3rem;
-    
-            > section:first-child {
-                display: flex;
-                flex-direction: row;
-                gap: 0.5rem;
-                align-items: center;
-                justify-content: start;
-
-                > div {
-                    font-size: 18pt;
-                    font-weight: 600;
-                }
-            }
-    
-            > section:last-child {
-                font-size: 10pt;
-                font-weight: 500;
-                color: var(--color-primary-60);
-            }
         }
     
         > main {
@@ -55,3 +36,31 @@
     }
 }
 
+.md-form-redirect {
+    font-size: 18px;
+}
+
+.md-form-title {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: start;
+
+    > div {
+        font-size: 18pt;
+        font-weight: 600;
+    }
+}
+
+.md-form-subtitle {
+    font-size: 10pt;
+    font-weight: 500;
+    color: var(--color-primary-60);
+}
+
+@media all and (max-width: 1000px) {
+    .md-form {
+        width: 100%;
+    }
+}

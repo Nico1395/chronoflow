@@ -288,4 +288,22 @@
   <data name="UrlValidationErrorMessage" xml:space="preserve">
     <value>'{0}' is not a valid URL</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="EditingEntry" xml:space="preserve">
+    <value>Editing '{0}'</value>
+  </data>
+  <data name="NewRole" xml:space="preserve">
+    <value>New Role</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
 </root>

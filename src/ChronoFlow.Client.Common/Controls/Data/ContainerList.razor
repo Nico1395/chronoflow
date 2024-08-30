@@ -12,7 +12,9 @@
         <header>
             @if (Searchable)
             {
-                <Textbox Placeholder="@Localizer["TypeToSearch"]" @bind-Value="@_searchTerm" />
+                <Textbox Placeholder="@Localizer["TypeToSearch"]"
+                         Value="@_searchTerm"
+                         OnChange="@((value) => _searchTerm = value)" />
             }
 
             @if (_canSort)

@@ -21,9 +21,14 @@
         align-items: center;
         justify-content: center;
 
-        &:has(div) {
+        &:has(.bi) {
             outline: 2px solid var(--color-primary-80);
             background: var(--color-primary-20);
+        }
+
+        > .bi {
+            font-size: 22px;
+            color: var(--color-primary-80);
         }
     }
 

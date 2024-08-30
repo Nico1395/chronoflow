@@ -6,7 +6,8 @@
     gap: 2rem;
     padding: 0 1.5rem;
     background: var(--color-primary-10);
-    
+    border-bottom: var(container-outline);
+
     > section {
         flex: 1;
         display: flex;

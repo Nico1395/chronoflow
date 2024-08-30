@@ -32,6 +32,7 @@
         background: none !important;
         color: var(--color-primary-20) !important;
         cursor: default !important;
+        outline: 2px solid var(--color-primary-30);
     }
 
     > .bi {
@@ -41,7 +42,7 @@
     &.alt {
         background: var(--color-primary-80);
         color: var(--color-background);
-        outline: 2px solid var(--color-primary-60);
+        outline: 2px solid var(--color-primary-90);
 
         &:hover {
             background: var(--color-primary-70);
@@ -58,6 +59,7 @@
         &:disabled {
             background: var(--color-primary-40) !important;
             color: var(--color-background) !important;
+            outline: 2px solid var(--color-primary-50);
         }
     }
 
@@ -68,6 +70,7 @@
 
     &.danger {
         background: var(--color-primary-10);
+        outline: 0;
 
         &:hover {
             background: var(--color-semantic-danger-100);
@@ -81,6 +84,23 @@
     
         &:focus {
             outline: 2px solid var(--color-primary-40);
+        }
+    }
+
+    &.flat {
+        background: none;
+        outline: 0;
+
+        &:hover {
+            background: var(--color-primary-10);
+        }
+    
+        &:active, &.active {
+            background: var(--color-primary-15);
+        }
+    
+        &:focus {
+            outline: 2px solid var(--color-primary-100);
         }
     }
 }
