@@ -3,11 +3,11 @@
 
 <MainDataForm TViewModel="@RoleViewModel" Id="@RoleId" Title="@GetTitle" ReturnUri="main-data/roles">
     <Field Label="@Localizer["Name"]" For="@(() => context.Item.Name)" Width="100%">
-        <Textbox @bind-Value="@context.Item.Name" MaxLength="50" />
+        <TextBox @bind-Value="@context.Item.Name" MaxLength="50" />
     </Field>
 
     <Field Label="@Localizer["Description"]" For="@(() => context.Item.Name)" Width="100%">
-        <Textbox @bind-Value="@context.Item.Description" MaxLength="200" />
+        <TextArea @bind-Value="@context.Item.Description" MaxLength="200" Placeholder="@Localizer["DescribeTheRole"]" />
     </Field>
 
     <Field Label="@Localizer["Permissions"]" Width="100%">

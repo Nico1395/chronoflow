@@ -3,39 +3,37 @@ using Microsoft.AspNetCore.Components;
 
 namespace ChronoFlow.Client.Common.Controls;
 
-public partial class TextBox : FormControlComponentBase
+public partial class TextArea : FormControlComponentBase
 {
     [Parameter]
-    public string? Type { get; set; } = "text";
-    
-    [Parameter]
     public string? Value { get; set; }
-
-    [Parameter]
-    public string? Placeholder { get; set; }
 
     [Parameter]
     public EventCallback<string?> ValueChanged { get; set; }
 
     [Parameter]
-    public EventCallback<string?> OnChange { get; set; }
-
-    [Parameter]
     public EventCallback<string?> OnInput { get; set; }
 
     [Parameter]
-    public string? Class { get; set; }
-    
-    [Parameter]
-    public string? Tooltip { get; set; }
+    public EventCallback<string?> OnChange { get; set; }
 
     [Parameter]
     public int? MaxLength { get; set; }
 
+    [Parameter]
+    public TextAreaResizeMode ResizeMode { get; set; } = TextAreaResizeMode.Vertical;
+
     private string GetClasses()
     {
+        var resize = ResizeMode switch
+        {
+            TextAreaResizeMode.Both => "resize-both",
+            TextAreaResizeMode.Horizontal => "resize-horizontal",
+            _ or TextAreaResizeMode.Vertical => "resize-vertical",
+        };
         var invalid = IsValid ? null : "invalid";
-        return $"c-textbox {invalid} {Class}".Trim();
+
+        return $"c-text-area {resize} {invalid}";
     }
 
     private string GetStyles()
@@ -44,7 +42,7 @@ public partial class TextBox : FormControlComponentBase
         return $"{width}";
     }
 
-    private async Task InvokeOnInputAsync(ChangeEventArgs args)
+    private async Task OnInputAsync(ChangeEventArgs args)
     {
         Value = args.Value as string;
 
@@ -52,7 +50,7 @@ public partial class TextBox : FormControlComponentBase
         await ValueChanged.InvokeAsync(Value);
     }
 
-    private async Task InvokeOnChangeAsync(ChangeEventArgs args)
+    private async Task OnChangeAsync(ChangeEventArgs args)
     {
         if (args.Value as string != Value)
             Value = args.Value as string;
