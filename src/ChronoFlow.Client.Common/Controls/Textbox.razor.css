@@ -8,10 +8,7 @@
     font-weight: 400;
     background: var(--color-primary-10);
     color: var(--color-primary-100);
-
-    &:hover {
-        background: var(--color-primary-20);
-    }
+    outline: var(--container-outline);
 
     &:focus {
         outline: 2px solid var(--color-primary-100);

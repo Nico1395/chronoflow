@@ -1,0 +1,40 @@
+.c-text-area {
+    min-height: 70px;
+    border: 0;
+    border-radius: var(--container-radius-regular);
+    font-family: var(--font-family-regular);
+    font-size: 12pt;
+    font-weight: 400;
+    background: var(--color-primary-10);
+    color: var(--color-primary-100);
+    outline: var(--container-outline);
+
+    &:focus {
+        outline: 2px solid var(--color-primary-100);
+    }
+
+    &:disabled {
+        background: none !important;
+        color: var(--color-primary-20) !important;
+    }
+    
+    &.invalid {
+        outline: 2px solid var(--color-accent-100);
+    }
+
+    &.resize-both {
+        resize: both;
+    }
+
+    &.resize-horizontal {
+        resize: horizontal;
+    }
+
+    &.resize-vertical {
+        resize: vertical;
+    }
+
+    &.placeholder {
+        color: var(--color-primary-40);
+    }
+}

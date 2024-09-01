@@ -18,6 +18,11 @@ internal sealed class EmployeeMainDataViewModelService(IServerHttpRequestService
         return _httpRequestService.GetAsync<EmployeeDto, EmployeeViewModel>("api/access-management/employees/get-by-id", cancellationToken, ("employeeId", id));
     }
 
+    public Task<Result<EmployeeViewModel>> GetNewAsync(CancellationToken cancellationToken = default)
+    {
+        return _httpRequestService.GetAsync<EmployeeDto, EmployeeViewModel>("api/access-management/employees/get-new", cancellationToken);
+    }
+
     public Task<Result> AddAsync(EmployeeViewModel viewModel, CancellationToken cancellationToken = default)
     {
         return _httpRequestService.PostAsync<EmployeeDto, EmployeeViewModel>("api/access-management/employees/add", viewModel, cancellationToken);

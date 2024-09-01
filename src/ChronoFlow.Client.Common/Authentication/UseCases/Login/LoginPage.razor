@@ -8,11 +8,11 @@
 
         <div>
             <Field Label="@Localizer["PersonnelNumber"]" For="@(() => _authenticationRequest.PersonnelNumber)" Width="100%">
-                <Textbox @bind-Value="@_authenticationRequest.PersonnelNumber" />
+                <TextBox @bind-Value="@_authenticationRequest.PersonnelNumber" />
             </Field>
 
             <Field Label="@Localizer["Password"]" For="@(() => _authenticationRequest.Password)" Width="100%">
-                <Textbox @bind-Value="@_authenticationRequest.Password" Type="password" />
+                <TextBox @bind-Value="@_authenticationRequest.Password" Type="password" />
             </Field>
         </div>
 

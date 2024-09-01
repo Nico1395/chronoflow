@@ -1,4 +1,5 @@
 ﻿@typeparam TItem
+@inherits ListComponentBase<TItem>
 
 @{
     var itemGroups = GetItemGroups();
@@ -6,22 +7,35 @@
 }
 
 <div class="c-container-list">
-    <header>
-        <Textbox Placeholder="@Localizer["TypeToSearch"]" @bind-Value="@_searchTerm" />
+    @if (Searchable || _canSort || Header != null)
+    {
+        <header>
+            @if (_canSort)
+            {
+                <DropdownList TItem="@(ListSortOption<TItem>)"
+                              Items="@SortOptions"
+                              @bind-SelectedItem="@_selectedSortOption"
+                              DisplayValue="@(s => s.Name)"
+                              Placeholder="@Localizer["Sort"]"
+                              OnlyShowPlaceholder="@true"
+                              IconRight="bi bi-filter"
+                              Disabled="@Disabled" />
+            }
 
-        @if (_canSort)
-        {
-            @* TODO -> Dropdown with sort options *@
-            <Button>
-                @Localizer["Sort"]
-            </Button>
-        }
+            @if (Searchable)
+            {
+                <TextBox Placeholder="@Localizer["TypeToSearch"]"
+                         Value="@_searchTerm"
+                         OnChange="@((value) => _searchTerm = value)"
+                         Disabled="@Disabled" />
+            }
 
-        @if (Header != null)
-        {
-            @Header
-        }
-    </header>
+            @if (Header != null)
+            {
+                @Header
+            }
+        </header>
+    }
 
     <section>
         @if (selectedItemGroup.Count > 0)
@@ -69,7 +83,10 @@
 
             @foreach (var itemGroup in itemGroups)
             {
-                <Button Class="squared" Active="@(itemGroup.Key == CurrentPage)" OnClick="@(async () => await SelectItemGroupAsync(itemGroup.Key))">
+                <Button Class="squared"
+                        Active="@(itemGroup.Key == CurrentPage)"
+                        OnClick="@(async () => await SelectItemGroupAsync(itemGroup.Key))">
+
                     @itemGroup.Key
                 </Button>
             }

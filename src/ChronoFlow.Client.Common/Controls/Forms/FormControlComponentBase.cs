@@ -13,9 +13,23 @@ public abstract class FormControlComponentBase : ComponentBase
     [Parameter]
     public string? Width { get; set; }
 
+    [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
+    public string? Id { get; set; }
+
+    [Parameter]
+    public string? TabIndex { get; set; }
+
     internal void SetWidth(string width)
     {
-        Width = width;
+        Width ??= width;
+    }
+
+    internal bool GetDisabled()
+    {
+        return Disabled || IsValidating;
     }
 
     protected override void OnInitialized()

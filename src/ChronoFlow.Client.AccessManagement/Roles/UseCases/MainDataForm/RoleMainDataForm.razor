@@ -1,0 +1,28 @@
+﻿@page "/main-data/roles/new"
+@page "/main-data/roles/{RoleId}"
+
+<MainDataForm TViewModel="@RoleViewModel" Id="@RoleId" Title="@GetTitle" ReturnUri="main-data/roles">
+    <Field Label="@Localizer["Name"]" For="@(() => context.Item.Name)" Width="100%">
+        <TextBox @bind-Value="@context.Item.Name" MaxLength="50" />
+    </Field>
+
+    <Field Label="@Localizer["Description"]" For="@(() => context.Item.Name)" Width="100%">
+        <TextArea @bind-Value="@context.Item.Description" MaxLength="200" />
+    </Field>
+
+    <Field Label="@Localizer["Permissions"]" Width="100%">
+        <CheckList TItem="@PermissionViewModel"
+                   Items="@FormService.GetPermissions()"
+                   CheckCondition="@context.Item.HasPermission"
+                   OnToggle="@context.Item.TogglePermission"
+                   Pageable="@true"
+                   PageCount="15"
+                   SortOptions="@GetPermissionListSortOptions()"
+                   Context="permission">
+
+            <Item>
+                @permission.Name
+            </Item>
+        </CheckList>
+    </Field>
+</MainDataForm>

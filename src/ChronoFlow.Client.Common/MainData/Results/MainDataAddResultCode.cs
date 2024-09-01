@@ -5,6 +5,6 @@ public enum MainDataAddResultCode
     Success,
     Error,
     AlreadyExists,
-    ValidationError,
-    MissingPermissions,
+    ValidationErrors,
+    NotAuthorized,
 }

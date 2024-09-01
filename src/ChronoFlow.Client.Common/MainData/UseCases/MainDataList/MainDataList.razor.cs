@@ -1,6 +1,7 @@
 ﻿using ChronoFlow.Client.Common.Browser;
 using ChronoFlow.Client.Common.Controls.Data;
 using ChronoFlow.Client.Common.Localization;
+using ChronoFlow.Client.Common.MainData.Entities;
 using ChronoFlow.Client.Common.MainData.Results;
 using ChronoFlow.Client.Common.Notifications;
 using Microsoft.AspNetCore.Components;
@@ -8,7 +9,7 @@ using Microsoft.AspNetCore.Components;
 namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
 
 public partial class MainDataList<TViewModel> : ComponentBase
-    where TViewModel : class
+    where TViewModel : class, IMainDataViewModel
 {
     private List<TViewModel> _items = [];
     private bool _busy;
@@ -38,10 +39,15 @@ public partial class MainDataList<TViewModel> : ComponentBase
     public string? ItemClass { get; set; }
 
     [Parameter]
-    public List<ContainerListSortOption<TViewModel>> SortOptions { get; set; } = [];
+    public List<ListSortOption<TViewModel>> SortOptions { get; set; } = [];
 
     [Parameter, EditorRequired]
     public required string NewUri { get; set; }
+
+    protected override void OnParametersSet()
+    {
+        SortOptions = AggregateSortOptions();
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -158,5 +164,18 @@ public partial class MainDataList<TViewModel> : ComponentBase
             { nameof(MainDataListItemComponentBase<TViewModel>.Context), context },
             { nameof(MainDataListItemComponentBase<TViewModel>.ParentList), this },
         };
+    }
+
+    private List<ListSortOption<TViewModel>> AggregateSortOptions()
+    {
+        var mainDataSortOptions = new List<ListSortOption<TViewModel>>
+        {
+            new(Localizer["CreatedOldToNew"], i => i.Created, ListSortDirection.Ascending),
+            new(Localizer["CreatedNewToOld"], i => i.Created, ListSortDirection.Descending),
+            new(Localizer["LastChangedRecentToEarlier"], i => i.LastChanged, ListSortDirection.Ascending),
+            new(Localizer["LastChangedEarlierToRecent"], i => i.LastChanged, ListSortDirection.Descending),
+        };
+
+        return SortOptions.Concat(mainDataSortOptions).ToList();
     }
 }

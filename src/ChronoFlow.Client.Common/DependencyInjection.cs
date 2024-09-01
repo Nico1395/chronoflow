@@ -2,9 +2,11 @@
 using ChronoFlow.Client.Common.Authentication.UseCases.Login;
 using ChronoFlow.Client.Common.Browser;
 using ChronoFlow.Client.Common.Http.DI;
+using ChronoFlow.Client.Common.Layouts;
 using ChronoFlow.Client.Common.Localization.DependencyInjection;
 using ChronoFlow.Client.Common.Localization.Resources;
 using ChronoFlow.Client.Common.MainData;
+using ChronoFlow.Client.Common.MainData.UseCases.MainDataForm.Controller;
 using ChronoFlow.Client.Common.MainData.UseCases.MainDataPage.Configuration;
 using ChronoFlow.Client.Common.Notifications;
 using ChronoFlow.Client.Common.Processing.Search;
@@ -56,9 +58,13 @@ public static class DependencyInjection
         // Main Data
         services.AddMainDataMenu(assemblies);
         services.AddScoped<ITimespanMessageCalculator, TimespanMessageCalculator>();
+        services.AddScoped<IMainDataFormControllerManager, MainDataFormControllerManager>();
 
         // Processing
         services.AddScoped<ILocalSearchEngine, LocalSearchEngine>();
+
+        // Layout
+        services.AddSingleton(sp => new LayoutRouterOptions(assemblies));
 
         return services;
     }

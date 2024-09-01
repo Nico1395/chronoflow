@@ -8,4 +8,9 @@ internal sealed class BrowserLogger(IJSRuntime _jsRuntime) : IBrowserLogger
     {
         return _jsRuntime.InvokeVoidAsync("console.log", message);
     }
+
+    public ValueTask LogAsync(Exception ex)
+    {
+        return LogAsync($"{ex.Message}: {ex}");
+    }
 }

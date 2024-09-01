@@ -2,30 +2,26 @@
 using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Shared.Common.Messaging;
-using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Roles.UseCases;
 
 public static class DeleteRole
 {
-    internal static IEndpointRouteBuilder UseDeleteRoleEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class RolesController(IMediator _mediator) : ControllerBase
     {
-        endpoints.MapDelete("api/access-management/roles/delete", async ([FromServices] IMediator mediator, [FromQuery] Guid roleId) =>
+        [HttpDelete("api/access-management/roles/delete")]
+        public async Task<ActionResult<Result>> DeleteRoleAsync([FromQuery] Guid roleId)
         {
-            var result = await mediator.SendAsync(new DeleteRoleCommand(roleId));
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            var result = await _mediator.SendAsync(new DeleteRoleCommand(roleId));
+            return Ok(result);
+        }
     }
 
     public sealed record DeleteRoleCommand(Guid RoleId) : ICommand<Result>;
 
-    internal sealed class DeleteRoleCommandHandler(
+    private sealed class DeleteRoleCommandHandler(
         IRoleReadRepository _roleReadRepository,
         IRoleWriteRepository _roleWriteRepository,
         IUnitOfWork _unitOfWork) : ICommandHandler<DeleteRoleCommand, Result>

@@ -5,5 +5,5 @@ public enum MainDataGetByIdResultCode
     Success,
     Error,
     NotFound,
-    MissingPermissions,
+    NotAuthorized,
 }

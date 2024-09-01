@@ -80,4 +80,10 @@ public partial class Field : ComponentBase
         if (Error != null)
             ValidationErrors.Add(Error);
     }
+
+    private string GetStyles()
+    {
+        var width = Width != null ? $"width:{Width};" : null;
+        return $"{width}";
+    }
 }

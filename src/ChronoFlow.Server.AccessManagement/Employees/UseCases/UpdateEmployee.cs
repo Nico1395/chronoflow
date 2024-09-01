@@ -5,31 +5,28 @@ using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Shared.AccessManagement.Employees;
 using ChronoFlow.Shared.Common.Messaging;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.UseCases;
 
 public static class UpdateEmployee
 {
-    internal static IEndpointRouteBuilder UseUpdateEmployeeEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class EmployeesController(IMediator _mediator, IMapper _mapper) : ControllerBase
     {
-        endpoints.MapPatch("api/access-management/employees/update", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper, [FromBody] EmployeeDto updatedEmployeeDto) =>
+        [HttpPatch("api/access-management/employees/update")]
+        public async Task<ActionResult<Result>> UpdateEmployeeAsync([FromBody] EmployeeDto updatedEmployeeDto)
         {
-            var updatedEmployee = mapper.Map<Employee>(updatedEmployeeDto);
-            var result = await mediator.SendAsync(new UpdateEmployeeCommand(updatedEmployee));
+            var updatedEmployee = _mapper.Map<Employee>(updatedEmployeeDto);
+            var result = await _mediator.SendAsync(new UpdateEmployeeCommand(updatedEmployee));
 
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            return Ok(result);
+        }
     }
 
     public sealed record UpdateEmployeeCommand(Employee UpdatedEmployee) : ICommand<Result>;
 
-    internal sealed class UpdateEmployeeCommandHandler(
+    private sealed class UpdateEmployeeCommandHandler(
         IEmployeeReadRepository _employeeReadRepository,
         IEmployeeWriteRepository _employeeWriteRepository,
         IUnitOfWork _unitOfWork) : ICommandHandler<UpdateEmployeeCommand, Result>

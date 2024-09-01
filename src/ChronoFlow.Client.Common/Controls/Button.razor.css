@@ -1,5 +1,5 @@
 .c-button {
-    height: 35px;
+    height: var(--control-height-regular);
     padding: 0 0.7rem;
     border: 0;
     border-radius: var(--container-radius-regular);
@@ -11,9 +11,12 @@
     cursor: pointer;
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     gap: 0.7rem;
     align-items: center;
     justify-content: center;
+    outline: var(--container-outline);
+    white-space: nowrap;
 
     &:hover {
         background: var(--color-primary-15);
@@ -31,15 +34,23 @@
         background: none !important;
         color: var(--color-primary-20) !important;
         cursor: default !important;
+        outline: 2px solid var(--color-primary-30);
     }
 
     > .bi {
         font-size: 15px;
     }
 
+    /* alternative stylings */
+    &.squared {
+        padding: 0;
+        width: 35px;
+    }
+
     &.alt {
         background: var(--color-primary-80);
         color: var(--color-background);
+        outline: 2px solid var(--color-primary-90);
 
         &:hover {
             background: var(--color-primary-70);
@@ -56,16 +67,31 @@
         &:disabled {
             background: var(--color-primary-40) !important;
             color: var(--color-background) !important;
+            outline: 2px solid var(--color-primary-50);
         }
     }
 
-    &.squared {
-        padding: 0;
-        width: 35px;
+    &.flat {
+        background: none;
+        outline: 0;
+
+        &:hover {
+            background: var(--color-primary-10);
+        }
+    
+        &:active, &.active {
+            background: var(--color-primary-15);
+        }
+    
+        &:focus {
+            outline: 2px solid var(--color-primary-100);
+        }
     }
 
+    /* semantic stylings */
     &.danger {
         background: var(--color-primary-10);
+        outline: 0;
 
         &:hover {
             background: var(--color-semantic-danger-100);
@@ -77,6 +103,56 @@
             color: var(--color-background);
         }
     
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+    }
+
+    &.danger-fill {
+        background: var(--color-semantic-danger-100);
+        color: var(--color-background);
+
+        &:hover {
+            background: var(--color-semantic-danger-90);
+        }
+
+        &:active, &.active {
+            background: var(--color-semantic-danger-80);
+        }
+
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+    }
+    
+    &.success {
+        background: var(--color-primary-10);
+        outline: 0;
+
+        &:hover {
+            background: var(--color-semantic-success-100);
+        }
+    
+        &:active, &.active {
+            background: var(--color-semantic-success-90);
+        }
+    
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+    }
+
+    &.success-fill {
+        background: var(--color-semantic-success-100);
+
+        &:hover {
+            background: var(--color-semantic-success-90);
+        }
+
+        &:active, &.active {
+            background: var(--color-semantic-success-80);
+        }
+
         &:focus {
             outline: 2px solid var(--color-primary-40);
         }

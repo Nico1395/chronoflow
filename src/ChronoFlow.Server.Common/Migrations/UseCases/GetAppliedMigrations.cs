@@ -1,23 +1,20 @@
 ﻿using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Shared.Common.Messaging;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.Common.Migrations.UseCases;
 
 internal static class GetAppliedMigrations
 {
-    internal static IEndpointRouteBuilder UseGetAppliedMigrationsEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class MigrationsController(IMediator mediator) : ControllerBase
     {
-        endpoints.MapGet("api/migrations/get-applied", async ([FromServices] IMediator mediator) =>
+        [HttpGet("api/migrations/get-applied")]
+        public async Task<ActionResult<Result<IReadOnlyList<string>>>> GetAppliedMigrationsAsync()
         {
             var result = await mediator.SendAsync(new GetAppliedMigrationsQuery());
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            return Ok(result);
+        }
     }
 
     private sealed record GetAppliedMigrationsQuery : IQuery<Result<IReadOnlyList<string>>>;

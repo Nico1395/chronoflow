@@ -288,4 +288,49 @@
   <data name="UrlValidationErrorMessage" xml:space="preserve">
     <value>'{0}' is not a valid URL</value>
   </data>
+  <data name="New" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="EditingEntry" xml:space="preserve">
+    <value>'{0}'</value>
+  </data>
+  <data name="NewRole" xml:space="preserve">
+    <value>New Role</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="CreatedOldToNew" xml:space="preserve">
+    <value>Created: Old to new</value>
+  </data>
+  <data name="CreatedNewToOld" xml:space="preserve">
+    <value>Created: New to old</value>
+  </data>
+  <data name="LastChangedRecentToEarlier" xml:space="preserve">
+    <value>Last Changed: Recent to earlier</value>
+  </data>
+  <data name="LastChangedEarlierToRecent" xml:space="preserve">
+    <value>Last Changed: Earlier to recent</value>
+  </data>
+  <data name="NameAscending" xml:space="preserve">
+    <value>Name ascending</value>
+  </data>
+  <data name="NameDescending" xml:space="preserve">
+    <value>Name descending</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="ChangesSaved" xml:space="preserve">
+    <value>Changes were saved</value>
+  </data>
+  <data name="EntrySaved" xml:space="preserve">
+    <value>Entry saved</value>
+  </data>
 </root>

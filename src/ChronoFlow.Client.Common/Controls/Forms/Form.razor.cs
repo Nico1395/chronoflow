@@ -54,6 +54,9 @@ public partial class Form : ComponentBase, IDisposable
     [Parameter]
     public RenderFragment<FormContext>? ChildContent { get; set; }
 
+    [Parameter]
+    public string? Class { get; set; }
+
     /// <summary>
     /// Method disposes off of the form and unsubscribes the event from the <see cref="EditContext"/>.
     /// </summary>
@@ -204,5 +207,13 @@ public partial class Form : ComponentBase, IDisposable
         }
 
         return Task.Run(StateHasChanged);
+    }
+
+    private Dictionary<string, object> GetFormAttributes()
+    {
+        if (Class == null)
+            return [];
+
+        return new Dictionary<string, object> { { "class", Class } };
     }
 }

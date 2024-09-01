@@ -5,31 +5,28 @@ using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Shared.AccessManagement.Roles;
 using ChronoFlow.Shared.Common.Messaging;
 using MapsterMapper;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.AccessManagement.Roles.UseCases;
 
 public static class AddRole
 {
-    internal static IEndpointRouteBuilder UseAddRoleEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class RolesController(IMediator _mediator, IMapper _mapper) : ControllerBase
     {
-        endpoints.MapPost("api/access-management/roles/add", async ([FromServices] IMediator mediator, [FromServices] IMapper mapper, [FromBody] RoleDto roleDto) =>
+        [HttpPost("api/access-management/roles/add")]
+        public async Task<ActionResult<Result>> AddRoleAsync([FromBody] RoleDto roleDto)
         {
-            var role = mapper.Map<Role>(roleDto);
-            var result = await mediator.SendAsync(new AddRoleCommand(role));
+            var role = _mapper.Map<Role>(roleDto);
+            var result = await _mediator.SendAsync(new AddRoleCommand(role));
 
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            return Ok(result);
+        }
     }
 
     public sealed record AddRoleCommand(Role Role) : ICommand<Result>;
 
-    internal sealed class AddRoleCommandHandler(
+    private sealed class AddRoleCommandHandler(
         IRoleReadRepository _roleReadRepository,
         IRoleWriteRepository _roleWriteRepository,
         IUnitOfWork _unitOfWork) : ICommandHandler<AddRoleCommand, Result>

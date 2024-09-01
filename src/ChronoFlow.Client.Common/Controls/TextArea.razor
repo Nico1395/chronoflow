@@ -1,0 +1,13 @@
+﻿@inherits FormControlComponentBase
+
+<textarea id="@Id"
+          tabindex="@TabIndex"
+          class="@GetClasses()"
+          style="@GetStyles()"
+          @oninput="OnInputAsync"
+          @onchange="@OnChangeAsync"
+          disabled="@GetDisabled()"
+          maxlength="@MaxLength">
+
+    @Value
+</textarea>

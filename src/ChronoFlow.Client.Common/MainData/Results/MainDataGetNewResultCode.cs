@@ -4,5 +4,5 @@ public enum MainDataGetNewResultCode
 {
     Success,
     Error,
-    MissingPermissions,
+    NotAuthorized,
 }

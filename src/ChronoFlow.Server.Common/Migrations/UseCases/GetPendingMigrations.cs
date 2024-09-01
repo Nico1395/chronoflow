@@ -1,23 +1,20 @@
 ﻿using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Shared.Common.Messaging;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Routing;
 
 namespace ChronoFlow.Server.Common.Migrations.UseCases;
 
 internal static class GetPendingMigrations
 {
-    internal static IEndpointRouteBuilder UseGetPendingMigrationsEndpoint(this IEndpointRouteBuilder endpoints)
+    [ApiController]
+    public sealed class MigrationsController(IMediator _mediator) : ControllerBase
     {
-        endpoints.MapGet("api/migrations/get-pending", async ([FromServices] IMediator mediator) =>
+        [HttpGet("api/migrations/get-pending")]
+        public async Task<ActionResult<Result<IReadOnlyList<string>>>> GetPendingMigrationsAsync()
         {
-            var result = await mediator.SendAsync(new GetPendingMigrationsQuery());
-            return Results.Ok(result);
-        });
-
-        return endpoints;
+            var result = await _mediator.SendAsync(new GetPendingMigrationsQuery());
+            return Ok(result);
+        }
     }
 
     private sealed record GetPendingMigrationsQuery() : IQuery<Result<IReadOnlyList<string>>>;

@@ -1,0 +1,101 @@
+﻿@typeparam TItem
+@inherits ListComponentBase<TItem>
+
+@{
+    var itemGroups = GetItemGroups();
+    var selectedItemGroup = GetSelectedItemGroup(itemGroups);
+}
+
+<div class="c-check-list">
+    @if (Searchable || _canSort || Header != null)
+    {
+        <header>
+            @if (_canSort)
+            {
+                <DropdownList TItem="@(ListSortOption<TItem>)"
+                              Items="@SortOptions"
+                              @bind-SelectedItem="@_selectedSortOption"
+                              DisplayValue="@(s => s.Name)"
+                              Placeholder="@Localizer["Sort"]"
+                              OnlyShowPlaceholder="@true"
+                              IconRight="bi bi-filter"
+                              Width="fit-content"
+                              Disabled="@Disabled" />
+            }
+
+            @if (Searchable)
+            {
+                <TextBox Placeholder="@Localizer["TypeToSearch"]"
+                         Value="@_searchTerm"
+                         OnChange="@((value) => _searchTerm = value)"
+                         Disabled="@Disabled" />
+            }
+
+            @if (Header != null)
+            {
+                @Header
+            }
+        </header>
+    }
+
+    <section>
+        @if (selectedItemGroup.Count > 0)
+        {
+            @foreach (var item in selectedItemGroup)
+            {
+                <div class="c-check-list-item">
+                    <CheckBox Value="@CheckCondition(item)" ValueChanged="@(async () => await OnToggleAsync(item))" />
+
+                    @if (Item != null)
+                    {
+                        @Item(item)
+                    }
+                    else if (Template != null && TemplateParameterFactory != null)
+                    {
+                        var parameters = TemplateParameterFactory(item);
+                        <DynamicComponent Type="@Template" Parameters="@parameters" />
+                    }
+                </div>
+            }
+        }
+        else if (NoItems != null)
+        {
+            @NoItems
+        }
+        else
+        {
+            <span class="c-check-list-no-items">
+                @Localizer["NoItems"]
+            </span>
+        }
+    </section>
+
+    @if (Pageable && itemGroups.Count > 1)
+    {
+        <footer>
+            @{
+                var previousEnabled = CurrentPage > 1;
+                var nextEnabled = CurrentPage < itemGroups.Count;
+            }
+
+            <Button Class="squared alt"
+                    IconLeft="bi bi-arrow-left"
+                    IconLeftSize="12px"
+                    Disabled="@(!previousEnabled)"
+                    OnClick="@(async () => await SelectItemGroupAsync(CurrentPage - 1))" />
+
+            @foreach (var itemGroup in itemGroups)
+            {
+                <Button Class="squared" Active="@(itemGroup.Key == CurrentPage)" OnClick="@(async () => await SelectItemGroupAsync(itemGroup.Key))">
+                    @itemGroup.Key
+                </Button>
+            }
+
+            <Button Class="squared alt"
+                    IconLeft="bi bi-arrow-right"
+                    IconLeftSize="12px"
+                    Disabled="@(!nextEnabled)"
+                    OnClick="@(async () => await SelectItemGroupAsync(CurrentPage + 1))" />
+        </footer>
+    }
+</div>

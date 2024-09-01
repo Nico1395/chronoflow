@@ -6,6 +6,6 @@ public enum MainDataUpdateResultCode
     Error,
     AlreadyExists,
     NotFound,
-    MissingPermissions,
+    NotAuthorized,
     ValidationErrors,
 }

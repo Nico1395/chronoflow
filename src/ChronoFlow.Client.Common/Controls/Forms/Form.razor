@@ -1,4 +1,4 @@
-﻿<EditForm EditContext="@EditContext">
+﻿<EditForm EditContext="@EditContext" AdditionalAttributes="@GetFormAttributes()">
     <CascadingValue Value="@this">
         @if (ChildContent != null)
         {
