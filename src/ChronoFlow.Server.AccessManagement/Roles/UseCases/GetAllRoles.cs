@@ -4,7 +4,6 @@ using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Shared.AccessManagement.Roles;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
-using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChronoFlow.Server.AccessManagement.Roles.UseCases;
@@ -18,7 +17,7 @@ public static class GetAllRoles
         public async Task<ActionResult<Result<List<RoleDto>>>> GetAllRolesAsync()
         {
             var result = await _mediator.SendAsync(new GetAllRolesQuery());
-            var mappedResult = _mapper.MapResult<List<Role>, List<RoleDto>>(result);
+            var mappedResult = _mapper.Map<List<Role>, List<RoleDto>>(result);
 
             return Ok(mappedResult);
         }

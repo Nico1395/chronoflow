@@ -3,7 +3,6 @@ using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Shared.AccessManagement.Roles;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
-using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChronoFlow.Server.AccessManagement.Roles.UseCases;
@@ -17,7 +16,7 @@ public static class GetNewRole
         public async Task<ActionResult<Result<RoleDto>>> GetNewRoleAsync()
         {
             var result = await _mediator.SendAsync(new GetNewRoleQuery());
-            var mappedResult = _mapper.MapResult<Role, RoleDto>(result);
+            var mappedResult = _mapper.Map<Role, RoleDto>(result);
 
             return Ok(mappedResult);
         }

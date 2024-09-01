@@ -3,8 +3,8 @@ using ChronoFlow.Server.AccessManagement.Roles.Entities.Repositories;
 using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Server.Common.Persistence;
 using ChronoFlow.Shared.AccessManagement.Roles;
+using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
-using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChronoFlow.Server.AccessManagement.Roles.UseCases;
