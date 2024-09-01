@@ -4,7 +4,6 @@ using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Shared.AccessManagement.Permissions;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
-using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChronoFlow.Server.AccessManagement.Permissions.UseCases;
@@ -18,7 +17,7 @@ public static class GetAllPermissions
         public async Task<ActionResult<Result<List<PermissionDto>>>> GetAllPermissionsAsync()
         {
             var result = await _mediator.SendAsync(new GetAllPermissionsQuery());
-            var mappedResult = _mapper.MapResult<List<Permission>, List<PermissionDto>>(result);
+            var mappedResult = _mapper.Map<List<Permission>, List<PermissionDto>>(result);
 
             return Ok(mappedResult);
         }

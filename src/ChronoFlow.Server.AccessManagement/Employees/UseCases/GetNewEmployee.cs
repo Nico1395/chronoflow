@@ -3,7 +3,6 @@ using ChronoFlow.Server.Common.Messaging;
 using ChronoFlow.Shared.AccessManagement.Employees;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
-using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.UseCases;
@@ -17,7 +16,7 @@ public static class GetNewEmployee
         public async Task<ActionResult<Result<EmployeeDto>>> GetNewEmployeeAsync()
         {
             var result = await mediator.SendAsync(new GetNewEmployeeQuery());
-            var mappedResult = mapper.MapResult<Employee, EmployeeDto>(result);
+            var mappedResult = mapper.Map<Employee, EmployeeDto>(result);
 
             return Ok(mappedResult);
         }

@@ -1,7 +1,6 @@
 ﻿using ChronoFlow.Shared.Common.Http;
 using ChronoFlow.Shared.Common.Mapping;
 using ChronoFlow.Shared.Common.Messaging;
-using MapsterMapper;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 using System.Text;
@@ -17,7 +16,7 @@ internal sealed class ServerHttpRequestService(IHttpClientProvider _httpClientPr
         var responseMessage = await _httpClientProvider.GetServerClient().GetAsync(uri, cancellationToken);
         var response = await responseMessage.Content.DeserializeAsync<Result<TDto>>(cancellationToken);
 
-        return _mapper.MapResult<TDto, TViewModel>(response);
+        return _mapper.Map<TDto, TViewModel>(response);
     }
 
     public async Task<Result<TViewModel>> GetAsync<TDto, TViewModel>(string uri, CancellationToken cancellationToken = default, params (string Name, object Value)[] queryParameters)
@@ -29,7 +28,7 @@ internal sealed class ServerHttpRequestService(IHttpClientProvider _httpClientPr
         var responseMessage = await _httpClientProvider.GetServerClient().GetAsync(compoundUri, cancellationToken);
         var response = await responseMessage.Content.DeserializeAsync<Result<TDto>>(cancellationToken);
 
-        return _mapper.MapResult<TDto, TViewModel>(response);
+        return _mapper.Map<TDto, TViewModel>(response);
     }
 
     public async Task<Result> PostAsync<TDto, TViewModel>(string uri, TViewModel data, CancellationToken cancellationToken = default)
