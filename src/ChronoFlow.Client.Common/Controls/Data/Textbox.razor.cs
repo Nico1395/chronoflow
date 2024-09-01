@@ -1,13 +1,13 @@
 ﻿using ChronoFlow.Client.Common.Controls.Forms;
 using Microsoft.AspNetCore.Components;
 
-namespace ChronoFlow.Client.Common.Controls;
+namespace ChronoFlow.Client.Common.Controls.Data;
 
 public partial class TextBox : FormControlComponentBase
 {
     [Parameter]
     public string? Type { get; set; } = "text";
-    
+
     [Parameter]
     public string? Value { get; set; }
 
@@ -25,7 +25,7 @@ public partial class TextBox : FormControlComponentBase
 
     [Parameter]
     public string? Class { get; set; }
-    
+
     [Parameter]
     public string? Tooltip { get; set; }
 
