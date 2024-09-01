@@ -1,6 +1,4 @@
-﻿using ChronoFlow.Shared.Common.Messaging;
-using Mapster;
-using MapsterMapper;
+﻿using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -10,10 +8,10 @@ public static class MappingExtensions
 {
     public static IServiceCollection AddMapper(this IServiceCollection services, params Assembly[] assemblies)
     {
-        services.AddSingleton<IMapper>((serviceProvider) => new Mapper(TypeAdapterConfig.GlobalSettings));
+        services.AddSingleton<MapsterMapper.IMapper>((serviceProvider) => new MapsterMapper.Mapper(TypeAdapterConfig.GlobalSettings));
         TypeAdapterConfig.GlobalSettings.AddConfigurationsFromAssemblies(assemblies);
 
-        return services;
+        return services.AddSingleton<IMapper, Mapper>();
     }
 
     public static TypeAdapterConfig ConfigureTypes<TSource, TDestination>(this TypeAdapterConfig mappingConfiguration)
@@ -48,10 +46,5 @@ public static class MappingExtensions
             .Configure(mappingConfiguration);
 
         return mappingConfiguration;
-    }
-
-    public static Result<TDestination> MapResult<TSource, TDestination>(this IMapper _mapper, Result<TSource> originalResult)
-    {
-        return _mapper.Map<Result<TDestination>>(originalResult);
     }
 }
