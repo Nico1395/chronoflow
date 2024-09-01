@@ -9,17 +9,17 @@
 
 <section class="md-item-template-center">
     <header>
-        <a href="@ItemUriFactory(Item)">
+        <a href="@ItemUri(Item)">
             @ItemTitle(Item)
         </a>
 
         <div>
-            @GetTopRow()
+            @GetTopDetails()
         </div>
     </header>
 
     <div>
-        @GetBottomRow()
+        @GetBottomDetails()
     </div>
 </section>
 
@@ -30,10 +30,27 @@
     </div>
 }
 
-<aside>
-    <Button Class="squared danger"
-            IconLeft="bi bi-x"
-            IconLeftSize="18px"
-            Disabled="@Context.Busy"
-            OnClick="@OnDelete" />
+<aside class="md-item-template-actions">
+    @if (_confirmationPending)
+    {
+        <Button Class="squared success-fill"
+                IconLeft="bi bi-check"
+                IconLeftSize="18px"
+                Disabled="@Context.Busy"
+                OnClick="@OnDelete" />
+
+        <Button Class="squared danger-fill"
+                IconLeft="bi bi-x"
+                IconLeftSize="18px"
+                Disabled="@Context.Busy"
+                OnClick="@ToggleConfirmation" />
+    }
+    else
+    {
+        <Button Class="squared danger"
+                IconLeft="bi bi-x"
+                IconLeftSize="18px"
+                Disabled="@Context.Busy"
+                OnClick="@ToggleConfirmation" />
+    }
 </aside>

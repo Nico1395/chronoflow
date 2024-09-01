@@ -6,6 +6,9 @@ namespace ChronoFlow.Client.Common.MainData.UseCases.MainDataList;
 public partial class MainDataListItemTemplate<TViewModel> : ComponentBase
     where TViewModel : class, IMainDataViewModel
 {
+    private bool _confirmationPending = false;
+    private TViewModel? _item;
+
     [Inject]
     private ITimespanMessageCalculator TimespanMessageCalculator { get; set; } = null!;
 
@@ -13,7 +16,7 @@ public partial class MainDataListItemTemplate<TViewModel> : ComponentBase
     public required TViewModel Item { get; set; }
 
     [Parameter, EditorRequired]
-    public required Func<TViewModel, string> ItemUriFactory { get; set; }
+    public required Func<TViewModel, string> ItemUri { get; set; }
 
     [Parameter, EditorRequired]
     public required Func<TViewModel, string> ItemTitle { get; set; }
@@ -31,17 +34,31 @@ public partial class MainDataListItemTemplate<TViewModel> : ComponentBase
     public RenderFragment? Right { get; set; }
 
     [Parameter]
-    public List<string> BottomRowValues { get; set; } = [];
+    public List<string> BottomDetails { get; set; } = [];
 
     [Parameter]
-    public List<string> TopRowValues { get; set; } = [];
+    public List<string> TopDetails { get; set; } = [];
 
-    private string GetTopRow()
+    protected override void OnParametersSet()
     {
-        return string.Join(" • ", TopRowValues);
+        _item = Item;
     }
 
-    private string GetBottomRow()
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (_item != Item)
+        {
+            _confirmationPending = false;
+            _item = Item;
+        }
+    }
+
+    private string GetTopDetails()
+    {
+        return string.Join(" • ", TopDetails.Where(s => !string.IsNullOrEmpty(s)));
+    }
+
+    private string GetBottomDetails()
     {
         List<string> descriptionDetails = [];
         var createdMessage = TimespanMessageCalculator.GetCreatedMessage(Item.Created);
@@ -53,7 +70,12 @@ public partial class MainDataListItemTemplate<TViewModel> : ComponentBase
         if (editedMessage != null)
             descriptionDetails.Add(editedMessage);
 
-        var descriptionValues = descriptionDetails.Concat(BottomRowValues);
-        return string.Join(" • ", descriptionValues);
+        var descriptionValues = descriptionDetails.Concat(BottomDetails);
+        return string.Join(" • ", descriptionValues.Where(s => !string.IsNullOrEmpty(s)));
+    }
+
+    private void ToggleConfirmation()
+    {
+        _confirmationPending = !_confirmationPending;
     }
 }
