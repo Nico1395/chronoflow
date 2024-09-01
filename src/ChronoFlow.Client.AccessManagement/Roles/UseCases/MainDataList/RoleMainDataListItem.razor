@@ -3,6 +3,7 @@
 <MainDataListItemTemplate TViewModel="@RoleViewModel"
                           Item="@Item"
                           Context="@Context"
-                          ItemUriFactory="@(r => $"main-data/roles/{r.Id}")"
+                          ItemUri="@(r => $"main-data/roles/{r.Id}")"
                           ItemTitle="@(r => r.Name)"
+                          TopDetails="@GetBottomDetails()"
                           OnDelete="@OnDeleteAsync" />
