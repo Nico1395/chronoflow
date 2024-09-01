@@ -1,7 +1,7 @@
 ﻿using ChronoFlow.Client.Common.Controls.Forms;
 using Microsoft.AspNetCore.Components;
 
-namespace ChronoFlow.Client.Common.Controls.Data;
+namespace ChronoFlow.Client.Common.Controls;
 
 public partial class TextBox : FormControlComponentBase
 {
