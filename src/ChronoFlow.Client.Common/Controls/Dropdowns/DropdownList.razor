@@ -1,0 +1,49 @@
+﻿@typeparam TItem
+@inherits FormControlComponentBase
+
+<div id="@Id"
+     class="@GetClasses()"
+     style="@GetStyles()"
+     tabindex="@TabIndex"
+     title="@Tooltip">
+
+    <div class="c-dropdown-list-button">
+        <Button OnClick="@ToggleAsync"
+                IconLeft="@IconLeft"
+                IconLeftSize="@IconLeftSize"
+                IconRight="@IconRight"
+                IconRightSize="@IconRightSize"
+                Disabled="@GetDisabled()">
+
+            @if (SelectedItem != null && !OnlyShowPlaceholder)
+            {
+                @GetDisplayValue(SelectedItem)
+            }
+            else
+            {
+                @Placeholder
+            }
+        </Button>
+    </div>
+
+    @if (Opened)
+    {
+        <section id="@_floatingContainerId" class="c-dropdown-list-items">
+            @foreach (var item in Items)
+            {
+                var iconLeft = ItemIconLeft?.Invoke(item);
+                var iconRight = ItemIconRight?.Invoke(item);
+                var active = item?.Equals(SelectedItem) ?? false;
+
+                <Button OnClick="@(async () => await OnSelectItemAsync(item))"
+                        IconLeft="@iconLeft"
+                        IconRight="@iconRight"
+                        Active="@active"
+                        Disabled="@GetDisabled()">
+
+                    @GetDisplayValue(item)
+                </Button>
+            }
+        </section>
+    }
+</div>
