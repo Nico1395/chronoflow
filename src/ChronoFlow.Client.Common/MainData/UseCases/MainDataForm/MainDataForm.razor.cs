@@ -173,6 +173,7 @@ public partial class MainDataForm<TViewModel> : ComponentBase, IDisposable
         var result = await FormService.AddAsync(item);
         if (result.Code == MainDataAddResultCode.Success)
         {
+            LocalNotificationPublisher.PublishSuccess(Localizer["EntrySaved"]);
             NavigateBack();
         }
         else if (result.Code == MainDataAddResultCode.Error)
@@ -200,6 +201,7 @@ public partial class MainDataForm<TViewModel> : ComponentBase, IDisposable
         var result = await FormService.UpdateAsync(item);
         if (result.Code == MainDataUpdateResultCode.Success)
         {
+            LocalNotificationPublisher.PublishSuccess(Localizer["ChangesSaved"]);
             NavigateBack();
         }
         else if (result.Code == MainDataUpdateResultCode.Error)
