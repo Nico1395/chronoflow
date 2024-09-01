@@ -205,6 +205,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Changes were saved.
+        /// </summary>
+        internal static string ChangesSaved {
+            get {
+                return ResourceManager.GetString("ChangesSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clock in.
         /// </summary>
         internal static string ClockIn {
@@ -313,6 +322,24 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Created: New to old.
+        /// </summary>
+        internal static string CreatedNewToOld {
+            get {
+                return ResourceManager.GetString("CreatedNewToOld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created: Old to new.
+        /// </summary>
+        internal static string CreatedOldToNew {
+            get {
+                return ResourceManager.GetString("CreatedOldToNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Created {0} weeks ago.
         /// </summary>
         internal static string CreatedWeeksAgo {
@@ -340,7 +367,7 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Editing &apos;{0}&apos;.
+        ///   Looks up a localized string similar to &apos;{0}&apos;.
         /// </summary>
         internal static string EditingEntry {
             get {
@@ -394,6 +421,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Entry saved.
+        /// </summary>
+        internal static string EntrySaved {
+            get {
+                return ResourceManager.GetString("EntrySaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &apos;{0}&apos; is not a valid file extension.
         /// </summary>
         internal static string FileExtensionsValidationErrorMessage {
@@ -408,6 +444,24 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string IForgotMyPassword {
             get {
                 return ResourceManager.GetString("IForgotMyPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Changed: Earlier to recent.
+        /// </summary>
+        internal static string LastChangedEarlierToRecent {
+            get {
+                return ResourceManager.GetString("LastChangedEarlierToRecent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Changed: Recent to earlier.
+        /// </summary>
+        internal static string LastChangedRecentToEarlier {
+            get {
+                return ResourceManager.GetString("LastChangedRecentToEarlier", resourceCulture);
             }
         }
         
@@ -471,6 +525,24 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string Name {
             get {
                 return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name ascending.
+        /// </summary>
+        internal static string NameAscending {
+            get {
+                return ResourceManager.GetString("NameAscending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name descending.
+        /// </summary>
+        internal static string NameDescending {
+            get {
+                return ResourceManager.GetString("NameDescending", resourceCulture);
             }
         }
         
@@ -588,6 +660,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string Save {
             get {
                 return ResourceManager.GetString("Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort.
+        /// </summary>
+        internal static string Sort {
+            get {
+                return ResourceManager.GetString("Sort", resourceCulture);
             }
         }
         
