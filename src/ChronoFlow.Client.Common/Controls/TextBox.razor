@@ -1,0 +1,15 @@
+﻿@inherits FormControlComponentBase
+@namespace ChronoFlow.Client.Common.Controls
+
+<input id="@Id"
+       type="@Type"
+       tabindex="@TabIndex"
+       placeholder="@Placeholder"
+       class="@GetClasses()"
+       style="@GetStyles()"
+       title="@Tooltip"
+       disabled="@GetDisabled()"
+       maxlength="@MaxLength"
+       value="@Value"
+       @oninput="@InvokeOnInputAsync"
+       @onchange="@InvokeOnChangeAsync" />
