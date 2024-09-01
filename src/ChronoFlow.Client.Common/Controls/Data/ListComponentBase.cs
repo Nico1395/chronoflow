@@ -37,6 +37,9 @@ public abstract class ListComponentBase<TItem> : ComponentBase
     public bool Searchable { get; set; } = true;
 
     [Parameter]
+    public bool Disabled { get; set; }
+
+    [Parameter]
     public RenderFragment? Header { get; set; }
 
     [Parameter]
@@ -63,7 +66,7 @@ public abstract class ListComponentBase<TItem> : ComponentBase
     [Parameter]
     public EventCallback<int> CurrentPageChanged { get; set; }
 
-    protected override void OnInitialized()
+    protected override void OnParametersSet()
     {
         _canSort = Sortable && SortOptions.Count > 0;
 
@@ -72,6 +75,8 @@ public abstract class ListComponentBase<TItem> : ComponentBase
 
         if (Template != null && !Template.IsAssignableTo(typeof(ListItemComponentBase<TItem>)))
             throw new InvalidOperationException($"The type of template has to implement the abstract class {typeof(ListItemComponentBase<TItem>)}");
+
+        _selectedSortOption = SortOptions.FirstOrDefault(o => o.IsDefault);
     }
 
     protected override void OnAfterRender(bool firstRender)

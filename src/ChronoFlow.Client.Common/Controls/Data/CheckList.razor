@@ -10,19 +10,25 @@
     @if (Searchable || _canSort || Header != null)
     {
         <header>
+            @if (_canSort)
+            {
+                <DropdownList TItem="@(ListSortOption<TItem>)"
+                              Items="@SortOptions"
+                              @bind-SelectedItem="@_selectedSortOption"
+                              DisplayValue="@(s => s.Name)"
+                              Placeholder="@Localizer["Sort"]"
+                              OnlyShowPlaceholder="@true"
+                              IconRight="bi bi-filter"
+                              Width="fit-content"
+                              Disabled="@Disabled" />
+            }
+
             @if (Searchable)
             {
                 <TextBox Placeholder="@Localizer["TypeToSearch"]"
                          Value="@_searchTerm"
-                         OnChange="@((value) => _searchTerm = value)" />
-            }
-
-            @if (_canSort)
-            {
-                @* TODO -> Dropdown with sort options *@
-                <Button>
-                    @Localizer["Sort"]
-                </Button>
+                         OnChange="@((value) => _searchTerm = value)"
+                         Disabled="@Disabled" />
             }
 
             @if (Header != null)

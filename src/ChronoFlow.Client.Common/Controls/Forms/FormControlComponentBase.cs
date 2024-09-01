@@ -24,7 +24,7 @@ public abstract class FormControlComponentBase : ComponentBase
 
     internal void SetWidth(string width)
     {
-        Width = width;
+        Width ??= width;
     }
 
     internal bool GetDisabled()
