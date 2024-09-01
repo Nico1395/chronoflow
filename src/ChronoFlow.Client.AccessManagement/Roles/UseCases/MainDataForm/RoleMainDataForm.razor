@@ -7,7 +7,7 @@
     </Field>
 
     <Field Label="@Localizer["Description"]" For="@(() => context.Item.Name)" Width="100%">
-        <TextArea @bind-Value="@context.Item.Description" MaxLength="200" Placeholder="@Localizer["DescribeTheRole"]" />
+        <TextArea @bind-Value="@context.Item.Description" MaxLength="200" />
     </Field>
 
     <Field Label="@Localizer["Permissions"]" Width="100%">
@@ -17,6 +17,7 @@
                    OnToggle="@context.Item.TogglePermission"
                    Pageable="@true"
                    PageCount="15"
+                   SortOptions="@GetPermissionListSortOptions()"
                    Context="permission">
 
             <Item>
