@@ -26,6 +26,6 @@ internal sealed class EmployeeReadRepository(DbContext _dbContext) : IEmployeeRe
         return query
             .Include(e => e.Emails)
             .Include(e => e.PhoneNumbers)
-            .Include(e => e.Roles).ThenInclude(r => r.Permissions);
+            .Include(e => e.Roles).ThenInclude(r => r.RolePermissions);
     }
 }

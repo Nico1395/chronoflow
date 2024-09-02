@@ -9,6 +9,9 @@ internal sealed class RoleWriteRepository(DbContext _dbContext) : IRoleWriteRepo
     public Task AddAsync(Role role, CancellationToken cancellationToken = default)
     {
         _dbContext.Add(role);
+        foreach (var rolePermission in role.RolePermissions)
+            _dbContext.Entry(rolePermission.Permission).State = EntityState.Unchanged;
+
         return Task.CompletedTask;
     }
 
@@ -16,20 +19,27 @@ internal sealed class RoleWriteRepository(DbContext _dbContext) : IRoleWriteRepo
     {
         _dbContext.Entry(existingRole).CurrentValues.SetValues(updatedRole);
 
-        existingRole.Permissions.Clear();
-        foreach (var permission in updatedRole.Permissions)
-            existingRole.Permissions.Add(permission);
+        foreach (var updatedRolePermission in updatedRole.RolePermissions)
+        {
+            var existingRolePermission = existingRole.RolePermissions.FirstOrDefault(rp => rp.PermissionId == updatedRolePermission.PermissionId);
+            if (existingRolePermission == null)
+                existingRole.RolePermissions.Add(updatedRolePermission);
+            else
+                _dbContext.Entry(existingRolePermission).State = EntityState.Unchanged;
+        }
+
+        foreach (var existingRolePermission in existingRole.RolePermissions.ToList())
+        {
+            if (!updatedRole.RolePermissions.Any(rp => rp.PermissionId == existingRolePermission.PermissionId))
+                existingRole.RolePermissions.Remove(existingRolePermission);
+        }
 
         return Task.CompletedTask;
     }
 
     public Task DeleteAsync(Role role, CancellationToken cancellationToken = default)
     {
-        //var rolePermissions = role.Permissions.Select(p => new RolePermission() { PermissionId = p.Id, RoleId = role.Id});
-
         _dbContext.Remove(role);
-        //_dbContext.RemoveRange(rolePermissions);
-
         return Task.CompletedTask;
     }
 }
