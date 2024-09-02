@@ -19,5 +19,6 @@ internal sealed class MappingConfiguration : MappingConfigurationBase
         mappingConfiguration.ConfigureTypes<EmployeePhoneNumber, EmployeePhoneNumberDto>();
         mappingConfiguration.ConfigureTypes<Permission, PermissionDto>();
         mappingConfiguration.ConfigureTypes<Role, RoleDto>();
+        mappingConfiguration.ConfigureTypes<RolePermission, RolePermissionDto>();
     }
 }

@@ -13,5 +13,8 @@ internal sealed class RolePermissionEntityConfiguration : IEntityTypeConfigurati
 
         builder.Property(f => f.RoleId).HasColumnName("role_id").IsRequired();
         builder.Property(f => f.PermissionId).HasColumnName("permission_id").IsRequired();
+
+        builder.HasOne(r => r.Role).WithMany(r => r.RolePermissions).HasForeignKey(r => r.RoleId);
+        builder.HasOne(r => r.Permission).WithMany().HasForeignKey(r => r.PermissionId);
     }
 }

@@ -17,6 +17,5 @@ internal sealed class RoleEntityConfiguration : IEntityTypeConfiguration<Role>
         builder.Property(x => x.Description).HasMaxLength(200).HasColumnName("description");
         builder.Property(x => x.Created).HasColumnName("created").IsRequired();
         builder.Property(x => x.LastChanged).HasColumnName("last_changed").IsRequired();
-        builder.HasMany(x => x.Permissions).WithMany().UsingEntity<RolePermission>();
     }
 }

@@ -33,21 +33,28 @@ public static class UpdateRole
     {
         public async Task<Result> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
         {
-            var existingRole = await _roleReadRepository.GetByIdAsync(request.UpdatedRole.Id, cancellationToken);
-            if (existingRole == null)
-                return Result.NotFound();
+            try
+            {
+                var existingRole = await _roleReadRepository.GetByIdAsync(request.UpdatedRole.Id, cancellationToken);
+                if (existingRole == null)
+                    return Result.NotFound();
 
-            var nameHasChanged = existingRole.Name != request.UpdatedRole.Name;
-            if (nameHasChanged && await _roleReadRepository.ExistsWithNameAsync(request.UpdatedRole.Name, cancellationToken))
-                return Result.AlreadyExists([ValidationError.AlreadyExists($"TODO -> Localize: A role with the name {request.UpdatedRole.Name} already exists.")]);
+                var nameHasChanged = existingRole.Name != request.UpdatedRole.Name;
+                if (nameHasChanged && await _roleReadRepository.ExistsWithNameAsync(request.UpdatedRole.Name, cancellationToken))
+                    return Result.AlreadyExists([ValidationError.AlreadyExists($"TODO -> Localize: A role with the name {request.UpdatedRole.Name} already exists.")]);
 
-            request.UpdatedRole.LastChanged = DateTime.Now;
+                request.UpdatedRole.LastChanged = DateTime.Now;
 
-            await _roleWriteRepository.UpdateAsync(
-                existingRole,
-                request.UpdatedRole,
-                cancellationToken);
-            await _unitOfWork.CommitAsync(cancellationToken);
+                await _roleWriteRepository.UpdateAsync(
+                    existingRole,
+                    request.UpdatedRole,
+                    cancellationToken);
+                await _unitOfWork.CommitAsync(cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                return Result.Error(ex.Message);
+            }
 
             return Result.Okay();
         }

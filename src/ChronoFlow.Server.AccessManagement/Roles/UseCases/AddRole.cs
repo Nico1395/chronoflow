@@ -33,14 +33,21 @@ public static class AddRole
     {
         public async Task<Result> Handle(AddRoleCommand request, CancellationToken cancellationToken)
         {
-            if (await _roleReadRepository.ExistsAsync(request.Role.Id, cancellationToken))
-                return Result.AlreadyExists();
+            try
+            {
+                if (await _roleReadRepository.ExistsAsync(request.Role.Id, cancellationToken))
+                    return Result.AlreadyExists();
 
-            if (await _roleReadRepository.ExistsWithNameAsync(request.Role.Name, cancellationToken))
-                return Result.AlreadyExists([ValidationError.AlreadyExists($"TODO -> Localize: A role with the name {request.Role.Name} already exists.")]);
+                if (await _roleReadRepository.ExistsWithNameAsync(request.Role.Name, cancellationToken))
+                    return Result.AlreadyExists([ValidationError.AlreadyExists($"TODO -> Localize: A role with the name {request.Role.Name} already exists.")]);
 
-            await _roleWriteRepository.AddAsync(request.Role, cancellationToken);
-            await _unitOfWork.CommitAsync(cancellationToken);
+                await _roleWriteRepository.AddAsync(request.Role, cancellationToken);
+                await _unitOfWork.CommitAsync(cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                return Result.Error(ex.Message);
+            }
 
             return Result.Okay();
         }
