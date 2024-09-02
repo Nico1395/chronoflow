@@ -1,5 +1,6 @@
 ﻿using ChronoFlow.Server.AccessManagement.Roles.Entities;
 using ChronoFlow.Server.AccessManagement.Roles.Entities.Repositories;
+using ChronoFlow.Server.Common.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChronoFlow.Server.AccessManagement.Roles.Persistence;
@@ -18,21 +19,7 @@ internal sealed class RoleWriteRepository(DbContext _dbContext) : IRoleWriteRepo
     public Task UpdateAsync(Role existingRole, Role updatedRole, CancellationToken cancellationToken = default)
     {
         _dbContext.Entry(existingRole).CurrentValues.SetValues(updatedRole);
-
-        foreach (var updatedRolePermission in updatedRole.RolePermissions)
-        {
-            var existingRolePermission = existingRole.RolePermissions.FirstOrDefault(rp => rp.PermissionId == updatedRolePermission.PermissionId);
-            if (existingRolePermission == null)
-                existingRole.RolePermissions.Add(updatedRolePermission);
-            else
-                _dbContext.Entry(existingRolePermission).State = EntityState.Unchanged;
-        }
-
-        foreach (var existingRolePermission in existingRole.RolePermissions.ToList())
-        {
-            if (!updatedRole.RolePermissions.Any(rp => rp.PermissionId == existingRolePermission.PermissionId))
-                existingRole.RolePermissions.Remove(existingRolePermission);
-        }
+        _dbContext.SyncCollections(existingRole.RolePermissions, updatedRole.RolePermissions, rp => new { rp.RoleId, rp.PermissionId });
 
         return Task.CompletedTask;
     }
