@@ -12,6 +12,8 @@ public abstract class ListComponentBase<TItem> : ComponentBase
     protected string? _searchTerm;
     protected ListSortOption<TItem>? _selectedSortOption;
 
+    protected virtual bool ScrollToTopOnPageSelection => true;
+
     [Inject]
     protected ILocalizer Localizer { get; set; } = null!;
 
@@ -119,7 +121,9 @@ public abstract class ListComponentBase<TItem> : ComponentBase
         StateHasChanged();
 
         await CurrentPageChanged.InvokeAsync(CurrentPage);
-        await JsRuntime.InvokeVoidAsync("scrollTo", 0, 0);
+
+        if (ScrollToTopOnPageSelection)
+            await JsRuntime.InvokeVoidAsync("scrollTo", 0, 0);
     }
 
     private List<TItem> GetProcessedItems()
