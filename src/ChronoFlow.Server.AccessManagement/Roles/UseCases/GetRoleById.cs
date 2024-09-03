@@ -29,7 +29,7 @@ public static class GetRoleById
     {
         public async Task<Result<Role>> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
         {
-            var role = await _roleReadRepository.GetByIdAsync(request.RoleId, cancellationToken);
+            var role = await _roleReadRepository.GetByIdEagerAsync(request.RoleId, cancellationToken);
             if (role == null)
                 return Result.NotFound<Role>();
 

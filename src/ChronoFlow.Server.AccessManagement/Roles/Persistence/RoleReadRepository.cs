@@ -6,14 +6,14 @@ namespace ChronoFlow.Server.AccessManagement.Roles.Persistence;
 
 internal sealed class RoleReadRepository(DbContext _dbContext) : IRoleReadRepository
 {
-    public Task<List<Role>> GetAllAsync(CancellationToken cancellationToken = default)
+    public Task<List<Role>> GetAllEagerAsync(CancellationToken cancellationToken = default)
     {
-        return AsEager(_dbContext.Set<Role>()).ToListAsync(cancellationToken);
+        return GetEagerQuery().ToListAsync(cancellationToken);
     }
 
-    public Task<Role?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public Task<Role?> GetByIdEagerAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        return AsEager(_dbContext.Set<Role>()).SingleOrDefaultAsync(r => r.Id == id, cancellationToken);
+        return GetEagerQuery().SingleOrDefaultAsync(r => r.Id == id, cancellationToken);
     }
 
     public Task<bool> ExistsAsync(Guid id, CancellationToken cancellationToken = default)
@@ -26,8 +26,8 @@ internal sealed class RoleReadRepository(DbContext _dbContext) : IRoleReadReposi
         return _dbContext.Set<Role>().AnyAsync(r => r.Name == name, cancellationToken);
     }
 
-    private IQueryable<Role> AsEager(IQueryable<Role> query)
+    private IQueryable<Role> GetEagerQuery()
     {
-        return query.Include(r => r.RolePermissions).ThenInclude(r => r.Permission);
+        return _dbContext.Set<Role>().Include(r => r.RolePermissions).ThenInclude(r => r.Permission);
     }
 }

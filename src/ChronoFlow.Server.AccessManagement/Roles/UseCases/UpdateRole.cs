@@ -35,7 +35,7 @@ public static class UpdateRole
         {
             try
             {
-                var existingRole = await _roleReadRepository.GetByIdAsync(request.UpdatedRole.Id, cancellationToken);
+                var existingRole = await _roleReadRepository.GetByIdEagerAsync(request.UpdatedRole.Id, cancellationToken);
                 if (existingRole == null)
                     return Result.NotFound();
 

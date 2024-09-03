@@ -28,7 +28,7 @@ public static class DeleteRole
     {
         public async Task<Result> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
         {
-            var role = await _roleReadRepository.GetByIdAsync(request.RoleId, cancellationToken);
+            var role = await _roleReadRepository.GetByIdEagerAsync(request.RoleId, cancellationToken);
             if (role == null)
                 return Result.NotFound();
 

@@ -29,7 +29,7 @@ public static class GetAllRoles
     {
         public async Task<Result<List<Role>>> Handle(GetAllRolesQuery request, CancellationToken cancellationToken)
         {
-            var roles = await _roleReadRepository.GetAllAsync(cancellationToken);
+            var roles = await _roleReadRepository.GetAllEagerAsync(cancellationToken);
             return Result.Okay(roles);
         }
     }
