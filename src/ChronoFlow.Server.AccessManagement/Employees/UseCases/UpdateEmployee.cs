@@ -33,7 +33,7 @@ public static class UpdateEmployee
     {
         public async Task<Result> Handle(UpdateEmployeeCommand request, CancellationToken cancellationToken)
         {
-            var existingEmployee = await _employeeReadRepository.GetByIdAsync(request.UpdatedEmployee.Id, cancellationToken);
+            var existingEmployee = await _employeeReadRepository.GetByIdEagerAsync(request.UpdatedEmployee.Id, cancellationToken);
             if (existingEmployee == null)
                 return Result.NotFound();
 

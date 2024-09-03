@@ -13,5 +13,8 @@ internal sealed class EmployeeRoleEntityConfiguration : IEntityTypeConfiguration
 
         builder.Property(d => d.EmployeeId).HasColumnName("employee_id").IsRequired();
         builder.Property(d => d.RoleId).HasColumnName("role_id").IsRequired();
+
+        builder.HasOne(r => r.Employee).WithMany(e => e.EmployeeRoles).HasForeignKey(r => r.RoleId);
+        builder.HasOne(r => r.Role).WithMany().HasForeignKey(r => r.RoleId);
     }
 }

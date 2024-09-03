@@ -14,9 +14,20 @@ public sealed class EmployeeViewModel : MainDataViewModel
     public AddressViewModel Address { get; init; } = AddressViewModel.Empty();
 
     public string PersonnelNumber { get; set; } = string.Empty;
-    public string PasswordHash { get; set; } = string.Empty;
     public List<EmployeeEmailViewModel> Emails { get; init; } = [];
     public List<EmployeePhoneNumberViewModel> PhoneNumbers { get; set; } = [];
-    public List<RoleViewModel> Roles { get; set; } = [];
+    public List<EmployeeRoleViewModel> EmployeeRoles { get; set; } = [];
     public DateTime? Birthday { get; set; }
+
+    internal bool HasRole(RoleViewModel role)
+    {
+        return EmployeeRoles.Contains(EmployeeRoleViewModel.Create(Id, role));
+    }
+
+    internal void ToggleRole(RoleViewModel role)
+    {
+        var employeeRole = EmployeeRoleViewModel.Create(Id, role);
+        if (!EmployeeRoles.Remove(employeeRole))
+            EmployeeRoles.Add(employeeRole);
+    }
 }

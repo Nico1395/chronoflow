@@ -12,7 +12,7 @@ public static class GetNewEmployee
     [ApiController]
     public sealed class EmployeesController(IMediator mediator, IMapper mapper) : ControllerBase
     {
-        [HttpGet("api/access-management/employees/new")]
+        [HttpGet("api/access-management/employees/get-new")]
         public async Task<ActionResult<Result<EmployeeDto>>> GetNewEmployeeAsync()
         {
             var result = await mediator.SendAsync(new GetNewEmployeeQuery());

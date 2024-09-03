@@ -14,6 +14,7 @@ internal sealed class MappingConfiguration : MappingConfigurationBase
     public override void Configure(TypeAdapterConfig mappingConfiguration)
     {
         mappingConfiguration.ConfigureTypes<Employee, EmployeeDto>();
+        mappingConfiguration.ConfigureTypes<EmployeeRole, EmployeeRoleDto>();
         mappingConfiguration.ConfigureTypes<EmployeeName, EmployeeNameDto>();
         mappingConfiguration.ConfigureTypes<EmployeeEmail, EmployeeEmailDto>();
         mappingConfiguration.ConfigureTypes<EmployeePhoneNumber, EmployeePhoneNumberDto>();

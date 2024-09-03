@@ -29,7 +29,7 @@ public static class GetEmployeeById
     {
         public async Task<Result<Employee>> Handle(GetEmployeeByIdQuery request, CancellationToken cancellationToken)
         {
-            var employee = await _employeeReadRepository.GetByIdAsync(request.EmployeeId, cancellationToken);
+            var employee = await _employeeReadRepository.GetByIdEagerAsync(request.EmployeeId, cancellationToken);
             if (employee == null)
                 return Result.NotFound<Employee>();
 

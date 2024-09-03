@@ -29,7 +29,7 @@ public static class GetAllEmployees
     {
         public async Task<Result<List<Employee>>> Handle(GetAllEmployeesQuery request, CancellationToken cancellationToken)
         {
-            var employees = await _employeeReadRepository.GetAllAsync(cancellationToken);
+            var employees = await _employeeReadRepository.GetAllEagerAsync(cancellationToken);
             return Result.Okay(employees);
         }
     }

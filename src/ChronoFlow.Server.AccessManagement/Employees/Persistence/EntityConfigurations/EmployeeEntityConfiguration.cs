@@ -34,6 +34,5 @@ internal sealed class EmployeeEntityConfiguration : IEntityTypeConfiguration<Emp
         builder.Property(x => x.LastChanged).HasColumnName("last_changed").IsRequired();
         builder.HasMany(d => d.Emails).WithOne().HasForeignKey(e => e.EmployeeId).HasForeignKey("fk_access_management_employee_emails");
         builder.HasMany(d => d.PhoneNumbers).WithOne().HasForeignKey(e => e.EmployeeId).HasForeignKey("fk_access_management_employee_phone_numbers");
-        builder.HasMany(d => d.Roles).WithMany().UsingEntity<EmployeeRole>();
     }
 }

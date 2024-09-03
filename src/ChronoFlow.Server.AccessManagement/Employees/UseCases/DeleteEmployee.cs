@@ -28,7 +28,7 @@ public static class DeleteEmployee
     {
         public async Task<Result> Handle(DeleteEmployeeCommand request, CancellationToken cancellationToken)
         {
-            var employee = await _employeeReadRepository.GetByIdAsync(request.EmployeeId, cancellationToken);
+            var employee = await _employeeReadRepository.GetByIdEagerAsync(request.EmployeeId, cancellationToken);
             if (employee == null)
                 return Result.NotFound();
 
