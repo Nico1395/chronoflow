@@ -14,9 +14,8 @@ public sealed record EmployeeNameViewModel
         };
     }
 
-
-    public string GetFullName()
+    public override string ToString()
     {
-        return $"{FirstName} {LastName}";
+        return $"{FirstName} {LastName}".Trim();
     }
 }

@@ -21,7 +21,7 @@ public partial class EmployeeMainDataListItem : MainDataListItemComponentBase<Em
 
     private string GetTitle()
     {
-        return Item.Name.GetFullName();
+        return Item.Name.ToString();
     }
 
     private string GetDescription()

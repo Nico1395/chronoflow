@@ -88,6 +88,24 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Assignments.
+        /// </summary>
+        internal static string Assignments {
+            get {
+                return ResourceManager.GetString("Assignments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Birthday.
+        /// </summary>
+        internal static string Birthday {
+            get {
+                return ResourceManager.GetString("Birthday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Changed a day ago.
         /// </summary>
         internal static string ChangedADayAgo {
@@ -219,6 +237,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string ClockIn {
             get {
                 return ResourceManager.GetString("ClockIn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contact Information.
+        /// </summary>
+        internal static string ContactInformation {
+            get {
+                return ResourceManager.GetString("ContactInformation", resourceCulture);
             }
         }
         
@@ -358,6 +385,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credentials.
+        /// </summary>
+        internal static string Credentials {
+            get {
+                return ResourceManager.GetString("Credentials", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string Description {
@@ -439,6 +475,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to First Name.
+        /// </summary>
+        internal static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to I forgot my password.
         /// </summary>
         internal static string IForgotMyPassword {
@@ -462,6 +507,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string LastChangedRecentToEarlier {
             get {
                 return ResourceManager.GetString("LastChangedRecentToEarlier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Name.
+        /// </summary>
+        internal static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
             }
         }
         
@@ -529,7 +583,7 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name ascending.
+        ///   Looks up a localized string similar to Name: A - Z.
         /// </summary>
         internal static string NameAscending {
             get {
@@ -538,7 +592,7 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name descending.
+        ///   Looks up a localized string similar to Name: Z - A.
         /// </summary>
         internal static string NameDescending {
             get {
@@ -552,6 +606,15 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         internal static string New {
             get {
                 return ResourceManager.GetString("New", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New Employee.
+        /// </summary>
+        internal static string NewEmployee {
+            get {
+                return ResourceManager.GetString("NewEmployee", resourceCulture);
             }
         }
         
@@ -610,11 +673,38 @@ namespace ChronoFlow.Client.Common.Localization.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Personal Information.
+        /// </summary>
+        internal static string PersonalInformation {
+            get {
+                return ResourceManager.GetString("PersonalInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personnel Number.
         /// </summary>
         internal static string PersonnelNumber {
             get {
                 return ResourceManager.GetString("PersonnelNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personnel Number: A - Z.
+        /// </summary>
+        internal static string PersonnelNumberAscending {
+            get {
+                return ResourceManager.GetString("PersonnelNumberAscending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personnel Number: Z - A.
+        /// </summary>
+        internal static string PersonnelNumberDescending {
+            get {
+                return ResourceManager.GetString("PersonnelNumberDescending", resourceCulture);
             }
         }
         

@@ -319,10 +319,10 @@
     <value>Zuletzt geändert: Früher zu zuletzt</value>
   </data>
   <data name="NameAscending" xml:space="preserve">
-    <value>Name aufsteigend</value>
+    <value>Name: A - Z</value>
   </data>
   <data name="NameDescending" xml:space="preserve">
-    <value>Name absteigend</value>
+    <value>Name: Z - A</value>
   </data>
   <data name="Sort" xml:space="preserve">
     <value>Sortieren</value>
@@ -332,5 +332,35 @@
   </data>
   <data name="EntrySaved" xml:space="preserve">
     <value>Eintrag gespeichert</value>
+  </data>
+  <data name="PersonnelNumberAscending" xml:space="preserve">
+    <value>Personalnummer: A - Z</value>
+  </data>
+  <data name="PersonnelNumberDescending" xml:space="preserve">
+    <value>Personalnummer: Z - A</value>
+  </data>
+  <data name="ContactInformations" xml:space="preserve">
+    <value>Kontaktinformationen</value>
+  </data>
+  <data name="Credentials" xml:space="preserve">
+    <value>Zugangsdaten</value>
+  </data>
+  <data name="PersonalInformations" xml:space="preserve">
+    <value>Persönliche Informationen</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>Vorname</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Nachname</value>
+  </data>
+  <data name="Birthday" xml:space="preserve">
+    <value>Geburtstag</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Zuweisungen</value>
+  </data>
+  <data name="NewEmployee" xml:space="preserve">
+    <value>Neuer Mitarbeiter</value>
   </data>
 </root>

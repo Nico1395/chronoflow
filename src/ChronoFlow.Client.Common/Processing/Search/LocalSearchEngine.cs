@@ -94,6 +94,7 @@ internal sealed class LocalSearchEngine : ILocalSearchEngine
 
         if (!property.PropertyType.IsValueType)
         {
+            // TODO -> Implement a search of collection properties when this attribute is placed over them
             if (property.GetCustomAttribute<IncludeOnSearchAttribute>() != null)
                 return !property.PropertyType.IsAssignableTo(typeof(IEnumerable));
 

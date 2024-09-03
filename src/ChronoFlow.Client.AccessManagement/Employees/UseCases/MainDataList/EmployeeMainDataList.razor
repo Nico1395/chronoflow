@@ -1,7 +1,8 @@
 <MainDataList TViewModel="@EmployeeViewModel"
               NewUri="main-data/employees/new"
               ItemTemplate="@typeof(EmployeeMainDataListItem)"
-              ItemClass="md-employee">
+              ItemClass="md-employee"
+              SortOptions="@GetSortOptions()">
 
     <Header>
         @GetHeader(context.Items.Count)
