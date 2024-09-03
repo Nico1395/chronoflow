@@ -1,3 +1,54 @@
 ﻿@page "/main-data/employees/new"
+@page "/main-data/employees/{EmployeeId}"
 
-New employee
+<MainDataForm TViewModel="@EmployeeViewModel" Id="@EmployeeId" Title="@GetTitle" ReturnUri="main-data/employees">
+    <FormSection Title="@Localizer["Credentials"]">
+        <Field Label="@Localizer["PersonnelNumber"]" Width="100%">
+            <TextBox @bind-Value="@context.Item.PersonnelNumber" MaxLength="50" />
+        </Field>
+
+        @* TODO *@
+        <Field Label="@Localizer["Password"]" Width="100%">
+            <TextBox Type="password" MaxLength="30" />
+        </Field>
+    </FormSection>
+
+    <FormSection Title="@Localizer["PersonalInformation"]">
+        <Field Label="@Localizer["FirstName"]" Width="100%">
+            <TextBox @bind-Value="@context.Item.Name.FirstName" MaxLength="100" />
+        </Field>
+
+        <Field Label="@Localizer["LastName"]" Width="100%">
+            <TextBox @bind-Value="@context.Item.Name.LastName" MaxLength="100" />
+        </Field>
+
+        <Field Label="@Localizer["Birthday"]" Width="100%">
+            @* TODO *@
+            <InputDate @bind-Value="@context.Item.Birthday" />
+        </Field>
+    </FormSection>
+
+    <FormSection Title="@Localizer["ContactInformation"]">
+        @* TODO *@
+        Emails and phone numbers
+    </FormSection>
+
+    <FormSection Title="@Localizer["Assignments"]">
+        <Field Label="@Localizer["Roles"]" Width="100%">
+            <CheckList TItem="@RoleViewModel"
+                       Items="@FormService.GetRoles()"
+                       CheckCondition="@context.Item.HasRole"
+                       OnToggle="@context.Item.ToggleRole"
+                       Pageable="@true"
+                       PageCount="15"
+                       SortOptions="@GetRoleListSortOptions()"
+                       Context="role">
+
+                <Item>
+                    @role.Name
+                    @role.Description
+                </Item>
+            </CheckList>
+        </Field>
+    </FormSection>
+</MainDataForm>

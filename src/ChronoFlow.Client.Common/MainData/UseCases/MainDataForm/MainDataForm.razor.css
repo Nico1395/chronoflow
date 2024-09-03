@@ -22,6 +22,10 @@
             align-items: start;
             justify-content: start;
             gap: 1.2rem;
+
+            &:has(.c-form-section) {
+                gap: 2.2rem;
+            }
         }
     
         > footer {
