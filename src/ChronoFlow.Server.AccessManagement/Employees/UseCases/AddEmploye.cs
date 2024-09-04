@@ -33,15 +33,22 @@ public static class AddEmploye
     {
         public async Task<Result> Handle(AddEmployeCommand request, CancellationToken cancellationToken)
         {
-            if (await _employeeReadRepository.ExistsAsync(request.Employee.Id, cancellationToken))
-                return Result.AlreadyExists();
+            try
+            {
+                if (await _employeeReadRepository.ExistsAsync(request.Employee.Id, cancellationToken))
+                    return Result.AlreadyExists();
 
-            // TODO -> Validation emails and phone numbers
+                // TODO -> Validation emails and phone numbers
 
-            await _employeeWriteRepository.AddAsync(request.Employee, cancellationToken);
-            await _unitOfWork.CommitAsync(cancellationToken);
+                await _employeeWriteRepository.AddAsync(request.Employee, cancellationToken);
+                await _unitOfWork.CommitAsync(cancellationToken);
 
-            return Result.Okay();
+                return Result.Okay();
+            }
+            catch (Exception ex)
+            {
+                return Result.Error(ex.Message);
+            }
         }
     }
 }

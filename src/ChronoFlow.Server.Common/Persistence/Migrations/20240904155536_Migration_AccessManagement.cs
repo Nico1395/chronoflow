@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ChronoFlow.Server.Common.Persistence.Migrations
 {
     /// <inheritdoc />
-    public partial class Migration_AccessManagementModel : Migration
+    public partial class Migration_AccessManagement : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -70,15 +70,14 @@ namespace ChronoFlow.Server.Common.Persistence.Migrations
                 {
                     employee_id = table.Column<Guid>(type: "uuid", nullable: false),
                     email = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    is_primary = table.Column<bool>(type: "boolean", nullable: false),
-                    fk_access_management_employee_emails = table.Column<Guid>(type: "uuid", nullable: false)
+                    is_primary = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_access_management_employee_emails", x => new { x.employee_id, x.email });
                     table.ForeignKey(
-                        name: "FK_access_management_employee_emails_access_management_employe~",
-                        column: x => x.fk_access_management_employee_emails,
+                        name: "fk_access_management_employee_emails",
+                        column: x => x.employee_id,
                         principalTable: "access_management_employees",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -89,15 +88,14 @@ namespace ChronoFlow.Server.Common.Persistence.Migrations
                 columns: table => new
                 {
                     employee_id = table.Column<Guid>(type: "uuid", nullable: false),
-                    phone_number = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
-                    fk_access_management_employee_phone_numbers = table.Column<Guid>(type: "uuid", nullable: false)
+                    phone_number = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("pk_access_management_employee_phone_numbers", x => new { x.employee_id, x.phone_number });
                     table.ForeignKey(
-                        name: "FK_access_management_employee_phone_numbers_access_management_~",
-                        column: x => x.fk_access_management_employee_phone_numbers,
+                        name: "fk_access_management_employee_phone_numbers",
+                        column: x => x.employee_id,
                         principalTable: "access_management_employees",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -114,17 +112,17 @@ namespace ChronoFlow.Server.Common.Persistence.Migrations
                 {
                     table.PrimaryKey("pk_access_management_employee_roles", x => new { x.employee_id, x.role_id });
                     table.ForeignKey(
-                        name: "FK_access_management_employee_roles_access_management_employee~",
+                        name: "fk_access_management_employee_employee_roles",
                         column: x => x.employee_id,
                         principalTable: "access_management_employees",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_access_management_employee_roles_access_management_roles_ro~",
+                        name: "fk_access_management_employee_roles_roles",
                         column: x => x.role_id,
                         principalTable: "access_management_roles",
                         principalColumn: "id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,16 +154,6 @@ namespace ChronoFlow.Server.Common.Persistence.Migrations
                 table: "access_management_employee_emails",
                 column: "email",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_access_management_employee_emails_fk_access_management_empl~",
-                table: "access_management_employee_emails",
-                column: "fk_access_management_employee_emails");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_access_management_employee_phone_numbers_fk_access_manageme~",
-                table: "access_management_employee_phone_numbers",
-                column: "fk_access_management_employee_phone_numbers");
 
             migrationBuilder.CreateIndex(
                 name: "IX_access_management_employee_roles_role_id",

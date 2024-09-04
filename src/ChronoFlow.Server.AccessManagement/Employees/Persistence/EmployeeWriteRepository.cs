@@ -9,10 +9,10 @@ internal sealed class EmployeeWriteRepository(DbContext _dbContext) : IEmployeeW
 {
     public Task AddAsync(Employee employee, CancellationToken cancellationToken = default)
     {
-        foreach (var role in employee.EmployeeRoles)
-            _dbContext.Entry(role).State = EntityState.Detached;
-
         _dbContext.Add(employee);
+        foreach (var employeeRole in employee.EmployeeRoles)
+            _dbContext.Entry(employeeRole.Role).State = EntityState.Unchanged;
+
         return Task.CompletedTask;
     }
 
@@ -21,7 +21,6 @@ internal sealed class EmployeeWriteRepository(DbContext _dbContext) : IEmployeeW
         // TODO -> What about the value objects?
 
         _dbContext.Entry(existingEmployee).CurrentValues.SetValues(updatedEmployee);
-
         _dbContext.SyncCollections(existingEmployee.Emails, updatedEmployee.Emails, e => new { e.EmployeeId, e.Email });
         _dbContext.SyncCollections(existingEmployee.PhoneNumbers, updatedEmployee.PhoneNumbers, e => new { e.EmployeeId, e.PhoneNumber });
         _dbContext.SyncCollections(existingEmployee.EmployeeRoles, updatedEmployee.EmployeeRoles, e => new { e.EmployeeId, e.RoleId });
@@ -31,8 +30,8 @@ internal sealed class EmployeeWriteRepository(DbContext _dbContext) : IEmployeeW
 
     public Task DeleteAsync(Employee employee, CancellationToken cancellationToken = default)
     {
-        foreach (var role in employee.EmployeeRoles)
-            _dbContext.Entry(role).State = EntityState.Detached;
+        //foreach (var employeeRole in employee.EmployeeRoles)
+        //    _dbContext.Entry(employeeRole.Role).State = EntityState.Detached;
 
         _dbContext.Remove(employee);
         return Task.CompletedTask;

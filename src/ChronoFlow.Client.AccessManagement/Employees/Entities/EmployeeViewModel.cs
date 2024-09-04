@@ -21,13 +21,15 @@ public sealed class EmployeeViewModel : MainDataViewModel
 
     internal bool HasRole(RoleViewModel role)
     {
-        return EmployeeRoles.Contains(EmployeeRoleViewModel.Create(Id, role));
+        return EmployeeRoles.Any(r => r.RoleId == role.Id);
     }
 
     internal void ToggleRole(RoleViewModel role)
     {
-        var employeeRole = EmployeeRoleViewModel.Create(Id, role);
-        if (!EmployeeRoles.Remove(employeeRole))
-            EmployeeRoles.Add(employeeRole);
+        var employeeRole = EmployeeRoles.FirstOrDefault(r => r.RoleId == role.Id);
+        if (employeeRole != null)
+            EmployeeRoles.Remove(employeeRole);
+        else
+            EmployeeRoles.Add(EmployeeRoleViewModel.Create(Id, role));
     }
 }

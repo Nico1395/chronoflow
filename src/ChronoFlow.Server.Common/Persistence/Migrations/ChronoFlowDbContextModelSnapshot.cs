@@ -130,16 +130,11 @@ namespace ChronoFlow.Server.Common.Persistence.Migrations
                         .HasColumnType("boolean")
                         .HasColumnName("is_primary");
 
-                    b.Property<Guid>("fk_access_management_employee_emails")
-                        .HasColumnType("uuid");
-
                     b.HasKey("EmployeeId", "Email")
                         .HasName("pk_access_management_employee_emails");
 
                     b.HasIndex("Email")
                         .IsUnique();
-
-                    b.HasIndex("fk_access_management_employee_emails");
 
                     b.ToTable("access_management_employee_emails", (string)null);
                 });
@@ -155,13 +150,8 @@ namespace ChronoFlow.Server.Common.Persistence.Migrations
                         .HasColumnType("character varying(50)")
                         .HasColumnName("phone_number");
 
-                    b.Property<Guid>("fk_access_management_employee_phone_numbers")
-                        .HasColumnType("uuid");
-
                     b.HasKey("EmployeeId", "PhoneNumber")
                         .HasName("pk_access_management_employee_phone_numbers");
-
-                    b.HasIndex("fk_access_management_employee_phone_numbers");
 
                     b.ToTable("access_management_employee_phone_numbers", (string)null);
                 });
@@ -265,55 +255,74 @@ namespace ChronoFlow.Server.Common.Persistence.Migrations
                 {
                     b.HasOne("ChronoFlow.Server.AccessManagement.Employees.Entities.Employee", null)
                         .WithMany("Emails")
-                        .HasForeignKey("fk_access_management_employee_emails")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_access_management_employee_emails");
                 });
 
             modelBuilder.Entity("ChronoFlow.Server.AccessManagement.Employees.Entities.EmployeePhoneNumber", b =>
                 {
                     b.HasOne("ChronoFlow.Server.AccessManagement.Employees.Entities.Employee", null)
                         .WithMany("PhoneNumbers")
-                        .HasForeignKey("fk_access_management_employee_phone_numbers")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_access_management_employee_phone_numbers");
                 });
 
             modelBuilder.Entity("ChronoFlow.Server.AccessManagement.Employees.Entities.EmployeeRole", b =>
                 {
-                    b.HasOne("ChronoFlow.Server.AccessManagement.Employees.Entities.Employee", null)
-                        .WithMany()
+                    b.HasOne("ChronoFlow.Server.AccessManagement.Employees.Entities.Employee", "Employee")
+                        .WithMany("EmployeeRoles")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_access_management_employee_employee_roles");
 
-                    b.HasOne("ChronoFlow.Server.AccessManagement.Roles.Entities.Role", null)
+                    b.HasOne("ChronoFlow.Server.AccessManagement.Roles.Entities.Role", "Role")
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired()
+                        .HasConstraintName("fk_access_management_employee_roles_roles");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("ChronoFlow.Server.AccessManagement.Roles.Entities.RolePermission", b =>
                 {
-                    b.HasOne("ChronoFlow.Server.AccessManagement.Permissions.Entities.Permission", null)
+                    b.HasOne("ChronoFlow.Server.AccessManagement.Permissions.Entities.Permission", "Permission")
                         .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ChronoFlow.Server.AccessManagement.Roles.Entities.Role", null)
-                        .WithMany()
+                    b.HasOne("ChronoFlow.Server.AccessManagement.Roles.Entities.Role", "Role")
+                        .WithMany("RolePermissions")
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("ChronoFlow.Server.AccessManagement.Employees.Entities.Employee", b =>
                 {
                     b.Navigation("Emails");
 
+                    b.Navigation("EmployeeRoles");
+
                     b.Navigation("PhoneNumbers");
+                });
+
+            modelBuilder.Entity("ChronoFlow.Server.AccessManagement.Roles.Entities.Role", b =>
+                {
+                    b.Navigation("RolePermissions");
                 });
 #pragma warning restore 612, 618
         }

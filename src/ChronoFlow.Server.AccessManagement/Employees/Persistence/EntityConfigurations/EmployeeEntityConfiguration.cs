@@ -32,7 +32,8 @@ internal sealed class EmployeeEntityConfiguration : IEntityTypeConfiguration<Emp
         builder.Property(x => x.Birthday).HasColumnName("birthday");
         builder.Property(x => x.Created).HasColumnName("created").IsRequired();
         builder.Property(x => x.LastChanged).HasColumnName("last_changed").IsRequired();
-        builder.HasMany(d => d.Emails).WithOne().HasForeignKey(e => e.EmployeeId).HasForeignKey("fk_access_management_employee_emails");
-        builder.HasMany(d => d.PhoneNumbers).WithOne().HasForeignKey(e => e.EmployeeId).HasForeignKey("fk_access_management_employee_phone_numbers");
+        builder.HasMany(d => d.Emails).WithOne().HasForeignKey(e => e.EmployeeId).HasConstraintName("fk_access_management_employee_emails").OnDelete(DeleteBehavior.Cascade);
+        builder.HasMany(d => d.PhoneNumbers).WithOne().HasForeignKey(e => e.EmployeeId).HasConstraintName("fk_access_management_employee_phone_numbers").OnDelete(DeleteBehavior.Cascade);
+        builder.HasMany(d => d.EmployeeRoles).WithOne(e => e.Employee).HasForeignKey(r => r.EmployeeId).HasConstraintName("fk_access_management_employee_employee_roles").OnDelete(DeleteBehavior.Cascade);
     }
 }
