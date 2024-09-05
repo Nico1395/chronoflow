@@ -23,7 +23,7 @@ html {
     --color-semantic-warning-100: rgba(255, 109, 4, 1);
     --control-height-regular: 35px;
     --container-outline: 2px solid var(--color-primary-20);
-    --container-radius-small: 6px;
+    --container-radius-small: 10px;
     --container-radius-regular: 12px;
     --container-radius-large: 25px;
     --container-radius-xlarge: 50px;

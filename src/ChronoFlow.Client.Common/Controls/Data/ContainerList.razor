@@ -19,7 +19,7 @@
                               Placeholder="@Localizer["Sort"]"
                               OnlyShowPlaceholder="@true"
                               IconRight="bi bi-filter"
-                              Disabled="@Disabled" />
+                              Disabled="@GetDisabled()" />
             }
 
             @if (Searchable)
@@ -27,7 +27,7 @@
                 <TextBox Placeholder="@Localizer["TypeToSearch"]"
                          Value="@_searchTerm"
                          OnChange="@((value) => _searchTerm = value)"
-                         Disabled="@Disabled" />
+                         Disabled="@GetDisabled()" />
             }
 
             @if (Header != null)

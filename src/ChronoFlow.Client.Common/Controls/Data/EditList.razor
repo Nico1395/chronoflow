@@ -6,7 +6,7 @@
     var selectedItemGroup = GetSelectedItemGroup(itemGroups);
 }
 
-<div class="c-check-list">
+<div class="c-edit-list">
     @if (Searchable || _canSort || Header != null)
     {
         <header>
@@ -43,17 +43,30 @@
         {
             @foreach (var item in selectedItemGroup)
             {
-                <div class="c-check-list-item">
-                    <CheckBox Value="@CheckCondition(item)" ValueChanged="@(async () => await OnToggleAsync(item))" />
+                var isSelected = _selectedItem == item;
 
-                    @if (Item != null)
+                <div class="@GetItemClasses(isSelected)" @ondblclick="@(async () => await SelectAsync(item))">
+                    @if (isSelected && Inline != null)
                     {
-                        @Item(item)
+                        <section>
+                            @Inline(item)
+                        </section>
+
+                        <aside>
+                            <Button Class="success" IconLeft="bi bi-check" OnClick="@SaveAsync" />
+                            <Button Class="warning" IconLeft="bi bi-arrow-right" OnClick="@Cancel" />
+                        </aside>
                     }
-                    else if (Template != null && TemplateParameterFactory != null)
+                    else if (Item != null)
                     {
-                        var parameters = TemplateParameterFactory(item);
-                        <DynamicComponent Type="@Template" Parameters="@parameters" />
+                        <section>
+                            @Item(item)
+                        </section>
+
+                        <aside>
+                            <Button Class="flat" IconLeft="bi bi-pencil" OnClick="@(async () => await SelectAsync(item))" />
+                            <Button Class="danger" IconLeft="bi bi-x" OnClick="@(async () => await DeleteAsync(item))" />
+                        </aside>
                     }
                 </div>
             }
@@ -64,10 +77,18 @@
         }
         else
         {
-            <span class="c-check-list-no-items">
+            <span class="c-edit-list-no-items">
                 @Localizer["NoItems"]
             </span>
         }
+
+        @{
+            var addDisabled = GetDisabled() || _selectedItem != null;
+        }
+
+        <button class="c-edit-list-new-item" @onclick="@AddNew" disabled="@addDisabled">
+            <i class="bi bi-plus"></i>
+        </button>
     </section>
 
     @if (Pageable && itemGroups.Count > 1)

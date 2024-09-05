@@ -1,11 +1,12 @@
-﻿using ChronoFlow.Client.Common.Localization;
+﻿using ChronoFlow.Client.Common.Controls.Forms;
+using ChronoFlow.Client.Common.Localization;
 using ChronoFlow.Client.Common.Processing.Search;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
 namespace ChronoFlow.Client.Common.Controls.Data;
 
-public abstract class ListComponentBase<TItem> : ComponentBase
+public abstract class ListComponentBase<TItem> : FormControlComponentBase
     where TItem : class
 {
     protected bool _canSort;
@@ -37,9 +38,6 @@ public abstract class ListComponentBase<TItem> : ComponentBase
 
     [Parameter]
     public bool Searchable { get; set; } = true;
-
-    [Parameter]
-    public bool Disabled { get; set; }
 
     [Parameter]
     public RenderFragment? Header { get; set; }

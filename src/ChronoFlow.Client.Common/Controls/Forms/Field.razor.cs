@@ -15,7 +15,7 @@ public partial class Field : ComponentBase
     internal bool IsValidating { get; set; }
 
     [CascadingParameter]
-    private Form? ParentForm { get; set; }
+    internal Form? ParentForm { get; set; }
 
     [Parameter]
     public string? Label { get; set; }
