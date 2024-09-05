@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ChronoFlow.Server.AccessManagement.Employees.UseCases;
 
-public static class AddEmploye
+public static class AddEmployee
 {
     [ApiController]
     public sealed class EmployeesController(IMediator _mediator, IMapper _mapper) : ControllerBase
@@ -18,20 +18,20 @@ public static class AddEmploye
         public async Task<ActionResult<Result>> AddEmployeeAsync([FromBody] EmployeeDto employeeDto)
         {
             var employee = _mapper.Map<Employee>(employeeDto);
-            var result = await _mediator.SendAsync(new AddEmployeCommand(employee));
+            var result = await _mediator.SendAsync(new AddEmployeeCommand(employee));
 
             return Ok(result);
         }
     }
 
-    public sealed record AddEmployeCommand(Employee Employee) : ICommand<Result>;
+    public sealed record AddEmployeeCommand(Employee Employee) : ICommand<Result>;
 
     private sealed class AddEmployeeCommandHandler(
         IEmployeeReadRepository _employeeReadRepository,
         IEmployeeWriteRepository _employeeWriteRepository,
-        IUnitOfWork _unitOfWork) : ICommandHandler<AddEmployeCommand, Result>
+        IUnitOfWork _unitOfWork) : ICommandHandler<AddEmployeeCommand, Result>
     {
-        public async Task<Result> Handle(AddEmployeCommand request, CancellationToken cancellationToken)
+        public async Task<Result> Handle(AddEmployeeCommand request, CancellationToken cancellationToken)
         {
             try
             {
