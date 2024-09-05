@@ -29,8 +29,41 @@
     </FormSection>
 
     <FormSection Title="@Localizer["ContactInformation"]">
-        @* TODO *@
-        Emails and phone numbers
+        <Field Label="@Localizer["Emails"]" Width="100%">
+            <EditList TItem="@EmployeeEmailViewModel"
+                      @bind-Items="@context.Item.Emails"
+                      ItemFactory="@(() => EmployeeEmailViewModel.New(context.Item.Id))"
+                      Context="email">
+
+                <Inline>
+                    <TextBox @bind-Value="@email.Email"
+                             MaxLength="50"
+                             Width="100%" />
+                </Inline>
+
+                <Item>
+                    @email.Email
+                </Item>
+            </EditList>
+        </Field>
+
+        <Field Label="@Localizer["PhoneNumbers"]" Width="100%">
+            <EditList TItem="@EmployeePhoneNumberViewModel"
+                      @bind-Items="@context.Item.PhoneNumbers"
+                      ItemFactory="@(() => EmployeePhoneNumberViewModel.New(context.Item.Id))"
+                      Context="phoneNumber">
+
+                <Inline>
+                    <TextBox @bind-Value="@phoneNumber.PhoneNumber"
+                             MaxLength="50"
+                             Width="100%" />
+                </Inline>
+
+                <Item>
+                    @phoneNumber.PhoneNumber
+                </Item>
+            </EditList>
+        </Field>
     </FormSection>
 
     <FormSection Title="@Localizer["Assignments"]">

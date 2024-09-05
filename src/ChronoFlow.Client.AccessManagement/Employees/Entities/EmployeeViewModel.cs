@@ -14,7 +14,7 @@ public sealed class EmployeeViewModel : MainDataViewModel
     public AddressViewModel Address { get; init; } = AddressViewModel.Empty();
 
     public string PersonnelNumber { get; set; } = string.Empty;
-    public List<EmployeeEmailViewModel> Emails { get; init; } = [];
+    public List<EmployeeEmailViewModel> Emails { get; set; } = [];
     public List<EmployeePhoneNumberViewModel> PhoneNumbers { get; set; } = [];
     public List<EmployeeRoleViewModel> EmployeeRoles { get; set; } = [];
     public DateTime? Birthday { get; set; }

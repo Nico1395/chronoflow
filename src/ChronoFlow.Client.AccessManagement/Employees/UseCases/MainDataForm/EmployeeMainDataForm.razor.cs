@@ -33,4 +33,9 @@ public partial class EmployeeMainDataForm : ComponentBase
 
         return [nameAscending, nameDescending];
     }
+
+    private bool ValidatePhoneNumber(List<EmployeePhoneNumberViewModel> phoneNumbers, EmployeePhoneNumberViewModel phoneNumber)
+    {
+        return true;
+    }
 }
