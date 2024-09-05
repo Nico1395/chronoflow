@@ -157,5 +157,38 @@
             outline: 2px solid var(--color-primary-40);
         }
     }
+    
+    &.warning {
+        background: var(--color-primary-10);
+        outline: 0;
+
+        &:hover {
+            background: var(--color-semantic-warning-100);
+        }
+    
+        &:active, &.active {
+            background: var(--color-semantic-warning-90);
+        }
+    
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+    }
+
+    &.warning-fill {
+        background: var(--color-semantic-warning-100);
+
+        &:hover {
+            background: var(--color-semantic-warning-90);
+        }
+
+        &:active, &.active {
+            background: var(--color-semantic-warning-80);
+        }
+
+        &:focus {
+            outline: 2px solid var(--color-primary-40);
+        }
+    }
 }
 
