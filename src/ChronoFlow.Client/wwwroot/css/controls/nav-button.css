@@ -1,0 +1,83 @@
+.c-nav-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    height: var(--control-height-regular);
+    border-radius: var(--control-border-radius);
+    padding: var(--control-padding);
+    text-decoration: none;
+}
+
+.l-navbar .c-nav-button {
+    background: var(--color-navbar-control);
+    color: var(--color-navbar-text);
+    border: var(--color-navbar-control-border);
+
+    &:hover {
+        background: var(--color-navbar-control-hover);
+    }
+    
+    &:active {
+        background: var(--color-navbar-control-active);
+    }
+    
+    &:disabled {
+        background: var(--color-navbar-control-disabled);
+        color: var(--color-navbar-text-disabled);
+    }
+
+    &:focus {
+        border: var(--color-navbar-control-border-focus);
+        outline: none;
+    }
+}
+
+.l-content .c-nav-button {
+    background: var(--color-content-control);
+    color: var(--color-content-text);
+    border: var(--color-content-control-border);
+
+    &:hover {
+        background: var(--color-content-control-hover);
+    }
+    
+    &:active {
+        background: var(--color-content-control-active);
+    }
+    
+    &:disabled {
+        background: var(--color-content-control-disabled);
+        color: var(--color-content-text-disabled);
+    }
+
+    &:focus {
+        border: var(--color-content-control-border-focus);
+        outline: none;
+    }
+}
+
+.c-container .c-nav-button {
+    background: var(--color-container-control);
+    color: var(--color-container-text);
+    border: var(--color-container-control-border);
+
+    &:hover {
+        background: var(--color-container-control-hover);
+    }
+    
+    &:active {
+        background: var(--color-container-control-active);
+    }
+    
+    &:disabled {
+        background: var(--color-container-control-disabled);
+        color: var(--color-container-text-disabled);
+    }
+
+    &:focus {
+        border: var(--color-container-control-border-focus);
+        outline: none;
+    }
+}

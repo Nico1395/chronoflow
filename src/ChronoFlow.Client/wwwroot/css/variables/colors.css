@@ -1,0 +1,33 @@
+html.theme-light {
+    --color-navbar-background: #ffffff;
+    --color-navbar-border: #C8D3D8;
+    --color-navbar-text: #272c57;
+    --color-navbar-text-disabled: #b9c0ff;
+    --color-navbar-control: #EAECFF;
+    --color-navbar-control-disabled: var(--color-navbar-background);
+    --color-navbar-control-hover: #DBDFFF;
+    --color-navbar-control-active: #CCD1FF;
+    --color-navbar-control-border: 1px solid #949BDE;
+    --color-navbar-control-border-focus: 1px solid black;
+    --color-content-background: #ebf1f4;
+    --color-content-text: #272c57;
+    --color-content-text-disabled: black;
+    --color-content-control: #ffffff;
+    --color-content-control-disabled: var(--color-content-background);
+    --color-content-control-hover: black;
+    --color-content-control-active: black;
+    --color-content-control-border: 1px solid #C8D3D8;
+    --color-content-control-border-focus: 1px solid black;
+    --color-container-background: #ffffff;
+    --color-container-border: #C8D3D8;
+    --color-container-text: #272c57;
+    --color-container-text-disabled: #b9c0ff;
+    --color-container-control: #EAECFF;
+    --color-container-control-disabled: var(--color-container-background);
+    --color-container-control-hover: #DBDFFF;
+    --color-container-control-active: #CCD1FF;
+    --color-container-control-border: 1px solid #949BDE;
+    --color-container-control-border-focus: 1px solid black;
+    --color-footer-background: #dee8ed;
+    --color-footer-text: #AEB6BA;
+}

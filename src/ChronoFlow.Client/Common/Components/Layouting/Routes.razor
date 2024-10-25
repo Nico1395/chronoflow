@@ -1,4 +1,6 @@
-﻿<Router AppAssembly="@typeof(Layout).Assembly">
+﻿@using Trailblazor.Routing
+
+<TrailblazorRouter LayoutType="@typeof(Layout)">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout)" />
 
@@ -12,4 +14,4 @@
             <p role="alert">Sorry, there's nothing at this address.</p>
         </LayoutView>
     </NotFound>
-</Router>
+</TrailblazorRouter>

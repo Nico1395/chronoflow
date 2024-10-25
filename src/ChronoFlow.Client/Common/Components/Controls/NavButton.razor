@@ -1,0 +1,31 @@
+﻿@inherits ControlComponentBase
+
+<a id="@Id"
+   tabindex="@TabIndex"
+   class="@GetClasses()"
+   style="@GetStyling()"
+   disabled="@IsDisabled()"
+   href="@Href"
+   @onclick="@OnClick">
+
+    @if (IconLeft != null)
+    {
+        <aside>
+            <Icon Name="@IconLeft" Size="@IconLeftSize" />
+        </aside>
+    }
+
+    @if (ChildContent != null)
+    {
+        <div>
+            @ChildContent
+        </div>
+    }
+
+    @if (IconRight != null)
+    {
+        <aside>
+            <Icon Name="@IconRight" Size="@IconRightSize" />
+        </aside>
+    }
+</a>

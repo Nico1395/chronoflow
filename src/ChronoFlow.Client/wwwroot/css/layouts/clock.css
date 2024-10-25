@@ -1,0 +1,28 @@
+.clock {
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.1rem;
+
+    .time {
+        font-size: 18pt;
+        font-weight: 700;
+        
+        > span {
+            display: inline-block;
+        }
+    }
+
+    .seconds {
+        margin: -5.5px;
+        color: var(--color-navbar-text-disabled);
+    }
+
+    .date {
+        font-size: 8pt;
+        font-weight: 600;
+    }
+}

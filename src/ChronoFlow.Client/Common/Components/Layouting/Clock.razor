@@ -1,0 +1,22 @@
+﻿@{
+    var now = DateTime.Now;
+    var hoursAndMinutes = now.ToString("HH:mm");
+    var seconds = now.ToString(":ss");
+    var date = DateOnly.FromDateTime(now).ToString("D");
+}
+
+<div class="clock">
+    <div class="time">
+        <span>
+            @hoursAndMinutes
+        </span>
+
+        <span class="seconds">
+            @seconds
+        </span>
+    </div>
+
+    <div class="date">
+        @date
+    </div>
+</div>
