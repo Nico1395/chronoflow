@@ -1,3 +1,4 @@
+using ChronoFlow.Client.Common;
 using ChronoFlow.Client.Common.Layouting;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -13,6 +14,7 @@ public class Program
         builder.RootComponents.Add<Routes>("#app");
         builder.RootComponents.Add<HeadOutlet>("head::after");
 
+        builder.Services.AddCommon();
         builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
         await builder.Build().RunAsync();

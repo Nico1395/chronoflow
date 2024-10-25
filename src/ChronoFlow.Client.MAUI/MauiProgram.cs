@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using ChronoFlow.Client.Common;
+using Microsoft.Extensions.Logging;
 
 namespace ChronoFlow.Client.MAUI;
 
@@ -14,6 +15,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
 
+        builder.Services.AddCommon();
         builder.Services.AddMauiBlazorWebView();
 
 #if DEBUG
