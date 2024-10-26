@@ -1,4 +1,4 @@
-﻿namespace ChronoFlow.Shared.Common.Mapping;
+﻿namespace ChronoFlow.Shared.Common.Mapping.Adaptations;
 
 internal sealed class MapsterMapperAdapter(MapsterMapper.IMapper _mapsterMapper) : IMapper
 {

@@ -1,24 +1,23 @@
-﻿using ChronoFlow.Shared.Common.Mapping.Configuration;
+﻿using ChronoFlow.Shared.Common.Mapping.Adaptations;
+using ChronoFlow.Shared.Common.Mapping.Configuration;
 using Mapster;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 
 namespace ChronoFlow.Shared.Common.Mapping.DependencyInjection;
 
 public static class MappingDependencyInjection
 {
-    public static IServiceCollection AddMapping(this IServiceCollection services, params Assembly[] assemblies)
+    public static IServiceCollection AddMapping(this IServiceCollection services, Action<MappingOptionsBuilder>? options = null)
     {
         services.AddMapster();
         services.AddTransient<IMapper, MapsterMapperAdapter>();
 
-        var mappingProfileTypes = assemblies
-            .SelectMany(a => a.GetTypes())
-            .Where(t => !t.IsAbstract || !t.IsInterface && t.IsAssignableTo(typeof(IMappingProfile)))
-            .ToList();
+        var optionsBuilder = new MappingOptionsBuilder();
+        options?.Invoke(optionsBuilder);
+        var mappingOptions = optionsBuilder.Build();
 
         var profileConfigurations = new List<IMappingProfileConfiguration>();
-        foreach (var mappingProfileType in mappingProfileTypes)
+        foreach (var mappingProfileType in mappingOptions.ProfileTypes)
         {
             var instance = Activator.CreateInstance(mappingProfileType);
             if (instance == null || instance is not IMappingProfile profile)

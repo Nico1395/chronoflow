@@ -1,5 +1,5 @@
 using ChronoFlow.Client.Common;
-using ChronoFlow.Client.Common.Layouting;
+using ChronoFlow.Client.Common.Components.Layouting;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

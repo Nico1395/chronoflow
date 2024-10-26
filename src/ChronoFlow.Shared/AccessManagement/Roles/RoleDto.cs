@@ -2,7 +2,7 @@
 
 namespace ChronoFlow.Shared.AccessManagement.Roles;
 
-public sealed class RoleModel : MainDataAggregateDto
+public sealed class RoleDto : MainDataAggregateDto
 {
     public required string Name { get; set; }
     public string? Description { get; set; }

@@ -1,14 +1,20 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using ChronoFlow.Shared.Common.Mapping.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Trailblazor.Routing.DependencyInjection;
 
 namespace ChronoFlow.Client.Common;
 
-public static class DependencyInjection
+public static class CommonDependencyInjection
 {
     public static IServiceCollection AddCommon(this IServiceCollection services, params Assembly[] additionalAssemblies)
     {
         var assemblies = YieldAssemblies().Concat(additionalAssemblies).ToArray();
+
+        services.AddMapping(options =>
+        {
+            options.ScanForProfilesInAssemblies(assemblies);
+        });
 
         services.AddTrailblazorRouting(options =>
         {
